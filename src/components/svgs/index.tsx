@@ -13,6 +13,7 @@ import Facebook from './facebook';
 import GitHub from './github';
 import Instagram from './instagram';
 import LinkedIn from './linkedin';
+import Linktree from './linktree';
 import Mail from './mail';
 import Menu from './menu';
 import Play from './play';
@@ -39,6 +40,7 @@ export const iconMap = {
     github: GitHub,
     instagram: Instagram,
     linkedin: LinkedIn,
+    linktree: Linktree,
     mail: Mail,
     menu: Menu,
     play: Play,

@@ -2,9 +2,10 @@
     "logo": {
         "url": "/images/logo-white.svg",
         "altText": "Logo light",
+        "imageClassName": "w-24 h-auto",
         "type": "ImageBlock"
     },
-    "text": "A description of your brand",
+    "text": "Hypocaps la solution de resucrage pour tous",
     "primaryLinks": {
         "title": "Product",
         "links": [
@@ -61,21 +62,21 @@
     },
     "socialLinks": [
         {
-            "altText": "GitHub link",
-            "url": "https://github.com/netlify",
-            "icon": "github",
-            "type": "Social"
-        },
-        {
-            "altText": "Twitter link",
-            "url": "https://twitter.com/netlify",
-            "icon": "twitter",
-            "type": "Social"
-        },
-        {
             "altText": "LinkedIn link",
-            "url": "https://www.linkedin.com/company/netlify",
+            "url": "https://www.linkedin.com/company/hypocaps",
             "icon": "linkedin",
+            "type": "Social"
+        },
+        {
+            "altText": "Instagram link",
+            "url": "https://www.instagram.com/hypocaps/",
+            "icon": "instagram",
+            "type": "Social"
+        },
+        {
+            "altText": "Linktree link",
+            "url": "https://linktr.ee/Hypocaps",
+            "icon": "linktree",
             "type": "Social"
         },
         {

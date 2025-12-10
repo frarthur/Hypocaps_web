@@ -4,7 +4,7 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: Unblock your team boost your time to production
+      text: complément alimentaire pour personnes sujettes aux hypoglycémies avec son distributeur adapté
       color: text-dark
       type: TitleBlock
     subtitle: Subtitle goes here
@@ -37,7 +37,7 @@ sections:
       elementId: ''
       type: ImageBlock
     badge:
-      label: This is a badge
+      label: Hyopocaps
       color: text-primary
       type: Badge
     elementId: ''
