@@ -78,6 +78,11 @@ export const FeaturedPeopleSection: Model = {
             localized: false,
             options: [
                 {
+                    label: 'Two column grid',
+                    value: 'two-col-grid',
+                    thumbnail: 'https://assets.stackbit.com/components/images/default/two-col-grid.png'
+                },
+                {
                     label: 'Three column grid',
                     value: 'three-col-grid',
                     thumbnail: 'https://assets.stackbit.com/components/images/default/three-col-grid.png'

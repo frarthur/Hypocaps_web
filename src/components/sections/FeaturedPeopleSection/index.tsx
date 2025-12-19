@@ -7,7 +7,7 @@ import { getDataAttrs } from '../../../utils/get-data-attrs';
 import Section from '../Section';
 import TitleBlock from '../../blocks/TitleBlock';
 import ImageBlock from '../../blocks/ImageBlock';
-import { Action, Badge } from '../../atoms';
+import { Action, Badge, WikiTooltip } from '../../atoms';
 
 export default function FeaturedPeopleSection(props) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, actions = [], people = [], variant, styles = {}, enableAnnotations } = props;
@@ -79,6 +79,8 @@ export default function FeaturedPeopleSection(props) {
 function FeaturedPeopleVariants(props) {
     const { variant = 'three-col-grid', ...rest } = props;
     switch (variant) {
+        case 'two-col-grid':
+            return <FeaturedPeopleTwoCol {...rest} />;
         case 'four-col-grid':
             return <FeaturedPeopleFourCol {...rest} />;
         case 'mixed-grid':
@@ -86,6 +88,22 @@ function FeaturedPeopleVariants(props) {
         default:
             return <FeaturedPeopleThreeCol {...rest} />;
     }
+}
+
+function FeaturedPeopleTwoCol({ people = [], hasTopMargin, hasSectionTitle, hasAnnotations }) {
+    if (people.length === 0) {
+        return null;
+    }
+    return (
+        <div
+            className={classNames('grid', 'gap-6', 'grid-cols-2', 'max-w-3xl', 'mx-auto', { 'mt-8': hasTopMargin })}
+            {...(hasAnnotations && { 'data-sb-field-path': '.people' })}
+        >
+            {people.map((person, index) => (
+                <FeaturedPerson key={index} {...person} hasSectionTitle={hasSectionTitle} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
+            ))}
+        </div>
+    );
 }
 
 function FeaturedPeopleThreeCol({ people = [], hasTopMargin, hasSectionTitle, hasAnnotations }) {
@@ -173,7 +191,7 @@ function FeaturedPerson(props) {
             {image && (
                 <ImageBlock
                     {...image}
-                    className={classNames('flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}
+                    className={classNames('flex', 'w-full', 'aspect-square', 'object-cover', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}
                     {...(fieldPath && { 'data-sb-field-path': '.image' })}
                 />
             )}
@@ -188,7 +206,34 @@ function FeaturedPerson(props) {
                 </p>
             )}
             {bio && (
-                <Markdown options={{ forceBlock: true, forceWrapper: true }} className="mt-4 sb-markdown" {...(fieldPath && { 'data-sb-field-path': '.bio' })}>
+                <Markdown 
+                    options={{ 
+                        forceBlock: true, 
+                        forceWrapper: true,
+                        overrides: {
+                            a: {
+                                component: ({ children, href, title }: any) => {
+                                    // Si le lien contient wikipedia et a un title, utiliser WikiTooltip
+                                    if (href?.includes('wikipedia') && title) {
+                                        return (
+                                            <WikiTooltip
+                                                title="Diabète de type 1"
+                                                description={title}
+                                                url={href}
+                                            >
+                                                {children}
+                                            </WikiTooltip>
+                                        );
+                                    }
+                                    // Sinon, lien normal
+                                    return <a href={href} title={title} target="_blank" rel="noopener noreferrer">{children}</a>;
+                                }
+                            }
+                        }
+                    }} 
+                    className="mt-4 sb-markdown" 
+                    {...(fieldPath && { 'data-sb-field-path': '.bio' })}
+                >
                     {bio}
                 </Markdown>
             )}

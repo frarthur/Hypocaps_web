@@ -1,14 +1,14 @@
 {
-    "name": "Rhonda Piper",
-    "role": "Job title",
+    "name": "Jérémy Legardeur",
+    "role": "Co-fondateur",
     "image": {
-        "url": "/images/avatar1.svg",
-        "altText": "Rhonda Piper",
+        "url": "/images/Jeremy.png",
+        "altText": "Jeremy",
         "styles": {
             "self": {
                 "borderRadius": "medium",
                 "margin": [
-                    "mb-8"
+                    "mb-4"
                 ]
             }
         },
@@ -18,10 +18,10 @@
     "styles": {
         "self": {
             "padding": [
-                "pt-6",
-                "pb-6",
-                "pl-6",
-                "pr-6"
+                "pt-3",
+                "pb-3",
+                "pl-3",
+                "pr-3"
             ],
             "textAlign": "center",
             "borderColor": "border-neutral",
@@ -32,5 +32,5 @@
         }
     },
     "type": "Person",
-    "bio": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n"
+    "bio": "Enseignant chercheur et docteur en mécanique.\n"
 }
