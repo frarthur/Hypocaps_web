@@ -2,42 +2,29 @@
 title: Home
 slug: /
 sections:
+  # Presentation
   - type: GenericSection
     title:
+      # Text principal
       text: Remédier l’hypoglycémie, protéger votre relation au sucre
       color: text-dark
       type: TitleBlock
+    # Sous titre
     subtitle: Une solution de resucrage avec son distributeur
+    # Texte
     text: >
       Complément alimentaire pour personnes sujettes aux hypoglycémies avec son distributeur adapté
-    actions:
-      - label: Get started
-        altText: ''
-        url: /
-        showIcon: false
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        elementId: ''
-        type: Button
-      - label: See Tutorials
-        altText: ''
-        url: /
-        showIcon: true
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        elementId: ''
-        type: Link
+    # Media
     media:
       url: /images/dispenser.png
       altText: Distributeur de solution de resucrage by Hypocaps
       elementId: ''
       type: ImageBlock
-    badge:
-      label: Hyopocaps
-      color: text-primary
-      type: Badge
+    # Badge
+    # badge:
+    #   label: Hyopocaps
+    #   color: text-primary
+    #   type: Badge
     elementId: ''
     colors: bg-light-fg-dark
     styles:
@@ -49,23 +36,29 @@ sections:
           - pl-16
           - pb-16
           - pr-16
+  # Presentation sondage
   - type: FeaturedItemsSection
     title:
-      text: Key Benefits
+      text:
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: Subtitle goes here
     items:
       - type: FeaturedItem
-        title: 500k
-        subtitle: Numbers Done
+        title: 70%
+        subtitle: Sur la consomation de sucre
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          - Écœurement
+
+          - Accoutumance
+
+          - Addiction
+
+          - <a href="https://fr.wikipedia.org/wiki/Trouble_des_conduites_alimentaires" title="Trouble du Comportement Alimentaire" target="_blank" rel="noopener">TCA</a>
+
+          - Caries
         actions: []
         elementId: null
         colors: bg-neutralAlt-fg-dark
@@ -82,21 +75,28 @@ sections:
             textAlign: left
         image:
           type: ImageBlock
-          altText: Lightning bolt symbol on red background
+          altText: Carrées de sucre
           elementId: ''
-          url: /images/icon1.svg
+          url: /images/logo_SugarCube.png
           styles:
             self:
               borderRadius: x-large
-      - title: 20x
-        subtitle: The Job Stuff
+      - title: 85%
+        subtitle: des packagings non adaptés
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          - Fragiles
+
+          - Encombrants 
+
+          - Cassables
+
+          - Salissures
+
+          - Jetables
+
         image:
-          url: /images/icon2.svg
-          altText: Featured icon two
+          url: /images/logo_Emballage.png
+          altText: Emballage
           elementId: ''
           type: ImageBlock
         actions: []
@@ -113,41 +113,8 @@ sections:
             textAlign: left
             justifyContent: center
         type: FeaturedItem
-      - title: 200%
-        subtitle: Faster
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/icon3.svg
-          altText: Featured icon three
-          elementId: ''
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: row
-        type: FeaturedItem
-    actions:
-      - label: Get started
-        altText: ''
-        url: /
-        showIcon: false
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        elementId: ''
-        type: Button
     badge:
-      label: This is a badge
+      label: Pourcentage des personnes interrogées rencontrant des problèmes concernant leur solution de resucrage
       color: text-primary
       styles:
         self:
@@ -166,56 +133,8 @@ sections:
         justifyContent: center
       subtitle:
         textAlign: center
-  - subtitle: Award winning enterprises trust us
-    images:
-      - url: /images/empathy-logo.svg
-        altText: Empathy logo
-        type: ImageBlock
-      - url: /images/wellster-logo.svg
-        altText: Wellster logo
-        type: ImageBlock
-      - url: /images/vise-logo.svg
-        altText: Vise logo
-        type: ImageBlock
-      - url: /images/telus-logo.svg
-        altText: Telus logo
-        type: ImageBlock
-      - url: /images/contenful-logo.svg
-        altText: Contentful logo
-        type: ImageBlock
-      - url: /images/sanity-logo.svg
-        altText: Sanity logo
-        type: ImageBlock
-      - url: /images/rangle-logo.svg
-        altText: Rangle logo
-        type: ImageBlock
-    motion: move-to-left
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        justifyContent: center
-      subtitle:
-        textAlign: center
-    type: ImageGallerySection
-  - posts:
-      - content/pages/blog/case-study-1.md
-      - content/pages/blog/case-study-2.md
-      - content/pages/blog/case-study-3.md
-    showThumbnail: true
-    showDate: true
-    showAuthor: true
-    variant: three-col-grid
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-16
-          - pl-16
-          - pb-16
-          - pr-16
-        justifyContent: center
-    type: FeaturedPostsSection
-    hoverEffect: move-up
+
+  # ---
   - title: Divider
     colors: bg-light-fg-dark
     styles:
@@ -226,76 +145,63 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
-  - title:
-      text: Grow your business 10x faster
+
+  # Bloc text
+  - type: CenterSection
+    title:
+      # Text principal
+      text: 'En plus de ces difficultés, des enjeux RSE importants apparaissent'
       color: text-dark
-      styles:
-        self:
-          textAlign: center
       type: TitleBlock
-    subtitle: This is a subtitle
-    text: |-
-      Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.
-      Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet
-      erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat
-      vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.
-    media:
-      title: Title of the video
-      url: /images/placeholder-video.mp4
-      controls: false
-      aspectRatio: '16:9'
-      styles:
-        self:
-          padding:
-            - pt-2
-            - pb-2
-            - pl-2
-            - pr-2
-          borderColor: border-dark
-          borderStyle: solid
-          borderWidth: 1
-          borderRadius: large
-      type: VideoBlock
-      autoplay: true
-      loop: true
-      muted: true
-    badge:
-      label: Key Benefits
-      color: text-primary
-      styles:
-        self:
-          textAlign: center
-      type: Badge
+    # Texte
+    text: >-
+      - Consommation d’eau pour la production (1kg de sucre = 1782 litres d’eau) 
+
+      - Pollution engendrée lié au différent packaging
+    elementId: ''
     colors: bg-light-fg-dark
     styles:
       self:
-        flexDirection: col
-        justifyContent: center
-      subtitle:
-        textAlign: center
-    type: GenericSection
+        alignItems: center
+        flexDirection: row
+        padding:
+          - pt-16
+          - pl-16
+          - pb-16
+          - pr-16
+
+  # ---
+  - title: Divider
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-7
+          - pl-7
+          - pb-7
+          - pr-7
+    type: DividerSection
+
+  # Section video youtube presenation du projet
   - type: GenericSection
     title:
-      text: Generic section with a video
+      text: Présentation de notre problème
       color: text-dark
       styles:
         self:
           textAlign: left
       type: TitleBlock
-    subtitle: Section with a video subtitle
+    subtitle: 'Crédit: moovjee'
     text: |-
-      Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.
-      Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet
-      erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat
-      vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.
+      Cette vidéo publiée par [moovjee](https://www.youtube.com/@moovjee), où Maë Legardeur est interrogé, explique nos motivations ainsi que la source de notre idée.
     actions: []
     media:
-      title: Title of the video
-      url: /images/placeholder-video.mp4
-      autoplay: true
+      title: Hypocaps (Nouvelle-Aquitaine)_Maë Legardeur
+      url: https://www.youtube.com/watch?v=9toTf5j-wBI
+      autoplay: false
       loop: true
-      muted: true
-      controls: false
+      muted: false
+      controls: true
       aspectRatio: '16:9'
       styles:
         self:
@@ -317,77 +223,8 @@ sections:
         justifyContent: center
       subtitle:
         textAlign: left
-  - title:
-      text: Social Media Management
-      color: text-dark
-      type: TitleBlock
-    subtitle: Increase your reach
-    text: >
-      A service that helps businesses to manage their social media accounts and
-      posts.
-    actions:
-      - label: Get started
-        url: /
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        type: Button
-      - label: See Tutorials
-        url: /
-        showIcon: true
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        type: Link
-    media:
-      url: /images/hero2.svg
-      altText: Fun feature preview
-      type: ImageBlock
-    badge:
-      label: This is a badge
-      color: text-primary
-      type: Badge
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        alignItems: center
-    type: GenericSection
-  - title:
-      text: Business Consulting
-      color: text-dark
-      type: TitleBlock
-    subtitle: Be in good company
-    text: >
-      A service that provides advice and guidance to startups and small
-      businesses.
-    actions:
-      - label: Get started
-        url: /
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        type: Button
-      - label: See Tutorials
-        url: /
-        showIcon: true
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        type: Link
-    media:
-      url: /images/hero3.svg
-      altText: Dope design preview
-      type: ImageBlock
-    badge:
-      label: This is a badge
-      color: text-primary
-      type: Badge
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        alignItems: center
-        flexDirection: row-reverse
-    type: GenericSection
+
+  # ---
   - title: Divider
     colors: bg-light-fg-dark
     styles:
@@ -398,22 +235,21 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
+
+  # Caroussel
   - type: CarouselSection
     title: null
-    subtitle: What our customers say about us
+    subtitle: Témoignages de soutien pour le projet Hypocaps
     items:
       - title: >-
-          “A designer knows he has achieved perfection not when there is nothing
-          left to add, but when there is nothing left to take away.”
-        tagline: Testimonial 1
-        subtitle: 'Maria Walters, Company'
+          « Je crois vraiment en Hypocaps, c’est une idée qui peut aider beaucoup de personnes. »
+        tagline: Soutien
+        subtitle: 'Emma, future utilisatrice'
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Ce projet est inspirant, il répond à un vrai besoin et montre qu’il est possible de repenser le resucrage.
         image:
           url: /images/person-placeholder-light.png
-          altText: Maria Walters
+          altText: Emma
           styles:
             self:
               borderRadius: full
@@ -432,17 +268,16 @@ sections:
             flexDirection: row
             justifyContent: center
         type: FeaturedItem
+
       - title: >-
-          "Design is a plan for arranging elements in such a way as best to accomplish a particular purpose."
-        tagline: Testimonial 2
-        subtitle: 'John Doe, Company'
+          « L’équipe Hypocaps a une vraie mission, je suis impatient de voir où cela va nous mener. »
+        tagline: Confiance
+        subtitle: 'Théo, mentor'
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Leur approche est prometteuse, et je suis convaincu que ce produit peut faire la différence.
         image:
           url: /images/person-placeholder-light.png
-          altText: John Doe
+          altText: Théo
           styles:
             self:
               borderRadius: full
@@ -461,17 +296,16 @@ sections:
             flexDirection: row
             justifyContent: center
         type: FeaturedItem
+
       - title: >-
-          "Design is how it works, how it functions. Good design doesn't just make a product aesthetically pleasing, it makes it a pleasure to use."
-        tagline: Testimonial 3
-        subtitle: 'Maria Walters, Company'
+          « Hypocaps incarne une belle ambition : rendre le resucrage à la fois plus sain et plus serein. »
+        tagline: Ambition
+        subtitle: 'Salma, partenaire'
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Je soutiens ce projet parce qu’il propose une vision responsable et utile pour beaucoup de personnes.
         image:
           url: /images/person-placeholder-light.png
-          altText: Maria Walters
+          altText: Salma
           styles:
             self:
               borderRadius: full
@@ -490,82 +324,22 @@ sections:
             flexDirection: row
             justifyContent: center
         type: FeaturedItem
+
       - title: >-
-          “A designer knows he has achieved perfection not when there is nothing
-          left to add, but when there is nothing left to take away.”
-        tagline: Testimonial 4
-        subtitle: 'Maria Walters, Company'
+          « Ce projet m’inspire : il est à la fois innovant, utile et porteur d’espoir. »
+        tagline: Motivation
+        subtitle: 'Armand, observateur'
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Je suis convaincu qu’une solution comme Hypocaps peut changer la manière dont on parle de resucrage.
         image:
           url: /images/person-placeholder-light.png
-          altText: Maria Walters
+          altText: Armand
           styles:
             self:
               borderRadius: full
           type: ImageBlock
         actions: []
         colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          "Design can be art. Design can be aesthetics. Design is so simple, that's why it is so complicated."
-        tagline: Testimonial 5
-        subtitle: 'Jane Walters, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Maria Walters
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          “Quote from some important person goes right here. I love using Netlify Create.”
-        tagline: Testimonial 6
-        subtitle: 'Jane Doe, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/img-placeholder-dark.png
-          altText: Jane Doe
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-dark-fg-light
         styles:
           self:
             padding:
@@ -586,97 +360,8 @@ sections:
         justifyContent: center
       subtitle:
         textAlign: center
-  - title:
-      text: List of features here
-      color: text-primary
-      styles:
-        self:
-          textAlign: center
-      type: TitleBlock
-    subtitle: Featured items section subtitle
-    items:
-      - title: Feature Item One
-        tagline: This is the tagline
-        subtitle: This is the item subtitle
-        text: |
-          Follow the tutorial to build your first Netlify Create site.
-        image:
-          url: /images/abstract-feature1.svg
-          altText: Placeholder Image
-          styles:
-            self:
-              borderRadius: x-large
-          type: ImageBlock
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: col
-        type: FeaturedItem
-      - title: Feature Item Two
-        tagline: This is the tagline
-        subtitle: This is the item subtitle
-        text: |
-          Follow the tutorial to build your first awesome Netlify Create site.
-        image:
-          url: /images/abstract-feature2.svg
-          altText: Placeholder image
-          styles:
-            self:
-              borderRadius: x-large
-          type: ImageBlock
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: col
-        type: FeaturedItem
-      - title: Feature Item Three
-        tagline: This is the tagline
-        subtitle: This is the item subtitle
-        text: |
-          Learn from the tutorial and build your first awesome Netlify Create site.
-        image:
-          url: /images/abstract-feature1.svg
-          altText: Placeholder image
-          styles:
-            self:
-              borderRadius: x-large
-          type: ImageBlock
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: col
-        type: FeaturedItem
-    variant: three-col-grid
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-16
-          - pl-8
-          - pb-16
-          - pr-8
-        justifyContent: center
-      subtitle:
-        textAlign: center
-    type: FeaturedItemsSection
+
+  # Contact us
   - title:
       text: Generic Section With A Form
       color: text-dark
@@ -736,8 +421,10 @@ sections:
       type: Badge
     colors: bg-light-fg-dark
     type: GenericSection
+
+# Seo
 seo:
-  metaTitle: Home - Demo site
+  metaTitle: Hypocaps
   metaDescription: This demo site is built with Netlify Create.
   socialImage: /images/main-hero.jpg
   type: Seo

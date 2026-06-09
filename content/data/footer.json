@@ -1,25 +1,17 @@
 {
     "logo": {
         "url": "/images/logo-white.svg",
-        "altText": "Logo light",
+        "altText": "Hypocaps",
         "imageClassName": "w-24 h-auto",
         "type": "ImageBlock"
     },
-    "text": "Hypocaps la solution de resucrage pour tous",
+    "text": "Hypocaps, la solution de resucrage pour tous.",
     "primaryLinks": {
-        "title": "Product",
+        "title": "Produit",
         "links": [
             {
-                "label": "Features",
-                "altText": "Features page",
-                "url": "/",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Pricing",
+                "label": "Tarifs",
+                "altText": "Page tarifs",
                 "url": "/pricing",
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -27,8 +19,18 @@
                 "type": "Link"
             },
             {
-                "label": "Documentation",
-                "url": "/",
+                "label": "FAQ",
+                "altText": "Page FAQ",
+                "url": "/faq",
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "style": "secondary",
+                "type": "Link"
+            },
+            {
+                "label": "Blog",
+                "altText": "Page blog",
+                "url": "/blog",
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
@@ -38,11 +40,11 @@
         "type": "FooterLinksGroup"
     },
     "secondaryLinks": {
-        "title": "Company",
+        "title": "Entreprise",
         "links": [
             {
-                "label": "Careers",
-                "altText": "careers page",
+                "label": "Carrières",
+                "altText": "Page carrières",
                 "url": "/careers",
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -51,6 +53,7 @@
             },
             {
                 "label": "Blog",
+                "altText": "Page blog",
                 "url": "/blog",
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -62,49 +65,31 @@
     },
     "socialLinks": [
         {
-            "altText": "LinkedIn link",
+            "altText": "LinkedIn",
             "url": "https://www.linkedin.com/company/hypocaps",
             "icon": "linkedin",
             "type": "Social"
         },
         {
-            "altText": "Instagram link",
+            "altText": "Instagram",
             "url": "https://www.instagram.com/hypocaps/",
             "icon": "instagram",
             "type": "Social"
         },
         {
-            "altText": "Linktree link",
+            "altText": "Linktree",
             "url": "https://linktr.ee/Hypocaps",
             "icon": "linktree",
             "type": "Social"
         },
         {
-            "altText": "Email link",
+            "altText": "Email",
             "url": "mailto:arthur.fresse@hypocaps.fr",
             "icon": "mail",
             "type": "Social"
         }
     ],
-    "legalLinks": [
-        {
-            "label": "Terms",
-            "url": "/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Privacy",
-            "url": "/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        }
-    ],
-    "copyrightText": "Powered by [Netlify](https://www.netlify.com/)\n",
+    "copyrightText": "© 2026 Hypocaps. Tous droits réservés.",
     "colors": "bg-dark-fg-light",
     "type": "Footer"
 }
