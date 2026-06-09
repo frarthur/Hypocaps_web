@@ -7,9 +7,9 @@ sections:
       text: Remédier l’hypoglycémie, protéger votre relation au sucre
       color: text-dark
       type: TitleBlock
-    subtitle: Subtitle goes here
+    subtitle: Une solution de resucrage avec son distributeur
     text: >
-      complément alimentaire pour personnes sujettes aux hypoglycémies avec son distributeur adapté
+      Complément alimentaire pour personnes sujettes aux hypoglycémies avec son distributeur adapté
     actions:
       - label: Get started
         altText: ''
@@ -30,8 +30,8 @@ sections:
         elementId: ''
         type: Link
     media:
-      url: /images/main-hero.svg
-      altText: Unblock your team boost your time to production preview
+      url: /images/dispenser.png
+      altText: Distributeur de solution de resucrage by Hypocaps
       elementId: ''
       type: ImageBlock
     badge:

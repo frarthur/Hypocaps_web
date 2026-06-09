@@ -81,7 +81,7 @@
         },
         {
             "altText": "Email link",
-            "url": "/",
+            "url": "mailto:arthur.fresse@hypocaps.fr",
             "icon": "mail",
             "type": "Social"
         }
