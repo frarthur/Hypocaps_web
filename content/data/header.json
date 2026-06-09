@@ -12,9 +12,9 @@
     },
     "primaryLinks": [
         {
-            "label": "Blog",
-            "altText": "Blog",
-            "url": "/blog",
+            "label": "Nous avons besoin de vous !",
+            "altText": "Nous avons besoin de vous !",
+            "url": "/questionnaire",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",

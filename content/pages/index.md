@@ -6,7 +6,7 @@ sections:
   - type: GenericSection
     title:
       # Text principal
-      text: Remédier l’hypoglycémie, protéger votre relation au sucre
+      text: Remédier à l’hypoglycémie, protéger votre relation au sucre
       color: text-dark
       type: TitleBlock
     # Sous titre
@@ -48,7 +48,7 @@ sections:
     items:
       - type: FeaturedItem
         title: 70%
-        subtitle: Sur la consomation de sucre
+        subtitle: Sur la consommation de sucre
         text: >-
           - Écœurement
 
@@ -56,7 +56,7 @@ sections:
 
           - Addiction
 
-          - <a href="https://fr.wikipedia.org/wiki/Trouble_des_conduites_alimentaires" title="Trouble du Comportement Alimentaire" target="_blank" rel="noopener">TCA</a>
+          - <a href="https://www.inicea.fr/articles/nos-articles/les-troubles-du-comportement-alimentaire-TCA" title="Trouble du Comportement Alimentaire" target="_blank" rel="noopener">TCA</a>
 
           - Caries
         actions: []
@@ -90,7 +90,7 @@ sections:
 
           - Cassables
 
-          - Salissures
+          - Salissant
 
           - Jetables
 
@@ -150,14 +150,14 @@ sections:
   - type: CenterSection
     title:
       # Text principal
-      text: 'En plus de ces difficultés, des enjeux RSE importants apparaissent'
+      text: 'En plus de ces difficultés, des enjeux sociaux-environnementaux importants apparaissent'
       color: text-dark
       type: TitleBlock
     # Texte
     text: >-
       - Consommation d’eau pour la production (1kg de sucre = 1782 litres d’eau) 
 
-      - Pollution engendrée lié au différent packaging
+      - Pollution engendrée liée aux différents packaging
     elementId: ''
     colors: bg-light-fg-dark
     styles:
@@ -193,7 +193,7 @@ sections:
       type: TitleBlock
     subtitle: 'Crédit: moovjee'
     text: |-
-      Cette vidéo publiée par [moovjee](https://www.youtube.com/@moovjee), où Maë Legardeur est interrogé, explique nos motivations ainsi que la source de notre idée.
+      Cette vidéo publiée par [moovjee](https://www.youtube.com/@moovjee), où Maë Legardeur est interrogée, explique nos motivations ainsi que la source de notre idée.
     actions: []
     media:
       title: Hypocaps (Nouvelle-Aquitaine)_Maë Legardeur
