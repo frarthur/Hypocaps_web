@@ -58,20 +58,29 @@ export function QuestionnaireWizard() {
     }
 
     setSubmitting(true);
-    console.log("Questionnaire submission:", JSON.stringify(answers, null, 2));
 
     try {
-      await fetch("/api/submit-questionnaire", {
+      const res = await fetch("/api/submit-questionnaire", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(answers),
       });
-    } catch (err) {
-      console.error("Submission failed:", err);
-    }
 
-    setSubmitting(false);
-    setSubmitted(true);
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("Submission failed:", data.message);
+        setSubmitting(false);
+        return;
+      }
+
+      console.log("Questionnaire submission successful");
+      setSubmitting(false);
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setSubmitting(false);
+    }
   }, [questionnaire, answers]);
 
   if (submitted) {

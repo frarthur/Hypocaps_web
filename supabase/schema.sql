@@ -40,3 +40,11 @@ create index if not exists idx_qr_created_at on questionnaire_responses (created
 create index if not exists idx_qr_concern_diabetes on questionnaire_responses (concern_diabetes);
 create index if not exists idx_qr_uses_resucrage on questionnaire_responses (uses_resucrage);
 create index if not exists idx_qr_should_be_reimbursed on questionnaire_responses (should_be_reimbursed);
+
+-- RLS : autorise l'insert avec la clé anon (publique)
+alter table questionnaire_responses enable row level security;
+create policy "insert_anon"
+  on questionnaire_responses
+  for insert
+  to anon
+  with check (true);
