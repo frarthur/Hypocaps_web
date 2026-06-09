@@ -5,7 +5,7 @@ export const questionnaire: Questionnaire = [
     id: "introduction",
     title: "Présentation",
     description:
-      "Merci d'avoir pris le temps de vous intéresser à ce questionnaire. Nous sommes Hypocaps, un projet qui vise à rendre la vie des personnes atteintes d'hypoglycémie (souvent diabétique) plus simple. Nous souhaitons proposer une solution de transport et de resucrage au goût neutre afin d'éviter les problèmes qu'ils soulèvent. Ce questionnaire est anonyme.",
+      "Merci d'avoir pris le temps de vous intéresser à ce questionnaire. Nous sommes Hypocaps, un projet qui vise à rendre la vie des personnes atteintes d'hypoglycémie (souvent diabétiques) plus simple. Nous souhaitons proposer une solution de transport et de resucrage au goût neutre afin d'éviter les problèmes qu'ils soulèvent. Ce questionnaire est anonyme.",
     fields: [
       {
         id: "first_name",
