@@ -14,6 +14,7 @@ const allReferenceFields: Record<string, boolean> = {
     'PostLayout:author': true,
     'FeaturedPeopleSection:people': true,
     'FeaturedPostsSection:posts': true,
+    'CarouselSection:items': true,
 };
 
 function isRefField(modelName: string, fieldName: string) {

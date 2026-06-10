@@ -237,29 +237,19 @@ sections:
     type: DividerSection
 
   # Témoignages
-  - type: FeaturedPeopleSection
-    title:
-      text: Témoignages de soutien
-      color: text-dark
-      styles:
-        self:
-          textAlign: center
-      type: TitleBlock
-    subtitle: Ils soutiennent le projet Hypocaps
-    people:
+  - type: CarouselSection
+    title: null
+    subtitle: Témoignages de soutien pour le projet Hypocaps
+    items:
       - content/data/temoignages/temoin1.json
       - content/data/temoignages/temoin2.json
       - content/data/temoignages/temoin3.json
       - content/data/temoignages/temoin4.json
-    variant: three-col-grid
+    elementId: null
+    variant: next-prev-nav
     colors: bg-light-fg-dark
     styles:
       self:
-        padding:
-          - pt-16
-          - pl-16
-          - pb-16
-          - pr-16
         justifyContent: center
       subtitle:
         textAlign: center

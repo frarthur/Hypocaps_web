@@ -1,6 +1,9 @@
 {
-    "name": "Armand",
-    "role": "Observateur",
+    "type": "FeaturedItem",
+    "title": "« Ce projet m'inspire : il est à la fois innovant, utile et porteur d'espoir. »",
+    "tagline": "Motivation",
+    "subtitle": "Armand, observateur",
+    "text": "Je suis convaincu qu'une solution comme Hypocaps peut changer la manière dont on parle de resucrage.",
     "image": {
         "url": "/images/person-placeholder-light.png",
         "altText": "Armand",
@@ -11,15 +14,15 @@
         },
         "type": "ImageBlock"
     },
-    "bio": "« Ce projet m'inspire : il est à la fois innovant, utile et porteur d'espoir. »\n\nJe suis convaincu qu'une solution comme Hypocaps peut changer la manière dont on parle de resucrage.",
-    "colors": "bg-light-fg-dark",
+    "actions": [],
+    "colors": "bg-neutralAlt-fg-dark",
     "styles": {
         "self": {
-            "padding": ["pt-6", "pb-6", "pl-6", "pr-6"],
-            "textAlign": "center",
+            "padding": ["pt-9", "pb-9", "pl-9", "pr-9"],
+            "textAlign": "left",
             "borderRadius": "large",
+            "flexDirection": "row",
             "justifyContent": "center"
         }
-    },
-    "type": "Person"
+    }
 }
