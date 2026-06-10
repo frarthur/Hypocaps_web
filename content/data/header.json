@@ -39,6 +39,15 @@
             "type": "Link"
         },
         {
+            "label": "Comprendre le diabète",
+            "altText": "Explication des types de diabète",
+            "url": "/diabete",
+            "icon": "arrowRight",
+            "iconPosition": "right",
+            "style": "secondary",
+            "type": "Link"
+        },
+        {
             "label": "FAQ",
             "altText": "Questions fréquentes",
             "url": "/faq",
