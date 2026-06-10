@@ -17,6 +17,7 @@ interface InsertPayload {
   resucrage_problems: string[] | null;
   resucrage_problems_other: string | null;
   resucrage_form_preference: string | null;
+  source: string;
   should_be_reimbursed: string;
   would_try_neutral_taste: string | null;
 }
@@ -45,6 +46,7 @@ export async function POST(request: NextRequest) {
       resucrage_problems: body.resucrage_problems || null,
       resucrage_problems_other: body.resucrage_problems_other || null,
       resucrage_form_preference: body.resucrage_form_preference || null,
+      source: body.source,
       should_be_reimbursed: body.should_be_reimbursed,
       would_try_neutral_taste: body.would_try_neutral_taste || null,
     };

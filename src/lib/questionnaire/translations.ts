@@ -6,6 +6,7 @@ type Texts = {
   first_name: { label: string; placeholder: string };
   age: { label: string; placeholder: string };
   email: { label: string; placeholder: string };
+  source: { label: string; options: SelectOption[] };
   diabetesTitle: string;
   diabetesDesc: string;
   concern_diabetes: { label: string; options: SelectOption[] };
@@ -37,6 +38,18 @@ const fr: Texts = {
   first_name: { label: "Prénom", placeholder: "Votre prénom (optionnel)" },
   age: { label: "Âge", placeholder: "Votre âge" },
   email: { label: "Email", placeholder: "vous@exemple.fr (optionnel)" },
+  source: {
+    label: "Comment nous avez-vous connus ?",
+    options: [
+      { value: "reddit", label: "Reddit" },
+      { value: "pharmacie", label: "Pharmacie" },
+      { value: "proche", label: "Un proche" },
+      { value: "instagram", label: "Instagram" },
+      { value: "facebook", label: "Facebook" },
+      { value: "linkedin", label: "LinkedIn" },
+      { value: "search", label: "Recherche internet" },
+    ],
+  },
   diabetesTitle: "Contexte diabète",
   diabetesDesc: "Parlez-nous de votre lien avec le diabète.",
   concern_diabetes: {
@@ -171,6 +184,18 @@ const en: Texts = {
   first_name: { label: "First name", placeholder: "Your first name (optional)" },
   age: { label: "Age", placeholder: "Your age" },
   email: { label: "Email", placeholder: "you@example.com (optional)" },
+  source: {
+    label: "How did you hear about us?",
+    options: [
+      { value: "reddit", label: "Reddit" },
+      { value: "pharmacie", label: "Pharmacy" },
+      { value: "proche", label: "Friend or family" },
+      { value: "instagram", label: "Instagram" },
+      { value: "facebook", label: "Facebook" },
+      { value: "linkedin", label: "LinkedIn" },
+      { value: "search", label: "Internet search" },
+    ],
+  },
   diabetesTitle: "Diabetes context",
   diabetesDesc: "Tell us about your connection to diabetes.",
   concern_diabetes: {
@@ -323,6 +348,8 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
           type: "text",
           label: t.age.label,
           placeholder: t.age.placeholder,
+          inputMode: "numeric",
+          pattern: "[0-9]*",
         },
         {
           id: "email",
@@ -452,6 +479,13 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
       title: t.opinionTitle,
       description: t.opinionDesc,
       fields: [
+        {
+          id: "source",
+          type: "select",
+          label: t.source.label,
+          options: t.source.options,
+          validation: [{ type: "required", message: t.required }],
+        },
         {
           id: "should_be_reimbursed",
           type: "select",

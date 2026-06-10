@@ -27,6 +27,8 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
             type={field.type}
             value={(value as string) || ""}
             placeholder={field.placeholder}
+            inputMode={field.inputMode}
+            pattern={field.pattern}
             onChange={(e) => onChange(field.id, e.target.value)}
             className={`${baseClass} ${errorClass}`}
           />

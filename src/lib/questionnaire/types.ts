@@ -17,6 +17,8 @@ export interface BaseField {
   label: string;
   showIf?: ShowIfFn;
   validation?: ValidationRule[];
+  inputMode?: "text" | "numeric" | "email" | "tel";
+  pattern?: string;
 }
 
 export interface TextField extends BaseField {
