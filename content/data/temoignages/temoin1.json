@@ -1,25 +1,18 @@
 {
-    "name": "Emma",
-    "role": "Future utilisatrice",
-    "image": {
-        "url": "/images/person-placeholder-light.png",
-        "altText": "Emma",
-        "styles": {
-            "self": {
-                "borderRadius": "full"
-            }
-        },
-        "type": "ImageBlock"
-    },
-    "bio": "« Je crois vraiment en Hypocaps, c'est une idée qui peut aider beaucoup de personnes. »\n\nCe projet est inspirant, il répond à un vrai besoin et montre qu'il est possible de repenser le resucrage.",
-    "colors": "bg-light-fg-dark",
+    "type": "FeaturedItem",
+    "title": "« J'ai découvert votre projet sur LinkedIn et je trouve l'idée géniale. En tant que mère d'un ado diabétique, je sais à quel point le resucrage est contraignant. Hâte de voir le produit final ! »",
+    "tagline": "Soutien",
+    "subtitle": "Sophie",
+    "text": "",
+    "actions": [],
+    "colors": "bg-neutralAlt-fg-dark",
     "styles": {
         "self": {
-            "padding": ["pt-6", "pb-6", "pl-6", "pr-6"],
-            "textAlign": "center",
+            "padding": ["pt-9", "pb-9", "pl-9", "pr-9"],
+            "textAlign": "left",
             "borderRadius": "large",
+            "flexDirection": "row",
             "justifyContent": "center"
         }
-    },
-    "type": "Person"
+    }
 }

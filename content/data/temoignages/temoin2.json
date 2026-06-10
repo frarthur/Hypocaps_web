@@ -1,25 +1,18 @@
 {
-    "name": "Théo",
-    "role": "Mentor",
-    "image": {
-        "url": "/images/person-placeholder-light.png",
-        "altText": "Théo",
-        "styles": {
-            "self": {
-                "borderRadius": "full"
-            }
-        },
-        "type": "ImageBlock"
-    },
-    "bio": "« L'équipe Hypocaps a une vraie mission, je suis impatient de voir où cela va nous mener. »\n\nLeur approche est prometteuse, et je suis convaincu que ce produit peut faire la différence.",
-    "colors": "bg-light-fg-dark",
+    "type": "FeaturedItem",
+    "title": "« Super initiative ! Je suis diabétique depuis 15 ans et je n'ai jamais trouvé de solution pratique pour le resucrage. Le concept du distributeur m'intrigue beaucoup. Bon courage pour la suite. »",
+    "tagline": "Futur utilisateur",
+    "subtitle": "Marc",
+    "text": "",
+    "actions": [],
+    "colors": "bg-neutralAlt-fg-dark",
     "styles": {
         "self": {
-            "padding": ["pt-6", "pb-6", "pl-6", "pr-6"],
-            "textAlign": "center",
+            "padding": ["pt-9", "pb-9", "pl-9", "pr-9"],
+            "textAlign": "left",
             "borderRadius": "large",
+            "flexDirection": "row",
             "justifyContent": "center"
         }
-    },
-    "type": "Person"
+    }
 }
