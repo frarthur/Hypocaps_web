@@ -2,23 +2,19 @@ import * as fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
 import frontmatter from 'front-matter';
-import { allModels } from '../../sources/local/models';
-import { Config } from '../../sources/local/models/Config';
 import { getPageUrl } from './page-utils';
-
-// TODO use types?
 
 const pagesDir = 'content/pages';
 const dataDir = 'content/data';
 
-const allReferenceFields = {};
-Object.entries(allModels).forEach(([modelName, model]) => {
-    model.fields.forEach((field) => {
-        if (field.type === 'reference' || (field.type === 'list' && field.items?.type === 'reference')) {
-            allReferenceFields[modelName + ':' + field.name] = true;
-        }
-    });
-});
+// Reference fields resolved at build time (replaces dynamic model imports)
+const allReferenceFields: Record<string, boolean> = {
+    'Config:header': true,
+    'Config:footer': true,
+    'PostLayout:author': true,
+    'FeaturedPeopleSection:people': true,
+    'FeaturedPostsSection:posts': true,
+};
 
 function isRefField(modelName: string, fieldName: string) {
     return !!allReferenceFields[modelName + ':' + fieldName];
@@ -102,7 +98,7 @@ export function allContent() {
         page.__metadata.urlPath = getPageUrl(page);
     });
 
-    const siteConfig = data.find((e) => e.__metadata.modelName === Config.name);
+    const siteConfig = data.find((e) => e.__metadata.modelName === 'Config');
 
     resolveReferences(siteConfig, fileToContent);
 

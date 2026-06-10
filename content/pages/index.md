@@ -236,127 +236,30 @@ sections:
           - pr-7
     type: DividerSection
 
-  # Caroussel
-  - type: CarouselSection
-    title: null
-    subtitle: Témoignages de soutien pour le projet Hypocaps
-    items:
-      - title: >-
-          « Je crois vraiment en Hypocaps, c’est une idée qui peut aider beaucoup de personnes. »
-        tagline: Soutien
-        subtitle: 'Emma, future utilisatrice'
-        text: >-
-          Ce projet est inspirant, il répond à un vrai besoin et montre qu’il est possible de repenser le resucrage.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Emma
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-
-      - title: >-
-          « L’équipe Hypocaps a une vraie mission, je suis impatient de voir où cela va nous mener. »
-        tagline: Confiance
-        subtitle: 'Théo, mentor'
-        text: >-
-          Leur approche est prometteuse, et je suis convaincu que ce produit peut faire la différence.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Théo
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-
-      - title: >-
-          « Hypocaps incarne une belle ambition : rendre le resucrage à la fois plus sain et plus serein. »
-        tagline: Ambition
-        subtitle: 'Salma, partenaire'
-        text: >-
-          Je soutiens ce projet parce qu’il propose une vision responsable et utile pour beaucoup de personnes.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Salma
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-
-      - title: >-
-          « Ce projet m’inspire : il est à la fois innovant, utile et porteur d’espoir. »
-        tagline: Motivation
-        subtitle: 'Armand, observateur'
-        text: >-
-          Je suis convaincu qu’une solution comme Hypocaps peut changer la manière dont on parle de resucrage.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Armand
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-    elementId: null
-    variant: next-prev-nav
+  # Témoignages
+  - type: FeaturedPeopleSection
+    title:
+      text: Témoignages de soutien
+      color: text-dark
+      styles:
+        self:
+          textAlign: center
+      type: TitleBlock
+    subtitle: Ils soutiennent le projet Hypocaps
+    people:
+      - content/data/temoignages/temoin1.json
+      - content/data/temoignages/temoin2.json
+      - content/data/temoignages/temoin3.json
+      - content/data/temoignages/temoin4.json
+    variant: three-col-grid
     colors: bg-light-fg-dark
     styles:
       self:
+        padding:
+          - pt-16
+          - pl-16
+          - pb-16
+          - pr-16
         justifyContent: center
       subtitle:
         textAlign: center
@@ -423,8 +326,8 @@ sections:
 # Seo
 seo:
   metaTitle: Hypocaps
-  metaDescription: This demo site is built with Netlify Create.
-  socialImage: /images/main-hero.jpg
+  metaDescription: This site is built by Arthur Fresse.
+  socialImage: /images/logo-dark.svg
   type: Seo
 type: PageLayout
 ---

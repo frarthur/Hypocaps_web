@@ -1,0 +1,25 @@
+{
+    "name": "Théo",
+    "role": "Mentor",
+    "image": {
+        "url": "/images/person-placeholder-light.png",
+        "altText": "Théo",
+        "styles": {
+            "self": {
+                "borderRadius": "full"
+            }
+        },
+        "type": "ImageBlock"
+    },
+    "bio": "« L'équipe Hypocaps a une vraie mission, je suis impatient de voir où cela va nous mener. »\n\nLeur approche est prometteuse, et je suis convaincu que ce produit peut faire la différence.",
+    "colors": "bg-light-fg-dark",
+    "styles": {
+        "self": {
+            "padding": ["pt-6", "pb-6", "pl-6", "pr-6"],
+            "textAlign": "center",
+            "borderRadius": "large",
+            "justifyContent": "center"
+        }
+    },
+    "type": "Person"
+}

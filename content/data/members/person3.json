@@ -1,15 +1,15 @@
 {
     "type": "Person",
-    "name": "Harrison Tally",
-    "role": "Co-founder & CEO",
+    "name": "Arthur Fresse",
+    "role": "Co-fondateur",
     "image": {
-        "url": "/images/avatar6.svg",
-        "altText": "Harrison Tally",
+        "url": "/images/Arthur.png",
+        "altText": "Arthur",
         "styles": {
             "self": {
                 "borderRadius": "medium",
                 "margin": [
-                    "mb-8"
+                    "mb-4"
                 ]
             }
         },
@@ -20,10 +20,10 @@
     "styles": {
         "self": {
             "padding": [
-                "pt-6",
-                "pb-6",
-                "pl-6",
-                "pr-6"
+                "pt-3",
+                "pb-3",
+                "pl-3",
+                "pr-3"
             ],
             "textAlign": "center",
             "borderColor": "border-neutral",
@@ -33,5 +33,5 @@
             "justifyContent": "center"
         }
     },
-    "bio": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n"
+    "bio": "Ingénieur et entrepreneur SNEE.\n"
 }

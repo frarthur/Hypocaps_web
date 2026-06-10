@@ -11,10 +11,10 @@ sections:
       type: TitleBlock
     subtitle: Découvrez l'équipe et la communauté
     people:
-      - content/data/person1.json
-      - content/data/person2.json
-      - content/data/person3.json
-      - content/data/person4.json
+      - content/data/members/person1.json
+      - content/data/members/person2.json
+      - content/data/members/person3.json
+      - content/data/members/person4.json
     variant: two-col-grid
     colors: bg-light-fg-dark
     styles:

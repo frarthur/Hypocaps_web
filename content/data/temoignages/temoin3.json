@@ -1,0 +1,25 @@
+{
+    "name": "Salma",
+    "role": "Partenaire",
+    "image": {
+        "url": "/images/person-placeholder-light.png",
+        "altText": "Salma",
+        "styles": {
+            "self": {
+                "borderRadius": "full"
+            }
+        },
+        "type": "ImageBlock"
+    },
+    "bio": "« Hypocaps incarne une belle ambition : rendre le resucrage à la fois plus sain et plus serein. »\n\nJe soutiens ce projet parce qu'il propose une vision responsable et utile pour beaucoup de personnes.",
+    "colors": "bg-light-fg-dark",
+    "styles": {
+        "self": {
+            "padding": ["pt-6", "pb-6", "pl-6", "pr-6"],
+            "textAlign": "center",
+            "borderRadius": "large",
+            "justifyContent": "center"
+        }
+    },
+    "type": "Person"
+}
