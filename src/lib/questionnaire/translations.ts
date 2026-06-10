@@ -358,6 +358,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
       id: "resucrage_habits",
       title: t.resucrageTitle,
       description: t.resucrageDesc,
+      showIf: (answers) => {
+        const c = answers.concern_diabetes;
+        return c === "yes" || c === "both";
+      },
       fields: [
         {
           id: "uses_resucrage",

@@ -19,8 +19,13 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const totalSteps = questionnaire.length;
-  const currentStep = questionnaire[stepIndex];
+  const visibleSteps = useMemo(
+    () => questionnaire.filter((s) => !s.showIf || s.showIf(answers)),
+    [questionnaire, answers]
+  );
+
+  const totalSteps = visibleSteps.length;
+  const currentStep = visibleSteps[stepIndex];
 
   const visibleFields = useMemo(
     () => currentStep.fields.filter((f) => !f.showIf || f.showIf(answers)),
@@ -52,7 +57,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
 
   const handleSubmit = useCallback(async () => {
     const allErrors: ValidationError[] = [];
-    for (const step of questionnaire) {
+    for (const step of visibleSteps) {
       const stepErrors = validateStep(step.fields, answers);
       allErrors.push(...stepErrors);
     }
@@ -84,7 +89,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
       console.error("Submission error:", err);
       setSubmitting(false);
     }
-  }, [questionnaire, answers]);
+  }, [visibleSteps, answers]);
 
   // Build step labels and submit button text based on language
   const stepLabel = lang === "fr" ? "Étape" : "Step";
