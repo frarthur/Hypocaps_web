@@ -361,37 +361,35 @@ sections:
       subtitle:
         textAlign: center
 
-  # Contact us
+  # Contact
   - title:
-      text: Generic Section With A Form
+      text: Nous contacter
       color: text-dark
       type: TitleBlock
-    subtitle: Section with a form subtitle
+    subtitle: Une question, une suggestion ? Écrivez-nous !
     text: |-
-      Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.
-      Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet
-      erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat
-      vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.
+      Vous avez une question sur le projet Hypocaps, une suggestion, ou vous souhaitez simplement nous donner votre avis ? N'hésitez pas à nous écrire, nous répondons à tous les messages.
     media:
       fields:
         - name: name
-          label: Name
+          label: Nom
           hideLabel: true
-          placeholder: Your name
+          placeholder: Votre nom
           isRequired: true
           width: full
           type: TextFormControl
         - name: email
           label: Email
           hideLabel: true
-          placeholder: Your email
+          placeholder: Votre adresse email
           isRequired: true
           width: full
           type: EmailFormControl
         - name: message
           label: Message
           hideLabel: true
-          placeholder: Your message
+          placeholder: Votre message
+          isRequired: true
           width: full
           type: TextareaFormControl
       elementId: contact-form
@@ -409,14 +407,14 @@ sections:
       type: FormBlock
       submitButton:
         type: SubmitButtonFormControl
-        label: Submit
+        label: Envoyer
         showIcon: false
         icon: arrowRight
         iconPosition: right
         style: primary
         elementId: null
     badge:
-      label: Contact Us
+      label: Contact
       color: text-primary
       type: Badge
     colors: bg-light-fg-dark
