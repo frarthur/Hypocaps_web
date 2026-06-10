@@ -7,6 +7,11 @@ export type ValidationRule =
   | { type: "email"; message: string }
   | { type: "minLength"; value: number; message: string };
 
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
 export interface BaseField {
   id: string;
   label: string;
@@ -21,13 +26,13 @@ export interface TextField extends BaseField {
 
 export interface SelectField extends BaseField {
   type: "select";
-  options: string[];
+  options: SelectOption[];
   placeholder?: string;
 }
 
 export interface CheckboxField extends BaseField {
   type: "checkbox";
-  options: string[];
+  options: SelectOption[];
 }
 
 export interface TextareaField extends BaseField {

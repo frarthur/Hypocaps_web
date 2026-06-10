@@ -3,14 +3,18 @@
 import { useState, useCallback, useMemo } from "react";
 import { ValidationError } from "../../lib/questionnaire/types";
 import { validateStep } from "../../lib/questionnaire/validation";
-import { questionnaire } from "../../lib/questionnaire/schema";
+import { getQuestionnaire } from "../../lib/questionnaire/translations";
 import { FieldRenderer } from "./FieldRenderer";
 
-export function QuestionnaireWizard() {
+interface QuestionnaireWizardProps {
+  lang: "fr" | "en";
+}
+
+export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
+  const questionnaire = useMemo(() => getQuestionnaire(lang), [lang]);
+
   const [stepIndex, setStepIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string | string[]>>(
-    {}
-  );
+  const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -74,7 +78,6 @@ export function QuestionnaireWizard() {
         return;
       }
 
-      console.log("Questionnaire submission successful");
       setSubmitting(false);
       setSubmitted(true);
     } catch (err) {
@@ -83,18 +86,30 @@ export function QuestionnaireWizard() {
     }
   }, [questionnaire, answers]);
 
+  // Build step labels and submit button text based on language
+  const stepLabel = lang === "fr" ? "Étape" : "Step";
+  const prevLabel = lang === "fr" ? "Précédent" : "Previous";
+  const nextLabel = lang === "fr" ? "Suivant" : "Next";
+  const submitLabel = lang === "fr" ? "Soumettre" : "Submit";
+  const submittingLabel = lang === "fr" ? "Envoi en cours..." : "Submitting...";
+  const successTitle =
+    lang === "fr"
+      ? "Questionnaire soumis avec succès !"
+      : "Questionnaire submitted successfully!";
+  const successDesc =
+    lang === "fr"
+      ? "Merci pour votre participation."
+      : "Thank you for your participation.";
+  const progressLabel = lang === "fr" ? "/" : "of";
+
   if (submitted) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl text-green-600">
           ✓
         </div>
-        <h2 className="mb-2 text-2xl font-bold text-dark">
-          Questionnaire soumis avec succès !
-        </h2>
-        <p className="text-dark/70">
-          Merci pour votre participation. Vos réponses ont bien été enregistrées.
-        </p>
+        <h2 className="mb-2 text-2xl font-bold text-dark">{successTitle}</h2>
+        <p className="text-dark/70">{successDesc}</p>
       </div>
     );
   }
@@ -105,7 +120,7 @@ export function QuestionnaireWizard() {
       <div className="mb-8">
         <div className="mb-2 flex items-center justify-between text-sm text-dark/60">
           <span>
-            Étape {stepIndex + 1} / {totalSteps}
+            {stepLabel} {stepIndex + 1} {progressLabel} {totalSteps}
           </span>
           <span>{Math.round(((stepIndex + 1) / totalSteps) * 100)}%</span>
         </div>
@@ -120,10 +135,7 @@ export function QuestionnaireWizard() {
       </div>
 
       {/* Step content */}
-      <div
-        key={currentStep.id}
-        className="animate-fadeIn"
-      >
+      <div key={currentStep.id} className="animate-fadeIn">
         <h2 className="mb-1 text-2xl font-bold text-dark">
           {currentStep.title}
         </h2>
@@ -152,7 +164,7 @@ export function QuestionnaireWizard() {
           disabled={stepIndex === 0}
           className="rounded-lg border border-neutralAlt px-6 py-2.5 font-medium text-dark transition hover:bg-neutralAlt/50 disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          Précédent
+          {prevLabel}
         </button>
 
         {stepIndex < totalSteps - 1 ? (
@@ -161,7 +173,7 @@ export function QuestionnaireWizard() {
             onClick={goNext}
             className="rounded-lg bg-primary px-6 py-2.5 font-medium text-light transition hover:opacity-90"
           >
-            Suivant
+            {nextLabel}
           </button>
         ) : (
           <button
@@ -170,7 +182,7 @@ export function QuestionnaireWizard() {
             disabled={submitting}
             className="rounded-lg bg-primary px-6 py-2.5 font-medium text-light transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? "Envoi en cours..." : "Soumettre"}
+            {submitting ? submittingLabel : submitLabel}
           </button>
         )}
       </div>

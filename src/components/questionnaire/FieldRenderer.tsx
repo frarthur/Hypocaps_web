@@ -19,10 +19,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
     case "email":
       return (
         <div>
-          <label
-            htmlFor={field.id}
-            className="mb-1.5 block font-medium text-dark"
-          >
+          <label htmlFor={field.id} className="mb-1.5 block font-medium text-dark">
             {field.label}
           </label>
           <input
@@ -33,19 +30,14 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
             onChange={(e) => onChange(field.id, e.target.value)}
             className={`${baseClass} ${errorClass}`}
           />
-          {error && (
-            <p className="mt-1 text-sm text-red-500">{error.message}</p>
-          )}
+          {error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
         </div>
       );
 
     case "select":
       return (
         <div>
-          <label
-            htmlFor={field.id}
-            className="mb-1.5 block font-medium text-dark"
-          >
+          <label htmlFor={field.id} className="mb-1.5 block font-medium text-dark">
             {field.label}
           </label>
           <select
@@ -58,14 +50,12 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
               {field.placeholder || "Sélectionnez..."}
             </option>
             {field.options.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
               </option>
             ))}
           </select>
-          {error && (
-            <p className="mt-1 text-sm text-red-500">{error.message}</p>
-          )}
+          {error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
         </div>
       );
 
@@ -78,10 +68,10 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
           </legend>
           <div className="space-y-2">
             {field.options.map((opt) => {
-              const checked = selected.includes(opt);
+              const checked = selected.includes(opt.value);
               return (
                 <label
-                  key={opt}
+                  key={opt.value}
                   className="flex cursor-pointer items-center gap-3 rounded-lg border border-neutralAlt px-4 py-3 transition hover:border-primary/50 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
                 >
                   <input
@@ -89,20 +79,18 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
                     checked={checked}
                     onChange={() => {
                       const next = checked
-                        ? selected.filter((s) => s !== opt)
-                        : [...selected, opt];
+                        ? selected.filter((s) => s !== opt.value)
+                        : [...selected, opt.value];
                       onChange(field.id, next);
                     }}
                     className="h-4 w-4 rounded border-neutralAlt text-primary focus:ring-primary"
                   />
-                  <span className="text-dark">{opt}</span>
+                  <span className="text-dark">{opt.label}</span>
                 </label>
               );
             })}
           </div>
-          {error && (
-            <p className="mt-1 text-sm text-red-500">{error.message}</p>
-          )}
+          {error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
         </fieldset>
       );
     }
@@ -110,10 +98,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
     case "textarea":
       return (
         <div>
-          <label
-            htmlFor={field.id}
-            className="mb-1.5 block font-medium text-dark"
-          >
+          <label htmlFor={field.id} className="mb-1.5 block font-medium text-dark">
             {field.label}
           </label>
           <textarea
@@ -124,9 +109,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
             onChange={(e) => onChange(field.id, e.target.value)}
             className={`${baseClass} ${errorClass} resize-y`}
           />
-          {error && (
-            <p className="mt-1 text-sm text-red-500">{error.message}</p>
-          )}
+          {error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
         </div>
       );
 
