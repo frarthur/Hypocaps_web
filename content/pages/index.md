@@ -315,8 +315,8 @@ sections:
 
 # Seo
 seo:
-  metaTitle: Hypocaps
-  metaDescription: This site is built by Arthur Fresse.
+  metaTitle: Hypocaps - Solution de resucrage au goût neutre
+  metaDescription: Hypocaps développe une solution de resucrage au goût neutre pour les personnes atteintes d'hypoglycémie. Participez à notre étude et aidez-nous à améliorer le quotidien des diabétiques.
   socialImage: /images/logo-dark.svg
   type: Seo
 type: PageLayout
