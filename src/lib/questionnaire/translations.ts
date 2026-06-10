@@ -4,7 +4,7 @@ type Texts = {
   introTitle: string;
   introDesc: string;
   first_name: { label: string; placeholder: string };
-  age: { label: string; placeholder: string };
+  age: { label: string; placeholder: string; requiredMsg: string };
   email: { label: string; placeholder: string };
   source: { label: string; options: SelectOption[] };
   diabetesTitle: string;
@@ -36,7 +36,7 @@ const fr: Texts = {
   introDesc:
     "Merci d'avoir pris le temps de vous intéresser à ce questionnaire. Nous sommes Hypocaps, un projet qui vise à rendre la vie des personnes atteintes d'hypoglycémie (souvent diabétiques) plus simple. Nous souhaitons proposer une solution de transport et de resucrage au goût neutre afin d'éviter les problèmes qu'ils soulèvent. Ce questionnaire est anonyme.",
   first_name: { label: "Prénom", placeholder: "Votre prénom (optionnel)" },
-  age: { label: "Âge", placeholder: "Votre âge" },
+  age: { label: "Âge", placeholder: "Votre âge", requiredMsg: "Veuillez indiquer votre âge" },
   email: { label: "Email", placeholder: "vous@exemple.fr (optionnel)" },
   source: {
     label: "Comment nous avez-vous connus ?",
@@ -183,7 +183,7 @@ const en: Texts = {
   introDesc:
     "Thank you for taking the time to fill out this questionnaire. We are Hypocaps, a project aimed at making life easier for people with hypoglycemia (often diabetic). We want to offer a transport solution and a neutral-tasting glucose rescue product to avoid the problems they currently face. This questionnaire is anonymous.",
   first_name: { label: "First name", placeholder: "Your first name (optional)" },
-  age: { label: "Age", placeholder: "Your age" },
+  age: { label: "Age", placeholder: "Your age", requiredMsg: "Please enter your age" },
   email: { label: "Email", placeholder: "you@example.com (optional)" },
   source: {
     label: "How did you hear about us?",
@@ -351,6 +351,7 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
           placeholder: t.age.placeholder,
           inputMode: "numeric",
           pattern: "[0-9]*",
+          validation: [{ type: "required", message: t.age.requiredMsg }],
         },
         {
           id: "email",

@@ -29,7 +29,13 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
             placeholder={field.placeholder}
             inputMode={field.inputMode}
             pattern={field.pattern}
-            onChange={(e) => onChange(field.id, e.target.value)}
+            onChange={(e) => {
+              let val = e.target.value;
+              if (field.inputMode === "numeric") {
+                val = val.replace(/\D/g, "");
+              }
+              onChange(field.id, val);
+            }}
             className={`${baseClass} ${errorClass}`}
           />
           {error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
@@ -48,7 +54,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
             onChange={(e) => onChange(field.id, e.target.value)}
             className={`${baseClass} ${errorClass}`}
           >
-            <option value="" disabled>
+            <option value="">
               {field.placeholder || "Sélectionnez..."}
             </option>
             {field.options.map((opt) => (

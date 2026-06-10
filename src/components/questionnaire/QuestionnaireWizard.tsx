@@ -61,6 +61,25 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
       const stepErrors = validateStep(step.fields, answers);
       allErrors.push(...stepErrors);
     }
+
+    for (const step of visibleSteps) {
+      for (const field of step.fields) {
+        if (field.showIf && !field.showIf(answers)) continue;
+        if (field.validation) {
+          for (const rule of field.validation) {
+            if (rule.type === "required") {
+              const val = answers[field.id];
+              if (val === undefined || val === null || val === "" || (Array.isArray(val) && val.length === 0)) {
+                if (!allErrors.some((e) => e.fieldId === field.id)) {
+                  allErrors.push({ fieldId: field.id, message: rule.message });
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     if (allErrors.length > 0) {
       setErrors(allErrors);
       return;
