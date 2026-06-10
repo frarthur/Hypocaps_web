@@ -10,42 +10,9 @@
         "title": "Produit",
         "links": [
             {
-                "label": "Tarifs",
-                "altText": "Page tarifs",
-                "url": "/pricing",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
                 "label": "FAQ",
                 "altText": "Page FAQ",
                 "url": "/faq",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Blog",
-                "altText": "Page blog",
-                "url": "/blog",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            }
-        ],
-        "type": "FooterLinksGroup"
-    },
-    "secondaryLinks": {
-        "title": "Entreprise",
-        "links": [
-            {
-                "label": "Carrières",
-                "altText": "Page carrières",
-                "url": "/careers",
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
