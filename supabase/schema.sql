@@ -26,7 +26,7 @@ create table if not exists questionnaire_responses (
   resucrage_form_preference text,
 
   -- Step 4 — Avis général
-  source text not null,
+  source text,
   should_be_reimbursed text not null,
   would_try_neutral_taste text
 );

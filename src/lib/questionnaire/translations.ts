@@ -41,13 +41,14 @@ const fr: Texts = {
   source: {
     label: "Comment nous avez-vous connus ?",
     options: [
-      { value: "reddit", label: "Reddit" },
       { value: "pharmacie", label: "Pharmacie" },
-      { value: "proche", label: "Un proche" },
       { value: "instagram", label: "Instagram" },
       { value: "facebook", label: "Facebook" },
       { value: "linkedin", label: "LinkedIn" },
+      { value: "proche", label: "Un proche" },
+      { value: "reddit", label: "Reddit" },
       { value: "search", label: "Recherche internet" },
+      { value: "other", label: "Autre" },
     ],
   },
   diabetesTitle: "Contexte diabète",
