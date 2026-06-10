@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import classNames from 'classnames';
 
 import { getComponent } from '../../components-registry';
@@ -7,7 +7,7 @@ import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to
 import SubmitButtonFormControl from './SubmitButtonFormControl';
 
 export default function FormBlock(props) {
-    const formRef = React.createRef<HTMLFormElement>();
+    const formRef = useRef<HTMLFormElement>(null);
     const { fields = [], elementId, submitButton, className, styles = {}, 'data-sb-field-path': fieldPath } = props;
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
