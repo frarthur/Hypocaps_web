@@ -40,5 +40,12 @@ yarn-error.log*
 # IDE
 *.code-workspace
 .idea
+.vscode
+
+# Netlify Visual Editor (Stackbit) auto-generated models
+sources/
+
+# Dev container
+.devcontainer/
 
 tmp*
