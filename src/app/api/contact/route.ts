@@ -1,31 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "../../../lib/supabase/client";
+import { validateContact, buildPayload } from "../../../lib/contact/api-validation";
 
 export const dynamic = "force-dynamic";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function validateContact(body: Record<string, unknown>): string | null {
-  if (typeof body.name !== "string" || body.name.trim().length === 0) {
-    return "Le nom est requis";
-  }
-  if (body.name.length > 200) {
-    return "Le nom est trop long";
-  }
-  if (typeof body.email !== "string" || !EMAIL_RE.test(body.email)) {
-    return "Email invalide";
-  }
-  if (body.email.length > 320) {
-    return "Email trop long";
-  }
-  if (typeof body.message !== "string" || body.message.trim().length === 0) {
-    return "Le message est requis";
-  }
-  if (body.message.length > 10000) {
-    return "Le message est trop long (max 10 000 caractères)";
-  }
-  return null;
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,11 +18,7 @@ export async function POST(request: NextRequest) {
 
     const supabase = getSupabase();
 
-    const payload: Record<string, string> = {
-      name: body.name as string,
-      email: body.email as string,
-      message: body.message as string,
-    };
+    const payload = buildPayload(body);
 
     const { error } = await supabase
       .from("contact_messages")
