@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
@@ -55,7 +54,7 @@ function readContent(file: string) {
     return content;
 }
 
-function resolveReferences(content, fileToContent) {
+function resolveReferences(content: Record<string, unknown>, fileToContent: Record<string, Record<string, unknown>>) {
     if (!content || !content.type) return;
 
     const modelName = content.type;

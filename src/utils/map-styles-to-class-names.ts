@@ -1,5 +1,4 @@
-// @ts-nocheck
-const TAILWIND_MAP = {
+const TAILWIND_MAP: Record<string, Record<string, string> | ((value: unknown) => string)> = {
     alignItems: {
         'flex-start': 'items-start',
         'flex-end': 'items-end',
@@ -154,7 +153,7 @@ const TAILWIND_MAP = {
     }
 };
 
-export function mapStylesToClassNames(styles: Record<string, any>) {
+export function mapStylesToClassNames(styles: Record<string, unknown>) {
     return Object.entries(styles)
         .map(([prop, value]) => {
             if (prop in TAILWIND_MAP) {
