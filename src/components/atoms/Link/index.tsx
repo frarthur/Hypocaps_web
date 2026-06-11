@@ -1,8 +1,8 @@
-// @ts-nocheck
 import * as React from 'react';
 import NextLink from 'next/link';
+import type { LinkProps } from '../../../types/stackbit';
 
-export default function Link({ children, href, ...other }) {
+export default function Link({ children, href, ...other }: LinkProps) {
     // Pass Any internal link to Next.js Link, for anything else, use <a> tag
     const internal = /^\/(?!\/)/.test(href);
     if (internal) {

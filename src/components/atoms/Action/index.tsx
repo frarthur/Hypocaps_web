@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import { iconMap } from '../../svgs';
 import Link from '../Link';
+import type { ActionProps } from '../../../types/stackbit';
 
-export default function Action(props) {
+export default function Action(props: ActionProps) {
     const { elementId, className, label, altText, url, showIcon, icon, iconPosition = 'right', style = 'primary' } = props;
     const IconComponent = icon ? iconMap[icon] : null;
     const fieldPath = props['data-sb-field-path'];
