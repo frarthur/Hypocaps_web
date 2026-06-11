@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
@@ -7,8 +6,9 @@ import { mapStylesToClassNames as mapStyles } from '../../../../utils/map-styles
 import { getPageUrl } from '../../../../utils/page-utils';
 import Link from '../../../atoms/Link';
 import ImageBlock from '../../../blocks/ImageBlock';
+import type { PostFeedItemProps } from '../../../../types/stackbit';
 
-export default function PostFeedItem(props) {
+export default function PostFeedItem(props: PostFeedItemProps) {
     const {
         post,
         showThumbnail,

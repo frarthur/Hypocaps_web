@@ -1,11 +1,11 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 import Section from '../Section';
+import type { DividerSectionProps } from '../../../types/stackbit';
 
-export default function DividerSection(props) {
+export default function DividerSection(props: DividerSectionProps) {
     const { elementId, colors, styles = {} } = props;
 
     return (

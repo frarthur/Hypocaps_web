@@ -1,12 +1,12 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 import BackgroundImage from '../../atoms/BackgroundImage';
+import type { SectionProps } from '../../../types/stackbit';
 
-export default function Section(props) {
+export default function Section(props: SectionProps) {
     const { elementId, className, colors = 'bg-light-fg-dark', backgroundImage, styles = {}, children } = props;
 
     return (

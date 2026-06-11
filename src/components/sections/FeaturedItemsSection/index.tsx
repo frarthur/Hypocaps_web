@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
@@ -8,8 +7,9 @@ import { getDataAttrs } from '../../../utils/get-data-attrs';
 import Section from '../Section';
 import { Action, Badge } from '../../atoms';
 import TitleBlock from '../../blocks/TitleBlock';
+import type { FeaturedItemsSectionProps } from '../../../types/stackbit';
 
-export default function FeaturedItemsSection(props) {
+export default function FeaturedItemsSection(props: FeaturedItemsSectionProps) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, items = [], actions = [], variant, styles = {}, enableAnnotations } = props;
     return (
         <Section

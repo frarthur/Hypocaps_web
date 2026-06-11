@@ -1,13 +1,12 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import Markdown from 'markdown-to-jsx';
 
 import { mapStylesToClassNames as mapStyles } from '../../../../utils/map-styles-to-class-names';
-import Action from '../../../atoms/Action';
-import ImageBlock from '../../../blocks/ImageBlock';
+import { Action } from '../../../atoms';
+import type { FeaturedItemProps } from '../../../../types/stackbit';
 
-export default function FeaturedItem(props) {
+export default function FeaturedItem(props: FeaturedItemProps) {
     const { elementId, title, tagline, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
     const fieldPath = props['data-sb-field-path'];
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';

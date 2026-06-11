@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
@@ -8,8 +7,9 @@ import Section from '../Section';
 import TitleBlock from '../../blocks/TitleBlock';
 import ImageBlock from '../../blocks/ImageBlock';
 import Badge from '../../atoms/Badge';
+import type { ImageGallerySectionProps } from '../../../types/stackbit';
 
-export default function ImageGallerySection(props) {
+export default function ImageGallerySection(props: ImageGallerySectionProps) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, images = [], motion, styles = {}, enableAnnotations } = props;
 
     return (

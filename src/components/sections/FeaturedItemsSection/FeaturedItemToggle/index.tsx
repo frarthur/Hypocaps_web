@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import Markdown from 'markdown-to-jsx';
@@ -7,8 +6,9 @@ import { mapStylesToClassNames as mapStyles } from '../../../../utils/map-styles
 import Action from '../../../atoms/Action';
 import PlusIcon from '../../../svgs/plus';
 import CloseIcon from '../../../svgs/close';
+import type { FeaturedItemToggleProps } from '../../../../types/stackbit';
 
-export default function FeaturedItemToggle(props) {
+export default function FeaturedItemToggle(props: FeaturedItemToggleProps) {
     const { elementId, title, subtitle, text, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
     const fieldPath = props['data-sb-field-path'];
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';

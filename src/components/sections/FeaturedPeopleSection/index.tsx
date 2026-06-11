@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import Markdown from 'markdown-to-jsx';
@@ -9,8 +8,9 @@ import Section from '../Section';
 import TitleBlock from '../../blocks/TitleBlock';
 import ImageBlock from '../../blocks/ImageBlock';
 import { Action, Badge, WikiTooltip } from '../../atoms';
+import type { FeaturedPeopleSectionProps } from '../../../types/stackbit';
 
-export default function FeaturedPeopleSection(props) {
+export default function FeaturedPeopleSection(props: FeaturedPeopleSectionProps) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, actions = [], people = [], variant, styles = {}, enableAnnotations } = props;
 
     return (

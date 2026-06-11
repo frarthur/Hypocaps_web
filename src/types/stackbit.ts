@@ -144,6 +144,11 @@ export interface FooterProps {
 }
 
 export interface HeaderProps {
+  variant?: string;
+  title?: Record<string, unknown>;
+  logo?: Record<string, unknown>;
+  primaryLinks?: Record<string, unknown>[];
+  secondaryLinks?: Record<string, unknown>[];
   colors?: string;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -186,11 +191,30 @@ export interface FormBlockProps {
 export interface FormControlProps {
   name?: string;
   label?: string;
+  hideLabel?: boolean;
   isRequired?: boolean;
-  width?: number;
+  placeholder?: string;
+  width?: 'full' | '1/2';
+  options?: string[];
+  defaultValue?: string;
   className?: string;
   'data-sb-field-path'?: string;
   styles?: StackbitStyles;
+  __metadata?: {
+    modelName?: string;
+  };
+}
+
+export interface SubmitButtonProps {
+  elementId?: string;
+  className?: string;
+  'data-sb-field-path'?: string;
+  label?: string;
+  showIcon?: boolean;
+  icon?: string;
+  iconPosition?: 'left' | 'right';
+  style?: 'primary' | 'secondary';
+  disabled?: boolean;
 }
 
 export interface CenterSectionProps extends GenericSectionProps {
@@ -237,6 +261,66 @@ export interface PostFeedSectionProps {
   actions?: ActionProps[];
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
+  [key: string]: unknown;
+}
+
+export interface CarouselSectionProps {
+  elementId?: string;
+  className?: string;
+  colors?: string;
+  backgroundImage?: BackgroundImageProps;
+  badge?: Record<string, unknown>;
+  title?: Record<string, unknown>;
+  subtitle?: string;
+  items?: Record<string, unknown>[];
+  variant?: string;
+  styles?: StackbitStyles;
+  enableAnnotations?: boolean;
+  [key: string]: unknown;
+}
+
+export interface ImageGallerySectionProps {
+  elementId?: string;
+  className?: string;
+  colors?: string;
+  backgroundImage?: BackgroundImageProps;
+  badge?: Record<string, unknown>;
+  title?: Record<string, unknown>;
+  subtitle?: string;
+  images?: Record<string, unknown>[];
+  motion?: string;
+  styles?: StackbitStyles;
+  enableAnnotations?: boolean;
+  [key: string]: unknown;
+}
+
+export interface FeaturedPeopleSectionProps {
+  elementId?: string;
+  className?: string;
+  colors?: string;
+  backgroundImage?: BackgroundImageProps;
+  badge?: Record<string, unknown>;
+  title?: Record<string, unknown>;
+  subtitle?: string;
+  actions?: ActionProps[];
+  people?: Record<string, unknown>[];
+  variant?: string;
+  styles?: StackbitStyles;
+  enableAnnotations?: boolean;
+  [key: string]: unknown;
+}
+
+export interface FeaturedItemToggleProps {
+  elementId?: string;
+  className?: string;
+  'data-sb-field-path'?: string;
+  title?: string;
+  subtitle?: string;
+  text?: string;
+  actions?: ActionProps[];
+  colors?: string;
+  styles?: StackbitStyles;
+  hasSectionTitle?: boolean;
   [key: string]: unknown;
 }
 

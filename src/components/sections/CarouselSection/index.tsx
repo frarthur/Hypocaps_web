@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,8 +14,9 @@ import Badge from '../../atoms/Badge';
 import TitleBlock from '../../blocks/TitleBlock';
 import ChevronBigLeftIcon from '../../svgs/chevron-big-left';
 import ChevronBigRightIcon from '../../svgs/chevron-big-right';
+import type { CarouselSectionProps } from '../../../types/stackbit';
 
-export default function CarouselSection(props) {
+export default function CarouselSection(props: CarouselSectionProps) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, items = [], variant, styles = {}, enableAnnotations } = props;
 
     return (
@@ -68,7 +68,7 @@ export default function CarouselSection(props) {
     );
 }
 
-function CarouselVariants(props) {
+function CarouselVariants(props: { variant?: string; items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const { variant = 'next-prev-nav', ...rest } = props;
     switch (variant) {
         case 'dots-nav':
@@ -82,7 +82,7 @@ function CarouselVariants(props) {
     }
 }
 
-function CarouselWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }) {
+function CarouselWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
 
@@ -121,7 +121,7 @@ function CarouselWithNavigation({ items = [], hasTopMargin, hasSectionTitle, has
     );
 }
 
-function CarouselMultipleWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }) {
+function CarouselMultipleWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
     const itemsTotal = items.length;
@@ -172,7 +172,7 @@ function CarouselMultipleWithNavigation({ items = [], hasTopMargin, hasSectionTi
     );
 }
 
-function CarouselWithPagination({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }) {
+function CarouselWithPagination({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
     const [activeDot, setActiveDot] = React.useState(0);
@@ -204,7 +204,7 @@ function CarouselWithPagination({ items = [], hasTopMargin, hasSectionTitle, has
     );
 }
 
-function CarouselWithTabs({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }) {
+function CarouselWithTabs({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
     const [activeTab, setActiveTab] = React.useState(0);

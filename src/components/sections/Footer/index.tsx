@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
@@ -6,8 +5,9 @@ import classNames from 'classnames';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { Social, Action, Link } from '../../atoms';
 import ImageBlock from '../../blocks/ImageBlock';
+import type { FooterProps } from '../../../types/stackbit';
 
-export default function Footer(props) {
+export default function Footer(props: FooterProps) {
     const {
         colors = 'bg-light-fg-dark',
         logo,
