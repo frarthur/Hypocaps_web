@@ -1,4 +1,4 @@
-// @ts-nocheck
+import type { SvgProps } from '../../types/stackbit';
 import ArrowDown from './arrow-down';
 import ArrowLeft from './arrow-left';
 import ArrowRight from './arrow-right';
@@ -25,7 +25,9 @@ import Twitter from './twitter';
 import Vimeo from './vimeo';
 import YouTube from './youtube';
 
-export const iconMap = {
+type IconComponent = React.ComponentType<SvgProps>;
+
+export const iconMap: Record<string, IconComponent> = {
     arrowDown: ArrowDown,
     arrowLeft: ArrowLeft,
     arrowRight: ArrowRight,
