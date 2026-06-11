@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import Header from '../../sections/Header';
 import Footer from '../../sections/Footer';
+import type { LayoutProps } from '../../../types/stackbit';
 
-export default function DefaultBaseLayout(props) {
+export default function DefaultBaseLayout(props: LayoutProps) {
     const { page, site } = props;
     const { enableAnnotations = true } = site;
     const pageMeta = page?.__metadata || {};

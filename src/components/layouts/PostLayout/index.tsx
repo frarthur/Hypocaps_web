@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
@@ -6,13 +5,14 @@ import Markdown from 'markdown-to-jsx';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
 import Link from '../../atoms/Link';
+import type { LayoutProps } from '../../../types/stackbit';
 
-function BaseLayoutRenderer({ page, site, children, ...rest }) {
+function BaseLayoutRenderer({ page, site, children, ...rest }: LayoutProps) {
     const Layout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     return React.createElement(Layout, { page, site, ...rest }, children);
 }
 
-export default function PostLayout(props) {
+export default function PostLayout(props: LayoutProps) {
     const { page, site } = props;
     const { enableAnnotations = true } = site;
     const { title, date, author, markdown_content, bottomSections = [] } = page;
