@@ -92,6 +92,41 @@ Checklist de requis pour un projet Next.js valorisant sur GitHub / CV.
 
 ---
 
+### 🏗️ Architecture & Qualité de code
+
+**C'est quoi ?** Suite à une revue de code, plusieurs points d'amélioration ont été identifiés pour passer d'un niveau "mi-senior" à "senior confirmé". Il s'agit principalement de rembourser la dette technique héritée de Stackbit et d'abstraire correctement les couches métier.
+
+**Pourquoi ?** Les recruteurs seniors regardent au-delà des fonctionnalités : ils veulent voir une base de code maintenable, testable, et évolutive. Les `@ts-nocheck` et les `fetch()` en dur dans les composants sont des red flags.
+
+- [ ] **Supprimer les `// @ts-nocheck`** — ~30 fichiers Stackbit legacy à typer proprement (props, state, events)
+- [ ] **Service layer API** — extraire les appels `fetch()` du `QuestionnaireWizard` vers un service dédié (`api/questionnaire.ts`)
+- [ ] **Stratégie de state management** — évaluer si le state local suffit ou si un contexte global (React Context / Zustand) est nécessaire pour le questionnaire
+
+---
+
+### 📊 Monitoring & Observabilité
+
+**C'est quoi ?** Des outils qui te permettent de savoir ce qui se passe en production : erreurs, performances, comportement utilisateur.
+
+**Pourquoi ?** Sans monitoring, tu es aveugle. Si un utilisateur a une erreur, tu ne le sauras jamais. Les recruteurs seniors savent que la moitié du travail d'un dev, c'est de garder l'app en vie une fois déployée.
+
+- [ ] **Error monitoring (Sentry)** — capturer les erreurs frontend et backend avec contexte (user, browser, action)
+- [ ] **Rate limiting** — protéger les routes API (`/api/submit-questionnaire`, `/api/contact`) contre les abus (par IP, par token)
+- [ ] **Logging structuré** — remplacer les `console.error` par un logger structuré (pino, winston) avec niveaux et métadonnées
+
+---
+
+### ⚡ Performance
+
+**C'est quoi ?** Optimiser le chargement et l'exécution de l'application pour offrir la meilleure expérience utilisateur possible.
+
+**Pourquoi ?** Les performances impactent directement le SEO, le taux de conversion, et l'expérience utilisateur. Un site lent fait fuir les visiteurs.
+
+- [ ] **Code splitting / lazy loading** — analyser le bundle avec `next/bundle-analyzer` et découper les sections lourdes (Swiper, Algolia, Markdown)
+- [ ] **Analyse de bundle** — ajouter `@next/bundle-analyzer` pour visualiser et réduire la taille du bundle
+
+---
+
 ### ✨ Fonctionnel
 
 **C'est quoi ?** Des améliorations visibles par l'utilisateur final.
