@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 
-export function getComponent(key: string): ComponentType | undefined {
-    return components[key];
+export function getComponent(key: string): ComponentType<any> {
+    return components[key]!;
 }
 
-const components: Record<string, ComponentType> = {
+const components: Record<string, ComponentType<any>> = {
     AutoCompletePosts: dynamic(() => import('./blocks/SearchBlock/AutoCompletePosts')),
     CarouselSection: dynamic(() => import('./sections/CarouselSection')),
     CheckboxFormControl: dynamic(() => import('./blocks/FormBlock/CheckboxFormControl')),

@@ -77,7 +77,7 @@ export default function PricingSection(props: PricingSectionProps) {
     );
 }
 
-function PricingPlan(props) {
+function PricingPlan(props: any) {
     const {
         elementId,
         title,
@@ -171,7 +171,7 @@ function PricingPlan(props) {
                             })}
                             {...(fieldPath && { 'data-sb-field-path': '.features' })}
                         >
-                            {features.map((bullet, index) => (
+                            {features.map((bullet: string, index: number) => (
                                 <li key={index} {...(fieldPath && { 'data-sb-field-path': `.${index}` })}>
                                     {bullet}
                                 </li>
@@ -192,7 +192,7 @@ function PricingPlan(props) {
                             )}
                             {...(fieldPath && { 'data-sb-field-path': '.actions' })}
                         >
-                            {actions.map((action, index) => (
+                            {actions.map((action: any, index: number) => (
                                 <Action key={index} {...action} className="lg:whitespace-nowrap" {...(fieldPath && { 'data-sb-field-path': `.${index}` })} />
                             ))}
                         </div>

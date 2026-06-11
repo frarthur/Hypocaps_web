@@ -51,7 +51,7 @@ export default function PostLayout(props: LayoutProps) {
                 </article>
                 {bottomSections.length > 0 && (
                     <div {...(enableAnnotations && { 'data-sb-field-path': 'bottomSections' })}>
-                        {bottomSections.map((section, index) => {
+                        {bottomSections.map((section: any, index: number) => {
                             const Component = getComponent(section.__metadata.modelName);
                             if (!Component) {
                                 throw new Error(`no component matching the page section's model name: ${section.__metadata.modelName}`);
@@ -70,7 +70,7 @@ export default function PostLayout(props: LayoutProps) {
     );
 }
 
-function PostAuthor({ author, enableAnnotations }) {
+function PostAuthor({ author, enableAnnotations }: { author: any; enableAnnotations?: boolean }) {
     const authorName = author.name && <span {...(enableAnnotations && { 'data-sb-field-path': '.name' })}>{author.name}</span>;
     return author.slug ? (
         <Link {...(enableAnnotations && { 'data-sb-field-path': 'author' })} href={`/blog/author/${author.slug}`}>

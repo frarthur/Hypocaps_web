@@ -117,7 +117,7 @@ export default function CenterSection(props: CenterSectionProps) {
     );
 }
 
-function Media({ media, hasAnnotations }: { media: any; hasAnnotations: boolean }) {
+function Media({ media, hasAnnotations }: { media: any; hasAnnotations?: boolean }) {
     const modelName = media.__metadata.modelName;
     if (!modelName) {
         throw new Error(`generic section media does not have the 'modelName' property`);

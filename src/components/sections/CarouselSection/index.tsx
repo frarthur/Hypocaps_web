@@ -68,7 +68,7 @@ export default function CarouselSection(props: CarouselSectionProps) {
     );
 }
 
-function CarouselVariants(props: { variant?: string; items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
+function CarouselVariants(props: { variant?: string; items?: any[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const { variant = 'next-prev-nav', ...rest } = props;
     switch (variant) {
         case 'dots-nav':
@@ -82,7 +82,7 @@ function CarouselVariants(props: { variant?: string; items?: Record<string, unkn
     }
 }
 
-function CarouselWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
+function CarouselWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: any[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
 
@@ -121,7 +121,7 @@ function CarouselWithNavigation({ items = [], hasTopMargin, hasSectionTitle, has
     );
 }
 
-function CarouselMultipleWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
+function CarouselMultipleWithNavigation({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: any[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
     const itemsTotal = items.length;
@@ -172,7 +172,7 @@ function CarouselMultipleWithNavigation({ items = [], hasTopMargin, hasSectionTi
     );
 }
 
-function CarouselWithPagination({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
+function CarouselWithPagination({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: any[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
     const [activeDot, setActiveDot] = React.useState(0);
@@ -204,7 +204,7 @@ function CarouselWithPagination({ items = [], hasTopMargin, hasSectionTitle, has
     );
 }
 
-function CarouselWithTabs({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: Record<string, unknown>[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
+function CarouselWithTabs({ items = [], hasTopMargin, hasSectionTitle, hasAnnotations }: { items?: any[]; hasTopMargin?: boolean; hasSectionTitle?: boolean; hasAnnotations?: boolean }) {
     const FeaturedItem = getComponent('FeaturedItem');
     const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
     const [activeTab, setActiveTab] = React.useState(0);

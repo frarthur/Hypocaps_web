@@ -89,7 +89,7 @@ function SearchBox({ enableSearch }: { enableSearch?: boolean }) {
     );
 }
 
-function PageLinks({ pageIndex, baseUrlPath, numOfPages }: { pageIndex?: number; baseUrlPath?: string; numOfPages?: number }) {
+function PageLinks({ pageIndex = 0, baseUrlPath = '', numOfPages = 0 }: { pageIndex?: number; baseUrlPath?: string; numOfPages?: number }) {
     if (numOfPages < 2) {
         return null;
     }
@@ -175,7 +175,7 @@ function PageLinks({ pageIndex, baseUrlPath, numOfPages }: { pageIndex?: number;
     return <div className={classNames('flex flex-row flex-wrap items-center gap-2 mt-12 sm:mt-20')}>{pageLinks}</div>;
 }
 
-function PageLink({ pageIndex, baseUrlPath, children }: { pageIndex?: number; baseUrlPath?: string; children?: React.ReactNode }) {
+function PageLink({ pageIndex = 0, baseUrlPath = '', children }: { pageIndex?: number; baseUrlPath?: string; children?: React.ReactNode }) {
     return (
         <Link href={urlPathForPageAtIndex(pageIndex, baseUrlPath)} className="w-10 h-10 p-0 text-sm sb-component-button sb-component-button-secondary shrink-0">
             {children}
@@ -195,6 +195,6 @@ function Ellipsis() {
     return <span className="p-1 text-2xl">&hellip;</span>;
 }
 
-function urlPathForPageAtIndex(pageIndex, baseUrlPath) {
+function urlPathForPageAtIndex(pageIndex: number, baseUrlPath: string) {
     return pageIndex === 0 ? baseUrlPath : `${baseUrlPath}/page/${pageIndex + 1}`;
 }

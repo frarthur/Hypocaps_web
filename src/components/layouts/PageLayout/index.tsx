@@ -24,7 +24,7 @@ export default function PageLayout(props: LayoutProps) {
                 )}
                 {sections.length > 0 && (
                     <div {...(enableAnnotations && { 'data-sb-field-path': 'sections' })}>
-                        {sections.map((section, index) => {
+                        {sections.map((section: any, index: number) => {
                             const Component = getComponent(section.__metadata.modelName);
                             if (!Component) {
                                 throw new Error(`no component matching the page section's model name: ${section.__metadata.modelName}`);

@@ -55,6 +55,7 @@ export default function VideoBlock(props: VideoBlockProps) {
 
 function VideoComponent(props: { url?: string; autoplay?: boolean; loop?: boolean; muted?: boolean; controls?: boolean; hasAnnotations?: boolean }) {
     const { url, ...rest } = props;
+    if (!url) return null;
     const videoData = getVideoData(url);
     if (!videoData.id || !videoData.service) {
         return <p className="absolute italic left-0 text-center top-1/2 -translate-y-1/2 w-full">Video URL is not supported.</p>;

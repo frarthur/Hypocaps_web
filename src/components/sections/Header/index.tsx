@@ -25,7 +25,7 @@ export default function Header(props: HeaderProps) {
                 styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'p-4',
                 'z-50'
             )}
-            {...(enableAnnotations && { 'data-sb-object-id': props?.__metadata?.id })}
+            {...(enableAnnotations && { 'data-sb-object-id': (props as any)?.__metadata?.id })}
         >
             <div className="mx-auto max-w-7xl">
                 <Link href="#main" className="sr-only">
@@ -241,7 +241,7 @@ function MobileMenu(props: HeaderProps) {
     );
 }
 
-function SiteLogoLink({ title, logo, enableAnnotations }: { title?: Record<string, unknown>; logo?: Record<string, unknown>; enableAnnotations?: boolean }) {
+function SiteLogoLink({ title, logo, enableAnnotations }: { title?: any; logo?: any; enableAnnotations?: boolean }) {
     return (
         <Link href="/" className="flex items-center">
             {logo && <ImageBlock {...logo} {...(enableAnnotations && { 'data-sb-field-path': 'logo' })} />}
@@ -254,12 +254,12 @@ function SiteLogoLink({ title, logo, enableAnnotations }: { title?: Record<strin
     );
 }
 
-function ListOfLinks(props: { links?: Record<string, unknown>[]; colors?: string; enableAnnotations?: boolean; inMobileMenu?: boolean }) {
+function ListOfLinks(props: { links?: any[]; colors?: string; enableAnnotations?: boolean; inMobileMenu?: boolean }) {
     const { links = [], colors, enableAnnotations, inMobileMenu = false } = props;
 
     return (
         <>
-            {links.map((link, index) => {
+            {links.map((link: any, index: number) => {
                 if (link.__metadata.modelName === 'SubNav') {
                     return (
                         <LinkWithSubnav
@@ -293,7 +293,7 @@ function ListOfLinks(props: { links?: Record<string, unknown>[]; colors?: string
     );
 }
 
-function LinkWithSubnav(props: { link: Record<string, unknown>; colors?: string; inMobileMenu?: boolean; 'data-sb-field-path'?: string }) {
+function LinkWithSubnav(props: { link: any; colors?: string; inMobileMenu?: boolean; 'data-sb-field-path'?: string }) {
     const { link, colors, inMobileMenu = false } = props;
     const [isSubNavOpen, setIsSubNavOpen] = useState(false);
     const router = useRouter();
@@ -368,10 +368,10 @@ function LinkWithSubnav(props: { link: Record<string, unknown>; colors?: string;
     );
 }
 
-function ListOfSubNavLinks({ links = [], hasAnnotations, inMobileMenu = false }) {
+function ListOfSubNavLinks({ links = [], hasAnnotations, inMobileMenu = false }: { links?: any[]; hasAnnotations?: boolean; inMobileMenu?: boolean }) {
     return (
         <>
-            {links.map((link, index) => (
+            {links.map((link: any, index: number) => (
                 <li key={index}>
                     <Action
                         {...link}

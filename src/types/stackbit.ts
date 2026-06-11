@@ -13,6 +13,7 @@ export interface StackbitSelfStyles {
   borderStyle?: string;
   borderColor?: string;
   borderRadius?: string;
+  [key: string]: unknown;
 }
 
 export interface StackbitStyles {
@@ -75,7 +76,7 @@ export interface ImageBlockProps {
 
 export interface LinkProps {
   children: React.ReactNode;
-  href: string;
+  href?: string;
   [key: string]: unknown;
 }
 
@@ -93,7 +94,7 @@ export interface SectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  styles?: StackbitStyles;
+  styles?: StackbitSelfStyles;
   children?: React.ReactNode;
   [key: string]: unknown;
 }
@@ -117,12 +118,12 @@ export interface GenericSectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
   text?: string;
   actions?: ActionProps[];
-  media?: Record<string, unknown>;
+  media?: any;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
   [key: string]: unknown;
@@ -130,13 +131,13 @@ export interface GenericSectionProps {
 
 export interface FooterProps {
   colors?: string;
-  logo?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  logo?: any;
+  title?: any;
   text?: string;
-  primaryLinks?: Record<string, unknown>[];
-  secondaryLinks?: Record<string, unknown>[];
+  primaryLinks?: any[];
+  secondaryLinks?: any[];
   socialLinks?: SocialProps[];
-  legalLinks?: Record<string, unknown>[];
+  legalLinks?: any[];
   copyrightText?: string;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -145,10 +146,10 @@ export interface FooterProps {
 
 export interface HeaderProps {
   variant?: string;
-  title?: Record<string, unknown>;
-  logo?: Record<string, unknown>;
-  primaryLinks?: Record<string, unknown>[];
-  secondaryLinks?: Record<string, unknown>[];
+  title?: any;
+  logo?: any;
+  primaryLinks?: any[];
+  secondaryLinks?: any[];
   colors?: string;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -160,11 +161,11 @@ export interface PricingSectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
   text?: string;
-  plans?: Record<string, unknown>[];
+  plans?: any[];
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
   [key: string]: unknown;
@@ -180,9 +181,9 @@ export interface DividerSectionProps {
 }
 
 export interface FormBlockProps {
-  fields?: Record<string, unknown>[];
+  fields?: any[];
   elementId?: string;
-  submitButton?: Record<string, unknown>;
+  submitButton?: any;
   className?: string;
   styles?: StackbitStyles;
   'data-sb-field-path'?: string;
@@ -226,11 +227,11 @@ export interface FeaturedItemsSectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
   text?: string;
-  items?: Record<string, unknown>[];
+  items?: any[];
   actions?: ActionProps[];
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -242,10 +243,15 @@ export interface FeaturedItemProps {
   className?: string;
   'data-sb-field-path'?: string;
   title?: string;
+  subtitle?: string;
+  tagline?: string;
   text?: string;
+  image?: any;
   featured?: boolean;
   actions?: ActionProps[];
+  colors?: string;
   styles?: StackbitStyles;
+  hasSectionTitle?: boolean;
   [key: string]: unknown;
 }
 
@@ -254,10 +260,20 @@ export interface PostFeedSectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
   text?: string;
+  variant?: string;
+  posts?: any[];
+  showThumbnail?: boolean;
+  showExcerpt?: boolean;
+  showDate?: boolean;
+  showAuthor?: boolean;
+  pageLinks?: any;
+  searchBox?: any;
+  hoverEffect?: string;
+  annotatePosts?: boolean;
   actions?: ActionProps[];
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -269,10 +285,10 @@ export interface CarouselSectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
-  items?: Record<string, unknown>[];
+  items?: any[];
   variant?: string;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -284,10 +300,10 @@ export interface ImageGallerySectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
-  images?: Record<string, unknown>[];
+  images?: any[];
   motion?: string;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -299,11 +315,11 @@ export interface FeaturedPeopleSectionProps {
   className?: string;
   colors?: string;
   backgroundImage?: BackgroundImageProps;
-  badge?: Record<string, unknown>;
-  title?: Record<string, unknown>;
+  badge?: any;
+  title?: any;
   subtitle?: string;
   actions?: ActionProps[];
-  people?: Record<string, unknown>[];
+  people?: any[];
   variant?: string;
   styles?: StackbitStyles;
   enableAnnotations?: boolean;
@@ -325,8 +341,8 @@ export interface FeaturedItemToggleProps {
 }
 
 export interface LayoutProps {
-  page: Record<string, unknown>;
-  site: Record<string, unknown>;
+  page: any;
+  site: any;
   children?: React.ReactNode;
   [key: string]: unknown;
 }
@@ -334,7 +350,16 @@ export interface LayoutProps {
 export interface PostFeedItemProps {
   className?: string;
   'data-sb-field-path'?: string;
-  post: Record<string, unknown>;
+  post: any;
+  showThumbnail?: boolean;
+  showExcerpt?: boolean;
+  showDate?: boolean;
+  showAuthor?: boolean;
+  hasSectionTitle?: boolean;
+  hasBigThumbnail?: boolean;
+  hoverEffect?: string;
+  sectionColors?: string;
+  hasAnnotations?: boolean;
   styles?: StackbitStyles;
   [key: string]: unknown;
 }

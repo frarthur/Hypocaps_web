@@ -105,7 +105,7 @@ export default function PostFeedSection(props: PostFeedSectionProps) {
 }
 
 function PostFeedVariants(props: {
-    variant?: string; posts?: Record<string, unknown>[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    variant?: string; posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
     showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
     hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
 }) {
@@ -123,7 +123,7 @@ function PostFeedVariants(props: {
 }
 
 function PostFeedThreeColGrid(props: {
-    posts?: Record<string, unknown>[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
     showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
     hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
 }) {
@@ -169,7 +169,7 @@ function PostFeedThreeColGrid(props: {
 }
 
 function PostFeedTwoColGrid(props: {
-    posts?: Record<string, unknown>[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
     showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
     hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
 }) {
@@ -213,7 +213,7 @@ function PostFeedTwoColGrid(props: {
 }
 
 function PostFeedSmallList(props: {
-    posts?: Record<string, unknown>[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
     showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
     hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
 }) {
@@ -257,7 +257,7 @@ function PostFeedSmallList(props: {
 }
 
 function PostFeedBigList(props: {
-    posts?: Record<string, unknown>[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
     showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
     hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
 }) {

@@ -20,6 +20,7 @@ export default function FormBlock(props: FormBlockProps) {
         event.preventDefault();
         setStatus('submitting');
 
+        if (!formRef.current) return;
         const data = new FormData(formRef.current);
         const value = Object.fromEntries(data.entries());
 
@@ -72,7 +73,8 @@ export default function FormBlock(props: FormBlockProps) {
             >
                 <input type="hidden" name="form-name" value={elementId} />
                 {fields.map((field, index) => {
-                    const modelName = field.__metadata.modelName;
+                    const metadata = field.__metadata as Record<string, unknown> | undefined;
+                    const modelName = metadata?.modelName as string | undefined;
                     if (!modelName) {
                         throw new Error(`form field does not have the 'modelName' property`);
                     }

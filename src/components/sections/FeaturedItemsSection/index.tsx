@@ -75,7 +75,7 @@ export default function FeaturedItemsSection(props: FeaturedItemsSectionProps) {
     );
 }
 
-function FeaturedItemVariants(props) {
+function FeaturedItemVariants(props: any) {
     const { variant = 'three-col-grid', ...rest } = props;
     switch (variant) {
         case 'two-col-grid':
@@ -91,7 +91,7 @@ function FeaturedItemVariants(props) {
     }
 }
 
-function FeaturedItemsThreeColGrid(props) {
+function FeaturedItemsThreeColGrid(props: any) {
     const { items = [], hasTopMargin, hasSectionTitle, hasAnnotations } = props;
     if (items.length === 0) {
         return null;
@@ -102,14 +102,14 @@ function FeaturedItemsThreeColGrid(props) {
             className={classNames('w-full', 'grid', 'gap-10', 'sm:grid-cols-2', 'lg:grid-cols-2', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
                 <FeaturedItem key={index} {...item} hasSectionTitle={hasSectionTitle} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
             ))}
         </div>
     );
 }
 
-function FeaturedItemsTwoColGrid(props) {
+function FeaturedItemsTwoColGrid(props: any) {
     const { items = [], hasTopMargin, hasSectionTitle, hasAnnotations } = props;
     if (items.length === 0) {
         return null;
@@ -120,14 +120,14 @@ function FeaturedItemsTwoColGrid(props) {
             className={classNames('w-full', 'grid', 'gap-10', 'sm:grid-cols-2', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
                 <FeaturedItem key={index} {...item} hasSectionTitle={hasSectionTitle} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
             ))}
         </div>
     );
 }
 
-function FeaturedItemsSmallList(props) {
+function FeaturedItemsSmallList(props: any) {
     const { items = [], hasTopMargin, hasSectionTitle, hasAnnotations } = props;
     if (items.length === 0) {
         return null;
@@ -138,14 +138,14 @@ function FeaturedItemsSmallList(props) {
             className={classNames('w-full', 'max-w-3xl', 'grid', 'gap-10', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
                 <FeaturedItem key={index} {...item} hasSectionTitle={hasSectionTitle} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
             ))}
         </div>
     );
 }
 
-function FeaturedItemsBigList(props) {
+function FeaturedItemsBigList(props: any) {
     const { items = [], hasTopMargin, hasSectionTitle, hasAnnotations } = props;
     if (items.length === 0) {
         return null;
@@ -153,14 +153,14 @@ function FeaturedItemsBigList(props) {
     const FeaturedItem = getComponent('FeaturedItem');
     return (
         <div className={classNames('w-full', 'grid', 'gap-10', { 'mt-12': hasTopMargin })} {...(hasAnnotations && { 'data-sb-field-path': '.items' })}>
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
                 <FeaturedItem key={index} {...item} hasSectionTitle={hasSectionTitle} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
             ))}
         </div>
     );
 }
 
-function FeaturedItemsToggleList(props) {
+function FeaturedItemsToggleList(props: any) {
     const { items = [], hasTopMargin, hasSectionTitle, hasAnnotations } = props;
     if (items.length === 0) {
         return null;
@@ -171,7 +171,7 @@ function FeaturedItemsToggleList(props) {
             className={classNames('w-full', 'max-w-3xl', 'grid', 'gap-6', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
                 <FeaturedItemToggle key={index} {...item} hasSectionTitle={hasSectionTitle} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
             ))}
         </div>

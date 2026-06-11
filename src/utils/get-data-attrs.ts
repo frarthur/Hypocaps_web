@@ -4,5 +4,5 @@ export function getDataAttrs(props: Record<string, unknown> = {}): Record<string
             dataAttrs[key] = value;
         }
         return dataAttrs;
-    }, {});
+    }, {} as Record<string, unknown>);
 }

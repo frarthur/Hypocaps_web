@@ -95,7 +95,7 @@ const TAILWIND_MAP: Record<string, Record<string, string> | ((value: unknown) =>
         }
         // for regular margins - ['x0:8', 'y0:16'], the value will be object: { left: 4, top: 10 }
         if (typeof value === 'object' && value !== null) {
-            const classNames = [];
+            const classNames: string[] = [];
             Object.entries(value).forEach(([styleProp, styleValue]) => {
                 const twValue = styleValue === 1 ? 'px' : String(Number(styleValue) / 4);
                 if (styleProp === 'top') {
@@ -121,7 +121,7 @@ const TAILWIND_MAP: Record<string, Record<string, string> | ((value: unknown) =>
         }
         // for regular paddings - ['x0:8', 'y0:16'], the value will be object: { left: 4, top: 10 }
         if (typeof value === 'object' && value !== null) {
-            const classNames = [];
+            const classNames: string[] = [];
             Object.entries(value).forEach(([styleProp, styleValue]) => {
                 const twValue = styleValue === 1 ? 'px' : String(Number(styleValue) / 4);
                 if (styleProp === 'top') {
@@ -159,7 +159,7 @@ export function mapStylesToClassNames(styles: Record<string, unknown>) {
             if (prop in TAILWIND_MAP) {
                 if (typeof TAILWIND_MAP[prop] === 'function') {
                     return TAILWIND_MAP[prop](value);
-                } else if (value in TAILWIND_MAP[prop]) {
+                } else if (typeof value === 'string' && value in TAILWIND_MAP[prop]) {
                     return TAILWIND_MAP[prop][value];
                 }
             } else {
