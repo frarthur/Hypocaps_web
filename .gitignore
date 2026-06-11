@@ -58,6 +58,7 @@ renovate.json
 
 # Private roadmap / checklist
 ROADMAP.md
+.gitmessage
 
 # Stackbit / Netlify Visual Editor config (same as sources/)
 stackbit.config.ts
