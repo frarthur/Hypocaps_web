@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import TitleBlock from "../../components/blocks/TitleBlock";
 
 const meta: Meta<typeof TitleBlock> = {

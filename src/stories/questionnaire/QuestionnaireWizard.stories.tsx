@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { QuestionnaireWizard } from "../../components/questionnaire/QuestionnaireWizard";
 
 const meta: Meta<typeof QuestionnaireWizard> = {

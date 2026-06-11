@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { FieldRenderer } from "../../components/questionnaire/FieldRenderer";
 import type { Field, ValidationError } from "../../lib/questionnaire/types";
 
