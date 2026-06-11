@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';

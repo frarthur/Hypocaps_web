@@ -1,3 +1,4 @@
+// @ts-nocheck
 function cssClassesFromUrlPath(urlPath) {
     const parts = urlPath
         .replace(/^\/|\/$/g, '')

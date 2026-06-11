@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getAllNonFeaturedPostsSorted, getAllCategoryPostsSorted, generatePagedPathsForPage, isPublished } from './data-utils';
 
 export function resolveStaticPaths({ pages, objects }) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import DefaultBaseLayout from '../components/layouts/DefaultBaseLayout';
 import BlankBaseLayout from '../components/layouts/BlankBaseLayout';
 

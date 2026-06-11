@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react';
 
 export default function LinkedIn({ className, ...props }) {

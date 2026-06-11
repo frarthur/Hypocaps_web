@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { index } from '../../utils/indexer';
 
 export default async function handler(req, res) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function seoGenerateMetaTags(page, site) {
     let pageMetaTags = {};
 

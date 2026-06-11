@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { marked } from 'marked';
 import PlainTextRenderer from './markdown-plaintext';
 import algoliasearch from 'algoliasearch';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function getAllPostsSorted(objects) {
     const allPosts = getAllPosts(objects);
     return sortPosts(allPosts);

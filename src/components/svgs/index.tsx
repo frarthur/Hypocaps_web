@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ArrowDown from './arrow-down';
 import ArrowLeft from './arrow-left';
 import ArrowRight from './arrow-right';

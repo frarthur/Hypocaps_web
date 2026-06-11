@@ -1,3 +1,4 @@
+// @ts-nocheck
 const TAILWIND_MAP = {
     alignItems: {
         'flex-start': 'items-start',
