@@ -18,6 +18,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const visibleSteps = useMemo(
     () => questionnaire.filter((s) => !s.showIf || s.showIf(answers)),
@@ -97,7 +98,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
       const data = await res.json();
 
       if (!res.ok) {
-        console.error("Submission failed:", data.message);
+        setSubmitError(data.message || "Erreur lors de la soumission");
         setSubmitting(false);
         return;
       }
@@ -106,6 +107,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
       setSubmitted(true);
     } catch (err) {
       console.error("Submission error:", err);
+      setSubmitError("Erreur réseau. Veuillez réessayer.");
       setSubmitting(false);
     }
   }, [visibleSteps, answers]);
@@ -179,6 +181,13 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
           ))}
         </div>
       </div>
+
+      {/* Error */}
+      {submitError && (
+        <div className="mt-6 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {submitError}
+        </div>
+      )}
 
       {/* Navigation */}
       <div className="mt-8 flex items-center justify-between border-t border-neutralAlt pt-6">
