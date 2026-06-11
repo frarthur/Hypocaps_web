@@ -324,6 +324,13 @@ export interface FeaturedItemToggleProps {
   [key: string]: unknown;
 }
 
+export interface LayoutProps {
+  page: Record<string, unknown>;
+  site: Record<string, unknown>;
+  children?: React.ReactNode;
+  [key: string]: unknown;
+}
+
 export interface PostFeedItemProps {
   className?: string;
   'data-sb-field-path'?: string;
