@@ -85,8 +85,8 @@ Checklist de requis pour un projet Next.js valorisant sur GitHub / CV.
 
 **Pourquoi ?** Pour un recruteur, voir un Storybook bien rangé montre que tu penses "composant réutilisable", que tu documentes ton travail, et que tu testes visuellement tes UI. L'audit d'accessibilité (a11y) garantit que ton site est utilisable par tout le monde (lecteurs d'écran, navigation clavier, contrastes). Lighthouse CI analyse automatiquement les performances, le SEO, et l'accessibilité de ton site.
 
-- [ ] **Storybook** — catalogue visuel de tous les composants (boutons, formulaires, sections)
-- [ ] **Documentation des composants** — décrire les props, les variants, les cas d'usage
+- [x] **Storybook** — catalogue visuel de tous les composants (boutons, formulaires, sections)
+- [x] **Documentation des composants** — décrire les props, les variants, les cas d'usage
 - [ ] **Audit d'accessibilité (a11y)** — vérifier contrastes, labels, navigation clavier, lecteurs d'écran
 - [ ] **Lighthouse CI** — mettre un badge de perf/SEO/a11y dans le README
 
