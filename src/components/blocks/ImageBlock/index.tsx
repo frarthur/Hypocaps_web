@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import type { ImageBlockProps } from '../../../types/stackbit';
 
-export default function ImageBlock(props) {
+export default function ImageBlock(props: ImageBlockProps) {
     const { elementId, className, imageClassName, url, altText = '', styles = {} } = props;
     if (!url) {
         return null;

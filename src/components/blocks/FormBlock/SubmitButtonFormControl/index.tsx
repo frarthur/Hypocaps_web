@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { iconMap } from '../../../svgs';
+import type { SubmitButtonProps } from '../../../../types/stackbit';
 
-export default function SubmitButtonFormControl(props) {
+export default function SubmitButtonFormControl(props: SubmitButtonProps) {
     const { elementId, className, label, showIcon, icon, iconPosition = 'right', style = 'primary', disabled } = props;
     const IconComponent = icon ? iconMap[icon] : null;
     const fieldPath = props['data-sb-field-path'];

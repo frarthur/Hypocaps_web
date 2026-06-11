@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import type { TitleBlockProps } from '../../../types/stackbit';
 
-export default function TitleBlock(props) {
+export default function TitleBlock(props: TitleBlockProps) {
     const { className, text = [], color = 'text-dark', styles = {} } = props;
     const fieldPath = props['data-sb-field-path'];
     if (!text) {

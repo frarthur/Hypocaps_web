@@ -1,8 +1,8 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
+import type { FormControlProps } from '../../../../types/stackbit';
 
-export default function EmailFormControl(props) {
+export default function EmailFormControl(props: FormControlProps) {
     const { name, label, hideLabel, isRequired, placeholder, width = 'full' } = props;
     const fieldPath = props['data-sb-field-path'];
     const labelId = `${name}-label`;

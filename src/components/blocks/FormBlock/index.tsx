@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import { useState, useRef } from 'react';
 import classNames from 'classnames';
@@ -6,8 +5,9 @@ import classNames from 'classnames';
 import { getComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import SubmitButtonFormControl from './SubmitButtonFormControl';
+import type { FormBlockProps } from '../../../types/stackbit';
 
-export default function FormBlock(props) {
+export default function FormBlock(props: FormBlockProps) {
     const formRef = useRef<HTMLFormElement>(null);
     const { fields = [], elementId, submitButton, className, styles = {}, 'data-sb-field-path': fieldPath } = props;
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -16,7 +16,7 @@ export default function FormBlock(props) {
         return null;
     }
 
-    async function handleSubmit(event) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setStatus('submitting');
 

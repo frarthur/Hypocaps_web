@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import type { VideoBlockProps } from '../../../types/stackbit';
 
-export default function VideoBlock(props) {
+export default function VideoBlock(props: VideoBlockProps) {
     const { elementId, className, url, aspectRatio = '16:9', styles = {}, ...rest } = props;
     if (!url) {
         return null;
@@ -53,7 +53,7 @@ export default function VideoBlock(props) {
     );
 }
 
-function VideoComponent(props) {
+function VideoComponent(props: { url?: string; autoplay?: boolean; loop?: boolean; muted?: boolean; controls?: boolean; hasAnnotations?: boolean }) {
     const { url, ...rest } = props;
     const videoData = getVideoData(url);
     if (!videoData.id || !videoData.service) {
@@ -71,7 +71,7 @@ function VideoComponent(props) {
     }
 }
 
-function YouTubeVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations }) {
+function YouTubeVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations }: { id?: string; autoplay?: boolean; loop?: boolean; muted?: boolean; controls?: boolean; hasAnnotations?: boolean }) {
     const paramsObj: any = {};
     paramsObj.autoplay = autoplay ? '1' : '0';
     paramsObj.controls = controls ? '1' : '0';
@@ -92,7 +92,7 @@ function YouTubeVideo({ id, autoplay, loop, muted, controls = true, hasAnnotatio
     );
 }
 
-function VimeoVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations }) {
+function VimeoVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations }: { id?: string; autoplay?: boolean; loop?: boolean; muted?: boolean; controls?: boolean; hasAnnotations?: boolean }) {
     const paramsObj: any = {};
     paramsObj.autoplay = autoplay ? '1' : '0';
     paramsObj.controls = controls ? '1' : '0';
@@ -112,7 +112,7 @@ function VimeoVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations
     );
 }
 
-function SelfHostedVideo({ url, id, poster, autoplay, loop, muted, controls = true, hasAnnotations }) {
+function SelfHostedVideo({ url, id, poster, autoplay, loop, muted, controls = true, hasAnnotations }: { url?: string; id?: string; poster?: string; autoplay?: boolean; loop?: boolean; muted?: boolean; controls?: boolean; hasAnnotations?: boolean }) {
     return (
         <video
             {...(autoplay && { autoPlay: true })}
