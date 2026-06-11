@@ -1,7 +1,7 @@
 export const ALLOWED_CONCERN = new Set(["yes", "relative", "both", "no"]);
 export const ALLOWED_SOURCE = new Set([
   "reddit", "pharmacie", "proche", "instagram",
-  "linkedin", "facebook", "search",
+  "linkedin", "facebook", "search", "other",
 ]);
 export const ALLOWED_REIMBURSED = new Set(["yes", "no", "dont_know"]);
 export const ALLOWED_DIABETES = new Set([

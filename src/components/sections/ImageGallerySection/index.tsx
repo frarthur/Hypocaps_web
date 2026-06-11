@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
@@ -8,8 +7,9 @@ import Section from '../Section';
 import TitleBlock from '../../blocks/TitleBlock';
 import ImageBlock from '../../blocks/ImageBlock';
 import Badge from '../../atoms/Badge';
+import type { ImageGallerySectionProps } from '../../../types/stackbit';
 
-export default function ImageGallerySection(props) {
+export default function ImageGallerySection(props: ImageGallerySectionProps) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, images = [], motion, styles = {}, enableAnnotations } = props;
 
     return (
@@ -59,7 +59,7 @@ export default function ImageGallerySection(props) {
     );
 }
 
-function ImageGalleryVariants(props) {
+function ImageGalleryVariants(props: any) {
     const { motion = 'static' } = props;
     switch (motion) {
         case 'move-to-left':
@@ -70,7 +70,7 @@ function ImageGalleryVariants(props) {
     }
 }
 
-function ImageGalleryStaticGrid({ images = [], hasTopMargin, justifyContent = 'flex-start', hasAnnotations }) {
+function ImageGalleryStaticGrid({ images = [], hasTopMargin, justifyContent = 'flex-start', hasAnnotations }: { images?: any[]; hasTopMargin?: boolean; justifyContent?: string; hasAnnotations?: boolean }) {
     if (images.length === 0) {
         return null;
     }
@@ -79,14 +79,14 @@ function ImageGalleryStaticGrid({ images = [], hasTopMargin, justifyContent = 'f
             className={classNames('w-full', 'flex', 'flex-wrap', 'items-center', mapStyles({ justifyContent: justifyContent }), { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.images' })}
         >
-            {images.map((image, index) => (
+            {images.map((image: any, index: number) => (
                 <ImageBlock key={index} {...image} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
             ))}
         </div>
     );
 }
 
-function ImageGalleryAnimatedGrid({ images = [], motion, hasTopMargin, hasAnnotations }) {
+function ImageGalleryAnimatedGrid({ images = [], motion, hasTopMargin, hasAnnotations }: { images?: any[]; motion?: string; hasTopMargin?: boolean; hasAnnotations?: boolean }) {
     if (images.length === 0) {
         return null;
     }

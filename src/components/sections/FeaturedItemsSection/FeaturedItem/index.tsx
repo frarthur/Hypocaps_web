@@ -1,13 +1,13 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import Markdown from 'markdown-to-jsx';
 
 import { mapStylesToClassNames as mapStyles } from '../../../../utils/map-styles-to-class-names';
-import Action from '../../../atoms/Action';
+import { Action } from '../../../atoms';
 import ImageBlock from '../../../blocks/ImageBlock';
+import type { FeaturedItemProps } from '../../../../types/stackbit';
 
-export default function FeaturedItem(props) {
+export default function FeaturedItem(props: FeaturedItemProps) {
     const { elementId, title, tagline, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
     const fieldPath = props['data-sb-field-path'];
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';
@@ -41,7 +41,7 @@ export default function FeaturedItem(props) {
                     <ImageBlock
                         {...image}
                         className={classNames('flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
-                            'xs:w-[28.4%] xs:shrink-0': hasTextContent && (flexDirection === 'row' || flexDirection === 'row-reversed')
+                            'xs:w-[28.4%] xs:shrink-0': hasTextContent && (flexDirection === 'row' || flexDirection === 'row-reverse')
                         })}
                         {...(fieldPath && { 'data-sb-field-path': '.image' })}
                     />
@@ -49,7 +49,7 @@ export default function FeaturedItem(props) {
                 {hasTextContent && (
                     <div
                         className={classNames('w-full', {
-                            'xs:grow': hasImage && (flexDirection === 'row' || flexDirection === 'row-reversed')
+                            'xs:grow': hasImage && (flexDirection === 'row' || flexDirection === 'row-reverse')
                         })}
                     >
                         {tagline && (

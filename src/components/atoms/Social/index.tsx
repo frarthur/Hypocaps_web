@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import Link from '../Link';
 import { iconMap } from '../../svgs';
+import type { SocialProps } from '../../../types/stackbit';
 
-export default function Social(props) {
+export default function Social(props: SocialProps) {
     const { elementId, className, altText, url, icon = 'facebook' } = props;
     const IconComponent = iconMap[icon];
     const fieldPath = props['data-sb-field-path'];

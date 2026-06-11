@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
@@ -6,8 +5,9 @@ import classNames from 'classnames';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { Social, Action, Link } from '../../atoms';
 import ImageBlock from '../../blocks/ImageBlock';
+import type { FooterProps } from '../../../types/stackbit';
 
-export default function Footer(props) {
+export default function Footer(props: FooterProps) {
     const {
         colors = 'bg-light-fg-dark',
         logo,
@@ -30,7 +30,7 @@ export default function Footer(props) {
                 styles?.self?.margin ? mapStyles({ padding: styles?.self?.margin }) : undefined,
                 styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'px-4 py-28'
             )}
-            {...(enableAnnotations && { 'data-sb-object-id': props?.__metadata?.id })}
+            {...(enableAnnotations && { 'data-sb-object-id': (props as any)?.__metadata?.id })}
         >
             <div className="mx-auto max-w-7xl">
                 <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -100,7 +100,7 @@ export default function Footer(props) {
     );
 }
 
-function FooterLinksGroup(props) {
+function FooterLinksGroup(props: any) {
     const { title, links = [] } = props;
     const fieldPath = props['data-sb-field-path'];
     if (links.length === 0) {
@@ -115,7 +115,7 @@ function FooterLinksGroup(props) {
             )}
             {links.length > 0 && (
                 <ul className={classNames('space-y-3', { 'mt-7': title })} {...(fieldPath && { 'data-sb-field-path': '.links' })}>
-                    {links.map((link, index) => (
+                    {links.map((link: any, index: number) => (
                         <li key={index}>
                             <Action {...link} className="text-sm" {...(fieldPath && { 'data-sb-field-path': `.${index}` })} />
                         </li>

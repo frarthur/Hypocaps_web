@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
@@ -55,11 +54,10 @@ function readContent(file: string) {
     return content;
 }
 
-function resolveReferences(content, fileToContent) {
+function resolveReferences(content: any, fileToContent: Record<string, any>) {
     if (!content || !content.type) return;
 
     const modelName = content.type;
-    // Make Sourcebit-compatible
     if (!content.__metadata) content.__metadata = { modelName: content.type };
 
     for (const fieldName in content) {
@@ -70,18 +68,20 @@ function resolveReferences(content, fileToContent) {
         if (Array.isArray(fieldValue)) {
             if (fieldValue.length === 0) continue;
             if (isRef && typeof fieldValue[0] === 'string') {
-                fieldValue = fieldValue.map((filename) => fileToContent[filename]);
+                fieldValue = fieldValue.map((filename: string) => fileToContent[filename]);
                 content[fieldName] = fieldValue;
             }
             if (typeof fieldValue[0] === 'object') {
-                fieldValue.forEach((o) => resolveReferences(o, fileToContent));
+                fieldValue.forEach((o: any) => resolveReferences(o, fileToContent));
             }
         } else {
             if (isRef && typeof fieldValue === 'string') {
-                fieldValue = fileToContent[fieldValue];
-                content[fieldName] = fieldValue;
-            }
-            if (typeof fieldValue === 'object') {
+                const resolved = fileToContent[fieldValue];
+                content[fieldName] = resolved;
+                if (resolved && typeof resolved === 'object') {
+                    resolveReferences(resolved, fileToContent);
+                }
+            } else if (typeof fieldValue === 'object') {
                 resolveReferences(fieldValue, fileToContent);
             }
         }

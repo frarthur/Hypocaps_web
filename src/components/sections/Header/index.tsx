@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -10,8 +9,9 @@ import ImageBlock from '../../blocks/ImageBlock';
 import ChevronDownIcon from '../../svgs/chevron-down';
 import CloseIcon from '../../svgs/close';
 import MenuIcon from '../../svgs/menu';
+import type { HeaderProps } from '../../../types/stackbit';
 
-export default function Header(props) {
+export default function Header(props: HeaderProps) {
     const { colors = 'bg-light-fg-dark', styles = {}, enableAnnotations } = props;
     return (
         <header
@@ -25,7 +25,7 @@ export default function Header(props) {
                 styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'p-4',
                 'z-50'
             )}
-            {...(enableAnnotations && { 'data-sb-object-id': props?.__metadata?.id })}
+            {...(enableAnnotations && { 'data-sb-object-id': (props as any)?.__metadata?.id })}
         >
             <div className="mx-auto max-w-7xl">
                 <Link href="#main" className="sr-only">
@@ -37,7 +37,7 @@ export default function Header(props) {
     );
 }
 
-function HeaderVariants(props) {
+function HeaderVariants(props: HeaderProps) {
     const { variant = 'logo-left-primary-nav-left', ...rest } = props;
     switch (variant) {
         case 'logo-left-primary-nav-centered':
@@ -53,7 +53,7 @@ function HeaderVariants(props) {
     }
 }
 
-function HeaderLogoLeftPrimaryLeft(props) {
+function HeaderLogoLeftPrimaryLeft(props: HeaderProps) {
     const { title, logo, primaryLinks = [], secondaryLinks = [], colors = 'bg-light-fg-dark', enableAnnotations } = props;
     return (
         <div className="relative flex items-center">
@@ -77,7 +77,7 @@ function HeaderLogoLeftPrimaryLeft(props) {
     );
 }
 
-function HeaderLogoLeftPrimaryCentered(props) {
+function HeaderLogoLeftPrimaryCentered(props: HeaderProps) {
     const { title, logo, primaryLinks = [], secondaryLinks = [], colors = 'bg-light-fg-dark', enableAnnotations } = props;
     return (
         <div className="relative flex items-center">
@@ -104,7 +104,7 @@ function HeaderLogoLeftPrimaryCentered(props) {
     );
 }
 
-function HeaderLogoLeftPrimaryRight(props) {
+function HeaderLogoLeftPrimaryRight(props: HeaderProps) {
     const { title, logo, primaryLinks = [], secondaryLinks = [], colors = 'bg-light-fg-dark', enableAnnotations } = props;
     return (
         <div className="relative flex items-center">
@@ -131,7 +131,7 @@ function HeaderLogoLeftPrimaryRight(props) {
     );
 }
 
-function HeaderLogoCenteredPrimaryLeft(props) {
+function HeaderLogoCenteredPrimaryLeft(props: HeaderProps) {
     const { title, logo, primaryLinks = [], secondaryLinks = [], colors = 'bg-light-fg-dark', enableAnnotations } = props;
     return (
         <div className="relative flex items-center">
@@ -155,7 +155,7 @@ function HeaderLogoCenteredPrimaryLeft(props) {
     );
 }
 
-function HeaderLogoCenteredPrimaryCentered(props) {
+function HeaderLogoCenteredPrimaryCentered(props: HeaderProps) {
     const { title, logo, primaryLinks = [], secondaryLinks = [], colors = 'bg-light-fg-dark', enableAnnotations } = props;
     return (
         <>
@@ -184,7 +184,7 @@ function HeaderLogoCenteredPrimaryCentered(props) {
     );
 }
 
-function MobileMenu(props) {
+function MobileMenu(props: HeaderProps) {
     const { title, logo, primaryLinks = [], secondaryLinks = [], colors = 'bg-light-fg-dark', styles = {}, enableAnnotations } = props;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
@@ -241,7 +241,7 @@ function MobileMenu(props) {
     );
 }
 
-function SiteLogoLink({ title, logo, enableAnnotations }) {
+function SiteLogoLink({ title, logo, enableAnnotations }: { title?: any; logo?: any; enableAnnotations?: boolean }) {
     return (
         <Link href="/" className="flex items-center">
             {logo && <ImageBlock {...logo} {...(enableAnnotations && { 'data-sb-field-path': 'logo' })} />}
@@ -254,12 +254,12 @@ function SiteLogoLink({ title, logo, enableAnnotations }) {
     );
 }
 
-function ListOfLinks(props) {
+function ListOfLinks(props: { links?: any[]; colors?: string; enableAnnotations?: boolean; inMobileMenu?: boolean }) {
     const { links = [], colors, enableAnnotations, inMobileMenu = false } = props;
 
     return (
         <>
-            {links.map((link, index) => {
+            {links.map((link: any, index: number) => {
                 if (link.__metadata.modelName === 'SubNav') {
                     return (
                         <LinkWithSubnav
@@ -293,7 +293,7 @@ function ListOfLinks(props) {
     );
 }
 
-function LinkWithSubnav(props) {
+function LinkWithSubnav(props: { link: any; colors?: string; inMobileMenu?: boolean; 'data-sb-field-path'?: string }) {
     const { link, colors, inMobileMenu = false } = props;
     const [isSubNavOpen, setIsSubNavOpen] = useState(false);
     const router = useRouter();
@@ -368,10 +368,10 @@ function LinkWithSubnav(props) {
     );
 }
 
-function ListOfSubNavLinks({ links = [], hasAnnotations, inMobileMenu = false }) {
+function ListOfSubNavLinks({ links = [], hasAnnotations, inMobileMenu = false }: { links?: any[]; hasAnnotations?: boolean; inMobileMenu?: boolean }) {
     return (
         <>
-            {links.map((link, index) => (
+            {links.map((link: any, index: number) => (
                 <li key={index}>
                     <Action
                         {...link}

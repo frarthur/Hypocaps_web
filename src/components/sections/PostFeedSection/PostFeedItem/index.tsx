@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
@@ -7,8 +6,9 @@ import { mapStylesToClassNames as mapStyles } from '../../../../utils/map-styles
 import { getPageUrl } from '../../../../utils/page-utils';
 import Link from '../../../atoms/Link';
 import ImageBlock from '../../../blocks/ImageBlock';
+import type { PostFeedItemProps } from '../../../../types/stackbit';
 
-export default function PostFeedItem(props) {
+export default function PostFeedItem(props: PostFeedItemProps) {
     const {
         post,
         showThumbnail,
@@ -18,7 +18,7 @@ export default function PostFeedItem(props) {
         hasSectionTitle,
         hasBigThumbnail,
         hoverEffect = 'move-up',
-        sectionColors,
+        sectionColors = 'bg-light-fg-dark',
         hasAnnotations
     } = props;
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';
@@ -53,8 +53,8 @@ export default function PostFeedItem(props) {
                     <ImageBlock
                         {...post.featuredImage}
                         className={classNames({
-                            'xs:w-[50%] xs:shrink-0': hasBigThumbnail && (flexDirection === 'row' || flexDirection === 'row-reversed'),
-                            'xs:w-[28.4%] xs:shrink-0': !hasBigThumbnail && (flexDirection === 'row' || flexDirection === 'row-reversed')
+                            'xs:w-[50%] xs:shrink-0': hasBigThumbnail && (flexDirection === 'row' || flexDirection === 'row-reverse'),
+                            'xs:w-[28.4%] xs:shrink-0': !hasBigThumbnail && (flexDirection === 'row' || flexDirection === 'row-reverse')
                         })}
                         imageClassName="w-full h-full object-cover"
                         {...(hasAnnotations && { 'data-sb-field-path': 'featuredImage' })}
@@ -62,7 +62,7 @@ export default function PostFeedItem(props) {
                 )}
                 <div
                     className={classNames('w-full', {
-                        'xs:grow': hasThumbnail && (flexDirection === 'row' || flexDirection === 'row-reversed')
+                        'xs:grow': hasThumbnail && (flexDirection === 'row' || flexDirection === 'row-reverse')
                     })}
                 >
                     <TitleTag className="h3">
@@ -92,7 +92,7 @@ export default function PostFeedItem(props) {
     );
 }
 
-function PostAttribution({ showDate, showAuthor, date, author, className = '', hasAnnotations }) {
+function PostAttribution({ showDate, showAuthor, date, author, className = '', hasAnnotations }: { showDate?: boolean; showAuthor?: boolean; date?: string; author?: any; className?: string; hasAnnotations?: boolean }) {
     if (!showDate && !(showAuthor && author)) {
         return null;
     }

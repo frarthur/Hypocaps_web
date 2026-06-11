@@ -1,15 +1,15 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 import Section from '../Section';
-import { Action, Badge } from '../../atoms';
 import TitleBlock from '../../blocks/TitleBlock';
+import { Action, Badge } from '../../atoms';
 import PostFeedItem from './PostFeedItem';
+import type { PostFeedSectionProps } from '../../../types/stackbit';
 
-export default function PostFeedSection(props) {
+export default function PostFeedSection(props: PostFeedSectionProps) {
     const {
         elementId,
         colors,
@@ -104,7 +104,11 @@ export default function PostFeedSection(props) {
     );
 }
 
-function PostFeedVariants(props) {
+function PostFeedVariants(props: {
+    variant?: string; posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
+    hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
+}) {
     const { variant = 'three-col-grid', ...rest } = props;
     switch (variant) {
         case 'two-col-grid':
@@ -118,7 +122,11 @@ function PostFeedVariants(props) {
     }
 }
 
-function PostFeedThreeColGrid(props) {
+function PostFeedThreeColGrid(props: {
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
+    hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
+}) {
     const {
         posts = [],
         showThumbnail,
@@ -160,7 +168,11 @@ function PostFeedThreeColGrid(props) {
     );
 }
 
-function PostFeedTwoColGrid(props) {
+function PostFeedTwoColGrid(props: {
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
+    hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
+}) {
     const {
         posts = [],
         showThumbnail,
@@ -200,7 +212,11 @@ function PostFeedTwoColGrid(props) {
     );
 }
 
-function PostFeedSmallList(props) {
+function PostFeedSmallList(props: {
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
+    hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
+}) {
     const {
         posts = [],
         showThumbnail,
@@ -240,7 +256,11 @@ function PostFeedSmallList(props) {
     );
 }
 
-function PostFeedBigList(props) {
+function PostFeedBigList(props: {
+    posts?: any[]; showThumbnail?: boolean; showExcerpt?: boolean;
+    showDate?: boolean; showAuthor?: boolean; hasTopMargin?: boolean; hasSectionTitle?: boolean;
+    hoverEffect?: string; colors?: string; hasAnnotations?: boolean; annotatePosts?: boolean;
+}) {
     const {
         posts = [],
         showThumbnail,

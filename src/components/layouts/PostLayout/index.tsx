@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
@@ -6,13 +5,14 @@ import Markdown from 'markdown-to-jsx';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
 import Link from '../../atoms/Link';
+import type { LayoutProps } from '../../../types/stackbit';
 
-function BaseLayoutRenderer({ page, site, children, ...rest }) {
+function BaseLayoutRenderer({ page, site, children, ...rest }: LayoutProps) {
     const Layout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     return React.createElement(Layout, { page, site, ...rest }, children);
 }
 
-export default function PostLayout(props) {
+export default function PostLayout(props: LayoutProps) {
     const { page, site } = props;
     const { enableAnnotations = true } = site;
     const { title, date, author, markdown_content, bottomSections = [] } = page;
@@ -51,7 +51,7 @@ export default function PostLayout(props) {
                 </article>
                 {bottomSections.length > 0 && (
                     <div {...(enableAnnotations && { 'data-sb-field-path': 'bottomSections' })}>
-                        {bottomSections.map((section, index) => {
+                        {bottomSections.map((section: any, index: number) => {
                             const Component = getComponent(section.__metadata.modelName);
                             if (!Component) {
                                 throw new Error(`no component matching the page section's model name: ${section.__metadata.modelName}`);
@@ -70,7 +70,7 @@ export default function PostLayout(props) {
     );
 }
 
-function PostAuthor({ author, enableAnnotations }) {
+function PostAuthor({ author, enableAnnotations }: { author: any; enableAnnotations?: boolean }) {
     const authorName = author.name && <span {...(enableAnnotations && { 'data-sb-field-path': '.name' })}>{author.name}</span>;
     return author.slug ? (
         <Link {...(enableAnnotations && { 'data-sb-field-path': 'author' })} href={`/blog/author/${author.slug}`}>

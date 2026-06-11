@@ -1,9 +1,9 @@
-// @ts-nocheck
 import * as React from 'react';
 import Head from 'next/head';
 import classNames from 'classnames';
+import type { LayoutProps } from '../../../types/stackbit';
 
-export default function BlankBaseLayout(props) {
+export default function BlankBaseLayout(props: LayoutProps) {
     const { page, site } = props;
     const { enableAnnotations = true } = site;
     const pageMeta = page?.__metadata || {};

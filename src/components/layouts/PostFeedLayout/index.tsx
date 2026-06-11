@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
@@ -7,16 +6,17 @@ import { getComponent } from '../../components-registry';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import ChevronLeftIcon from '../../svgs/chevron-left';
 import ChevronRightIcon from '../../svgs/chevron-right';
+import type { LayoutProps } from '../../../types/stackbit';
 
 const PostFeedSection = getComponent('PostFeedSection');
 const AutoCompletePosts = getComponent('AutoCompletePosts');
 
-function BaseLayoutRenderer({ page, site, children, ...rest }) {
+function BaseLayoutRenderer({ page, site, children, ...rest }: LayoutProps) {
     const Layout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     return React.createElement(Layout, { page, site, ...rest }, children);
 }
 
-export default function PostFeedLayout(props) {
+export default function PostFeedLayout(props: LayoutProps) {
     const { page, site } = props;
     const { enableAnnotations = true } = site;
     const { title, topSections = [], bottomSections = [], pageIndex, baseUrlPath, numOfPages, enableSearch, items, postFeed } = page;
@@ -70,7 +70,7 @@ function renderSections(sections: any[], fieldName: string, enableAnnotations: b
     );
 }
 
-function SearchBox({ enableSearch }) {
+function SearchBox({ enableSearch }: { enableSearch?: boolean }) {
     if (!enableSearch) {
         return null;
     }
@@ -89,7 +89,7 @@ function SearchBox({ enableSearch }) {
     );
 }
 
-function PageLinks({ pageIndex, baseUrlPath, numOfPages }) {
+function PageLinks({ pageIndex = 0, baseUrlPath = '', numOfPages = 0 }: { pageIndex?: number; baseUrlPath?: string; numOfPages?: number }) {
     if (numOfPages < 2) {
         return null;
     }
@@ -175,7 +175,7 @@ function PageLinks({ pageIndex, baseUrlPath, numOfPages }) {
     return <div className={classNames('flex flex-row flex-wrap items-center gap-2 mt-12 sm:mt-20')}>{pageLinks}</div>;
 }
 
-function PageLink({ pageIndex, baseUrlPath, children }) {
+function PageLink({ pageIndex = 0, baseUrlPath = '', children }: { pageIndex?: number; baseUrlPath?: string; children?: React.ReactNode }) {
     return (
         <Link href={urlPathForPageAtIndex(pageIndex, baseUrlPath)} className="w-10 h-10 p-0 text-sm sb-component-button sb-component-button-secondary shrink-0">
             {children}
@@ -183,7 +183,7 @@ function PageLink({ pageIndex, baseUrlPath, children }) {
     );
 }
 
-function PageLinkDisabled({ children }) {
+function PageLinkDisabled({ children }: { children?: React.ReactNode }) {
     return (
         <span key="next" className="w-10 h-10 p-0 text-sm opacity-25 pointer-events-none sb-component-button sb-component-button-secondary shrink-0">
             {children}
@@ -195,6 +195,6 @@ function Ellipsis() {
     return <span className="p-1 text-2xl">&hellip;</span>;
 }
 
-function urlPathForPageAtIndex(pageIndex, baseUrlPath) {
+function urlPathForPageAtIndex(pageIndex: number, baseUrlPath: string) {
     return pageIndex === 0 ? baseUrlPath : `${baseUrlPath}/page/${pageIndex + 1}`;
 }

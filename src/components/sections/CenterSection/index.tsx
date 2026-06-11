@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
@@ -9,8 +8,9 @@ import { getDataAttrs } from '../../../utils/get-data-attrs';
 import Section from '../Section';
 import TitleBlock from '../../blocks/TitleBlock';
 import { Action, Badge } from '../../atoms';
+import type { CenterSectionProps } from '../../../types/stackbit';
 
-export default function CenterSection(props) {
+export default function CenterSection(props: CenterSectionProps) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, text, actions = [], media, styles = {}, enableAnnotations } = props;
     const flexDirection = styles?.self?.flexDirection ?? 'row';
     const hasTextContent = !!(badge?.url || title?.text || subtitle || text || actions.length > 0);
@@ -117,7 +117,7 @@ export default function CenterSection(props) {
     );
 }
 
-function Media({ media, hasAnnotations }: { media: any; hasAnnotations: boolean }) {
+function Media({ media, hasAnnotations }: { media: any; hasAnnotations?: boolean }) {
     const modelName = media.__metadata.modelName;
     if (!modelName) {
         throw new Error(`generic section media does not have the 'modelName' property`);

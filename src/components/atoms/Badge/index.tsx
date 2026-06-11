@@ -1,10 +1,10 @@
-// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import type { BadgeProps } from '../../../types/stackbit';
 
-export default function Badge(props) {
+export default function Badge(props: BadgeProps) {
     const { label, color = 'text-primary', styles, className } = props;
     const fieldPath = props['data-sb-field-path'];
     if (!label) {
