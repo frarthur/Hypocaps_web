@@ -56,6 +56,9 @@ next-env.d.ts
 # Dev tooling
 renovate.json
 
+# Private roadmap / checklist
+ROADMAP.md
+
 # Stackbit / Netlify Visual Editor config (same as sources/)
 stackbit.config.ts
 
