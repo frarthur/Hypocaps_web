@@ -3,24 +3,53 @@ import { getSupabase } from "../../../lib/supabase/client";
 
 export const dynamic = "force-dynamic";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateContact(body: Record<string, unknown>): string | null {
+  if (typeof body.name !== "string" || body.name.trim().length === 0) {
+    return "Le nom est requis";
+  }
+  if (body.name.length > 200) {
+    return "Le nom est trop long";
+  }
+  if (typeof body.email !== "string" || !EMAIL_RE.test(body.email)) {
+    return "Email invalide";
+  }
+  if (body.email.length > 320) {
+    return "Email trop long";
+  }
+  if (typeof body.message !== "string" || body.message.trim().length === 0) {
+    return "Le message est requis";
+  }
+  if (body.message.length > 10000) {
+    return "Le message est trop long (max 10 000 caractères)";
+  }
+  return null;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, message } = await request.json();
+    const body: Record<string, unknown> = await request.json();
 
-    if (!name || !email || !message) {
+    const validationError = validateContact(body);
+    if (validationError) {
       return NextResponse.json(
-        { success: false, message: "Tous les champs sont requis" },
+        { success: false, message: validationError },
         { status: 400 }
       );
     }
 
     const supabase = getSupabase();
 
-    const { error } = await supabase.from("contact_messages").insert({
-      name,
-      email,
-      message,
-    } as any);
+    const payload: Record<string, string> = {
+      name: body.name as string,
+      email: body.email as string,
+      message: body.message as string,
+    };
+
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert(payload as never);
 
     if (error) {
       console.error("Supabase insert error:", error);
@@ -30,7 +59,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Envoi d'email si SMTP configuré
     if (
       process.env.SMTP_HOST &&
       process.env.SMTP_USER &&
@@ -51,9 +79,9 @@ export async function POST(request: NextRequest) {
         await transporter.sendMail({
           from: `"Hypocaps Contact" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
           to: process.env.CONTACT_EMAIL || "arthur.fresse@hypocaps.fr",
-          subject: `Nouveau message de ${name}`,
-          text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-          html: `<p><strong>Nom:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong></p><p>${message.replace(/\n/g, "<br>")}</p>`,
+          subject: `Nouveau message de ${body.name}`,
+          text: `Nom: ${body.name}\nEmail: ${body.email}\n\nMessage:\n${body.message}`,
+          html: `<p><strong>Nom:</strong> ${body.name}</p><p><strong>Email:</strong> ${body.email}</p><p><strong>Message:</strong></p><p>${String(body.message).replace(/\n/g, "<br>")}</p>`,
         });
       } catch (emailErr) {
         console.error("Email sending failed:", emailErr);
