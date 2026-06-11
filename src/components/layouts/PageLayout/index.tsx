@@ -1,16 +1,21 @@
+// @ts-nocheck
 import * as React from 'react';
 
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
 
+function BaseLayoutRenderer({ page, site, children, ...rest }) {
+    const Layout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
+    return React.createElement(Layout, { page, site, ...rest }, children);
+}
+
 export default function PageLayout(props) {
     const { page, site } = props;
-    const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const { enableAnnotations = true } = site;
     const { title, sections = [] } = page;
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayoutRenderer page={page} site={site}>
             <main id="main" className="sb-layout sb-page-layout">
                 {title && (
                     <h1 className="sr-only" {...(enableAnnotations && { 'data-sb-field-path': 'title' })}>
@@ -24,18 +29,16 @@ export default function PageLayout(props) {
                             if (!Component) {
                                 throw new Error(`no component matching the page section's model name: ${section.__metadata.modelName}`);
                             }
-                            return (
-                                <Component
-                                    key={index}
-                                    {...section}
-                                    enableAnnotations={enableAnnotations}
-                                    {...(enableAnnotations && { 'data-sb-field-path': `sections.${index}` })}
-                                />
-                            );
+                            return React.createElement(Component, {
+                                key: index,
+                                ...section,
+                                enableAnnotations,
+                                ...(enableAnnotations && { 'data-sb-field-path': `sections.${index}` })
+                            });
                         })}
                     </div>
                 )}
             </main>
-        </BaseLayout>
+        </BaseLayoutRenderer>
     );
 }

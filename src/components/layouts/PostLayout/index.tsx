@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react';
 import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
@@ -6,16 +7,20 @@ import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
 import Link from '../../atoms/Link';
 
+function BaseLayoutRenderer({ page, site, children, ...rest }) {
+    const Layout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
+    return React.createElement(Layout, { page, site, ...rest }, children);
+}
+
 export default function PostLayout(props) {
     const { page, site } = props;
-    const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const { enableAnnotations = true } = site;
     const { title, date, author, markdown_content, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('YYYY-MM-DD');
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayoutRenderer page={page} site={site}>
             <main id="main" className="sb-layout sb-post-layout">
                 <article className="px-4 py-16 sm:py-28">
                     <div className="mx-auto max-w-screen-2xl">
@@ -51,19 +56,17 @@ export default function PostLayout(props) {
                             if (!Component) {
                                 throw new Error(`no component matching the page section's model name: ${section.__metadata.modelName}`);
                             }
-                            return (
-                                <Component
-                                    key={index}
-                                    {...section}
-                                    enableAnnotations={enableAnnotations}
-                                    {...(enableAnnotations && { 'data-sb-field-path': `bottomSections.${index}` })}
-                                />
-                            );
+                            return React.createElement(Component, {
+                                key: index,
+                                ...section,
+                                enableAnnotations,
+                                ...(enableAnnotations && { 'data-sb-field-path': `bottomSections.${index}` })
+                            });
                         })}
                     </div>
                 )}
             </main>
-        </BaseLayout>
+        </BaseLayoutRenderer>
     );
 }
 

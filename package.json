@@ -4,7 +4,10 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start"
+        "start": "next start",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "lint": "eslint ."
     },
     "dependencies": {
         "@algolia/autocomplete-js": "^1.17.1",
@@ -26,14 +29,23 @@
     },
     "devDependencies": {
         "@base2/pretty-print-object": "^1.0.2",
+        "@eslint/eslintrc": "^3.3.5",
         "@stackbit/cms-git": "^1.0.32",
         "@stackbit/types": "^2.1.10",
         "@types/glob": "^8.1.0",
+        "@types/nodemailer": "^8.0.1",
         "@types/react": "^19.1.0",
         "@types/react-dom": "^19.1.1",
+        "@typescript-eslint/eslint-plugin": "^8.61.0",
+        "@typescript-eslint/parser": "^8.61.0",
         "autoprefixer": "^10.4.19",
-        "prettier": "^3.3.2",
-        "typescript": "^5.6.2"
+        "baseline-browser-mapping": "^2.10.35",
+        "eslint": "^9.39.4",
+        "eslint-config-next": "^16.2.9",
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.8.4",
+        "typescript": "^5.6.2",
+        "vitest": "^4.1.8"
     },
     "main": "next.config.js"
 }

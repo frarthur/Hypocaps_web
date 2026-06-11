@@ -8,7 +8,7 @@ Hypocaps est un projet visant à rendre la vie des personnes atteintes d'hypogly
 
 ## Stack technique
 
-- **Next.js 15** (App Router + Pages Router) — pages statiques et API serverless
+- **Next.js 15** (dual App Router / Pages Router) — pages statiques et API serverless
 - **React 19** + **TypeScript** — UI et typage strict
 - **TailwindCSS 3** — styles utilitaires
 - **Supabase** (PostgreSQL) — base de données avec RLS
@@ -28,6 +28,8 @@ Hypocaps est un projet visant à rendre la vie des personnes atteintes d'hypogly
 - Multi-étapes (wizard) avec progression visuelle et validation
 - Logique conditionnelle data-driven (show/hide selon réponses)
 - Traductions FR/EN avec valeurs canoniques pour l'analyse statistique
+
+> **Note d'architecture :** Le projet utilise deux routeurs Next.js simultanément. L'**App Router** (`src/app/`) gère le questionnaire interactif et les API serverless. Le **Pages Router** (`src/pages/`) est conservé pour les pages CMS Stackbit existantes. Cette dualité permet la migration progressive sans tout réécrire d'un coup.
 
 ## Architecture du projet
 

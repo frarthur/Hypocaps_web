@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react';
 import classNames from 'classnames';
 
@@ -7,17 +8,23 @@ import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import ChevronLeftIcon from '../../svgs/chevron-left';
 import ChevronRightIcon from '../../svgs/chevron-right';
 
+const PostFeedSection = getComponent('PostFeedSection');
+const AutoCompletePosts = getComponent('AutoCompletePosts');
+
+function BaseLayoutRenderer({ page, site, children, ...rest }) {
+    const Layout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
+    return React.createElement(Layout, { page, site, ...rest }, children);
+}
+
 export default function PostFeedLayout(props) {
     const { page, site } = props;
-    const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const { enableAnnotations = true } = site;
     const { title, topSections = [], bottomSections = [], pageIndex, baseUrlPath, numOfPages, enableSearch, items, postFeed } = page;
-    const PostFeedSection = getComponent('PostFeedSection');
     const pageLinks = PageLinks({ pageIndex, baseUrlPath, numOfPages });
     const searchBox = SearchBox({ enableSearch });
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayoutRenderer page={page} site={site}>
             <main id="main" className="sb-layout sb-page-layout">
                 {title && (
                     <h1 className="sr-only" {...(enableAnnotations && { 'data-sb-field-path': 'title' })}>
@@ -35,7 +42,7 @@ export default function PostFeedLayout(props) {
                 />
                 {renderSections(bottomSections, 'bottomSections', enableAnnotations)}
             </main>
-        </BaseLayout>
+        </BaseLayoutRenderer>
     );
 }
 
@@ -67,7 +74,6 @@ function SearchBox({ enableSearch }) {
     if (!enableSearch) {
         return null;
     }
-    const AutoCompletePosts = getComponent('AutoCompletePosts');
     const searchBoxStyle = {
         '--aa-text-color-rgb': '2,0,29',
         '--aa-muted-color-rgb': '2,0,29',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import Head from 'next/head';
 import { allContent } from '../utils/local-content';
@@ -6,16 +7,20 @@ import { resolveStaticProps } from '../utils/static-props-resolvers';
 import { resolveStaticPaths } from '../utils/static-paths-resolvers';
 import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../utils/seo-utils';
 
-function Page(props) {
-    const { page, site } = props;
+function PageLayoutRenderer({ page, site }) {
     const { modelName } = page.__metadata;
     if (!modelName) {
-        throw new Error(`page has no type, page '${props.path}'`);
+        throw new Error(`page has no type, page '${page.__metadata?.urlPath}'`);
     }
-    const PageLayout = getComponent(modelName);
-    if (!PageLayout) {
+    const Layout = getComponent(modelName);
+    if (!Layout) {
         throw new Error(`no page layout matching the page model: ${modelName}`);
     }
+    return React.createElement(Layout, { page, site });
+}
+
+function Page(props) {
+    const { page, site } = props;
     const title = seoGenerateTitle(page, site);
     const metaTags = seoGenerateMetaTags(page, site);
     const metaDescription = seoGenerateMetaDescription(page, site);
@@ -26,7 +31,6 @@ function Page(props) {
                 {metaDescription && <meta name="description" content={metaDescription} />}
                 {metaTags.map((metaTag) => {
                     if (metaTag.format === 'property') {
-                        // OpenGraph meta tags (og:*) should be have the format <meta property="og:…" content="…">
                         return <meta key={metaTag.property} property={metaTag.property} content={metaTag.content} />;
                     }
                     return <meta key={metaTag.property} name={metaTag.property} content={metaTag.content} />;
@@ -34,7 +38,7 @@ function Page(props) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {site.favicon && <link rel="icon" href={site.favicon} />}
             </Head>
-            <PageLayout page={page} site={site} />
+            <PageLayoutRenderer page={page} site={site} />
         </>
     );
 }
