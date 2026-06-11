@@ -2,6 +2,7 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+    output: "standalone",
     env: {
         stackbitPreview: process.env.STACKBIT_PREVIEW
     },
