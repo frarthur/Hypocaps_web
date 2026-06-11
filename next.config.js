@@ -2,7 +2,8 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-    output: "standalone",
+    // "standalone" for Docker, undefined (default) for Netlify
+    output: process.env.BUILD_TARGET === "docker" ? "standalone" : undefined,
     env: {
         stackbitPreview: process.env.STACKBIT_PREVIEW
     },

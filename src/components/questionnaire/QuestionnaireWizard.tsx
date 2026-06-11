@@ -89,7 +89,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/submit-questionnaire", {
+      const res = await fetch("/api/submit-questionnaire/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(answers),

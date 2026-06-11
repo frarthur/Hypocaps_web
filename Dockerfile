@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
+ENV BUILD_TARGET=docker
 RUN npm run build
 
 FROM node:20-alpine AS runner

@@ -64,3 +64,7 @@ ROADMAP.md
 stackbit.config.ts
 
 tmp*
+# Local Netlify folder
+.netlify
+
+.vercel
