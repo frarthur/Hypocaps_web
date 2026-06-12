@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 
     const { error } = await supabase
       .from("contact_messages")
-      .insert(payload as never);
+      .insert(payload);
 
     if (error) {
       console.error("Supabase insert error:", error);

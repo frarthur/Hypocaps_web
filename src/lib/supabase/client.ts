@@ -1,8 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "./database";
 
-let client: ReturnType<typeof createClient> | null = null;
+let client: SupabaseClient<Database> | null = null;
 
-export function getSupabase() {
+export function getSupabase(): SupabaseClient<Database> {
   if (client) return client;
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -14,7 +15,7 @@ export function getSupabase() {
     );
   }
 
-  client = createClient(supabaseUrl, supabaseKey, {
+  client = createClient<Database>(supabaseUrl, supabaseKey, {
     auth: { persistSession: false },
   });
 
