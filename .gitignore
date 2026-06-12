@@ -68,3 +68,4 @@ tmp*
 .netlify
 
 .vercel
+test-results/
