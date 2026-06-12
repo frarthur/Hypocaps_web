@@ -128,6 +128,13 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
       : "Thank you for your participation.";
   const progressLabel = lang === "fr" ? "/" : "of";
 
+  const stepTitle = typeof currentStep.title === "function" ? currentStep.title(answers) : currentStep.title;
+  const stepDesc = currentStep.description
+    ? typeof currentStep.description === "function"
+      ? currentStep.description(answers)
+      : currentStep.description
+    : undefined;
+
   if (submitted) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
@@ -163,10 +170,10 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
       {/* Step content */}
       <div key={currentStep.id} className="animate-fadeIn">
         <h2 className="mb-1 text-2xl font-bold text-dark">
-          {currentStep.title}
+          {stepTitle}
         </h2>
-        {currentStep.description && (
-          <p className="mb-6 text-dark/60">{currentStep.description}</p>
+        {stepDesc && (
+          <p className="mb-6 text-dark/60">{stepDesc}</p>
         )}
 
         <div className="space-y-6">
@@ -177,6 +184,7 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
               value={answers[field.id]}
               error={errors.find((e) => e.fieldId === field.id) || null}
               onChange={handleChange}
+              answers={answers}
             />
           ))}
         </div>

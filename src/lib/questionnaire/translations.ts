@@ -13,18 +13,29 @@ type Texts = {
   diabetes_type: { label: string; options: SelectOption[] };
   resucrageTitle: string;
   resucrageDesc: string;
+  resucrageTitleRelative: string;
+  resucrageDescRelative: string;
   uses_resucrage: { label: string; options: SelectOption[] };
+  uses_resucrage_relative: { label: string; options: SelectOption[] };
   resucrage_food_types: { label: string; options: SelectOption[] };
+  resucrage_food_types_relative: { label: string; options: SelectOption[] };
   resucrage_specialized: { label: string; options: SelectOption[] };
+  resucrage_specialized_relative: { label: string; options: SelectOption[] };
   resucrage_specialized_other: { label: string; placeholder: string };
+  resucrage_specialized_other_relative: { label: string; placeholder: string };
   has_resucrage_problems: { label: string; options: SelectOption[] };
+  has_resucrage_problems_relative: { label: string; options: SelectOption[] };
   resucrage_problems: { label: string; options: SelectOption[] };
+  resucrage_problems_relative: { label: string; options: SelectOption[] };
   resucrage_problems_other: { label: string; placeholder: string };
+  resucrage_problems_other_relative: { label: string; placeholder: string };
   resucrage_form_preference: { label: string; options: SelectOption[] };
+  resucrage_form_preference_relative: { label: string; options: SelectOption[] };
   opinionTitle: string;
   opinionDesc: string;
   should_be_reimbursed: { label: string; options: SelectOption[] };
   would_try_neutral_taste: { label: string; options: SelectOption[] };
+  would_try_neutral_taste_relative: { label: string; options: SelectOption[] };
   required: string;
   select: string;
   pageTitle: string;
@@ -82,6 +93,9 @@ const fr: Texts = {
   resucrageTitle: "Habitudes de resucrage",
   resucrageDesc:
     "Ces questions concernent votre expérience personnelle avec le resucrage.",
+  resucrageTitleRelative: "Votre proche et le resucrage",
+  resucrageDescRelative:
+    "Ces questions concernent la personne diabétique que vous connaissez.",
   uses_resucrage: {
     label: "Utilisez-vous des produits de resucrage ?",
     options: [
@@ -90,8 +104,31 @@ const fr: Texts = {
       { value: "never", label: "Non, jamais" },
     ],
   },
+  uses_resucrage_relative: {
+    label: "La personne que vous connaissez utilise-t-elle des produits de resucrage ?",
+    options: [
+      { value: "always", label: "Oui, toujours" },
+      { value: "sometimes", label: "Parfois" },
+      { value: "never", label: "Non, jamais" },
+      { value: "dont_know", label: "Je ne sais pas" },
+    ],
+  },
   resucrage_food_types: {
     label: "Quels aliments génériques utilisez-vous pour vous resucrer ?",
+    options: [
+      { value: "sugar_cubes", label: "Sucre (carré / buchette)" },
+      { value: "juice_box", label: "Briquette de jus" },
+      { value: "honey", label: "Miel" },
+      { value: "jam", label: "Confiture" },
+      { value: "fruit", label: "Fruit" },
+      { value: "candy", label: "Bonbons" },
+      { value: "soda", label: "Soda sucré" },
+      { value: "compote", label: "Compote" },
+      { value: "cereal_bar", label: "Barre de céréale" },
+    ],
+  },
+  resucrage_food_types_relative: {
+    label: "Quels aliments génériques cette personne utilise-t-elle pour se resucrer ?",
     options: [
       { value: "sugar_cubes", label: "Sucre (carré / buchette)" },
       { value: "juice_box", label: "Briquette de jus" },
@@ -112,8 +149,20 @@ const fr: Texts = {
       { value: "other", label: "Autre" },
     ],
   },
+  resucrage_specialized_relative: {
+    label: "Quels produits spécialisés cette personne utilise-t-elle ?",
+    options: [
+      { value: "gels", label: "Gels sucrés" },
+      { value: "pastilles", label: "Pastilles sucrées" },
+      { value: "other", label: "Autre" },
+    ],
+  },
   resucrage_specialized_other: {
     label: "Précisez votre autre produit spécialisé :",
+    placeholder: "Écrivez le nom du produit...",
+  },
+  resucrage_specialized_other_relative: {
+    label: "Précisez l'autre produit spécialisé :",
     placeholder: "Écrivez le nom du produit...",
   },
   has_resucrage_problems: {
@@ -123,6 +172,16 @@ const fr: Texts = {
       { value: "yes", label: "Oui" },
       { value: "no", label: "Non" },
       { value: "sometimes", label: "Parfois" },
+    ],
+  },
+  has_resucrage_problems_relative: {
+    label:
+      "Cette personne rencontre-t-elle des problèmes liés à ses solutions de resucrage ?",
+    options: [
+      { value: "yes", label: "Oui" },
+      { value: "no", label: "Non" },
+      { value: "sometimes", label: "Parfois" },
+      { value: "dont_know", label: "Je ne sais pas" },
     ],
   },
   resucrage_problems: {
@@ -135,12 +194,38 @@ const fr: Texts = {
       { value: "other", label: "Autre" },
     ],
   },
+  resucrage_problems_relative: {
+    label: "Quels types de problèmes cette personne rencontre-t-elle ?",
+    options: [
+      { value: "packaging", label: "Usure de l'emballage" },
+      { value: "transport", label: "Transport compliqué" },
+      { value: "forget", label: "Oubli" },
+      { value: "mess", label: "Salissures" },
+      { value: "other", label: "Autre" },
+    ],
+  },
   resucrage_problems_other: {
     label: "Précisez votre autre problème :",
     placeholder: "Écrivez...",
   },
+  resucrage_problems_other_relative: {
+    label: "Précisez l'autre problème :",
+    placeholder: "Écrivez...",
+  },
   resucrage_form_preference: {
     label: "Sous quelle forme aimeriez-vous vous resucrer ?",
+    options: [
+      { value: "liquid", label: "Liquide (comme l'aspirine)" },
+      { value: "solid", label: "Solide (comme un Doliprane)" },
+      {
+        value: "gel",
+        label: "Gel (type Gaviscon/compote avec une texture plus adaptée)",
+      },
+      { value: "gummies", label: "Gummies (comme les ours Haribo)" },
+    ],
+  },
+  resucrage_form_preference_relative: {
+    label: "Sous quelle forme penseriez-vous que cette personne aimerait se resucrer ?",
     options: [
       { value: "liquid", label: "Liquide (comme l'aspirine)" },
       { value: "solid", label: "Solide (comme un Doliprane)" },
@@ -170,6 +255,16 @@ const fr: Texts = {
       { value: "yes", label: "Oui" },
       { value: "no", label: "Non" },
       { value: "maybe", label: "Peut-être" },
+    ],
+  },
+  would_try_neutral_taste_relative: {
+    label:
+      "Pensez-vous que cette personne serait prête à adopter une solution de resucrage au goût neutre ?",
+    options: [
+      { value: "yes", label: "Oui" },
+      { value: "no", label: "Non" },
+      { value: "maybe", label: "Peut-être" },
+      { value: "dont_know", label: "Je ne sais pas" },
     ],
   },
   required: "Veuillez sélectionner une option",
@@ -228,6 +323,9 @@ const en: Texts = {
   resucrageTitle: "Rescue habits",
   resucrageDesc:
     "These questions are about your personal experience with glucose rescue products.",
+  resucrageTitleRelative: "Your relative and glucose rescue",
+  resucrageDescRelative:
+    "These questions are about the diabetic person you know.",
   uses_resucrage: {
     label: "Do you use glucose rescue products?",
     options: [
@@ -236,8 +334,31 @@ const en: Texts = {
       { value: "never", label: "No, never" },
     ],
   },
+  uses_resucrage_relative: {
+    label: "Does the person you know use glucose rescue products?",
+    options: [
+      { value: "always", label: "Yes, always" },
+      { value: "sometimes", label: "Sometimes" },
+      { value: "never", label: "No, never" },
+      { value: "dont_know", label: "I don't know" },
+    ],
+  },
   resucrage_food_types: {
     label: "Which generic foods do you use to raise your blood sugar?",
+    options: [
+      { value: "sugar_cubes", label: "Sugar cubes" },
+      { value: "juice_box", label: "Juice box" },
+      { value: "honey", label: "Honey" },
+      { value: "jam", label: "Jam" },
+      { value: "fruit", label: "Fruit" },
+      { value: "candy", label: "Candy" },
+      { value: "soda", label: "Sugary soda" },
+      { value: "compote", label: "Apple sauce" },
+      { value: "cereal_bar", label: "Cereal bar" },
+    ],
+  },
+  resucrage_food_types_relative: {
+    label: "Which generic foods does this person use to raise their blood sugar?",
     options: [
       { value: "sugar_cubes", label: "Sugar cubes" },
       { value: "juice_box", label: "Juice box" },
@@ -258,8 +379,20 @@ const en: Texts = {
       { value: "other", label: "Other" },
     ],
   },
+  resucrage_specialized_relative: {
+    label: "Which specialized products does this person use?",
+    options: [
+      { value: "gels", label: "Glucose gels" },
+      { value: "pastilles", label: "Glucose tablets" },
+      { value: "other", label: "Other" },
+    ],
+  },
   resucrage_specialized_other: {
     label: "Please specify your other specialized product:",
+    placeholder: "Write the product name...",
+  },
+  resucrage_specialized_other_relative: {
+    label: "Please specify the other specialized product:",
     placeholder: "Write the product name...",
   },
   has_resucrage_problems: {
@@ -268,6 +401,15 @@ const en: Texts = {
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },
       { value: "sometimes", label: "Sometimes" },
+    ],
+  },
+  has_resucrage_problems_relative: {
+    label: "Does this person encounter problems with their rescue solutions?",
+    options: [
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+      { value: "sometimes", label: "Sometimes" },
+      { value: "dont_know", label: "I don't know" },
     ],
   },
   resucrage_problems: {
@@ -280,12 +422,38 @@ const en: Texts = {
       { value: "other", label: "Other" },
     ],
   },
+  resucrage_problems_relative: {
+    label: "What kind of problems does this person encounter?",
+    options: [
+      { value: "packaging", label: "Packaging wear" },
+      { value: "transport", label: "Difficult to carry" },
+      { value: "forget", label: "Forgetting them" },
+      { value: "mess", label: "Messy" },
+      { value: "other", label: "Other" },
+    ],
+  },
   resucrage_problems_other: {
     label: "Please specify your other problem:",
     placeholder: "Write...",
   },
+  resucrage_problems_other_relative: {
+    label: "Please specify the other problem:",
+    placeholder: "Write...",
+  },
   resucrage_form_preference: {
     label: "In what form would you like to take your rescue product?",
+    options: [
+      { value: "liquid", label: "Liquid (like aspirin)" },
+      { value: "solid", label: "Solid (like a tablet)" },
+      {
+        value: "gel",
+        label: "Gel (like Gaviscon/apple sauce with adapted texture)",
+      },
+      { value: "gummies", label: "Gummies (like Haribo bears)" },
+    ],
+  },
+  resucrage_form_preference_relative: {
+    label: "In what form do you think this person would like to take their rescue product?",
     options: [
       { value: "liquid", label: "Liquid (like aspirin)" },
       { value: "solid", label: "Solid (like a tablet)" },
@@ -315,6 +483,16 @@ const en: Texts = {
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },
       { value: "maybe", label: "Maybe" },
+    ],
+  },
+  would_try_neutral_taste_relative: {
+    label:
+      "Do you think this person would be willing to adopt a neutral-tasting rescue product?",
+    options: [
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+      { value: "maybe", label: "Maybe" },
+      { value: "dont_know", label: "I don't know" },
     ],
   },
   required: "Please select an option",
@@ -386,28 +564,28 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
     },
     {
       id: "resucrage_habits",
-      title: t.resucrageTitle,
-      description: t.resucrageDesc,
+      title: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrageTitleRelative : t.resucrageTitle,
+      description: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrageDescRelative : t.resucrageDesc,
       showIf: (answers) => {
         const c = answers.concern_diabetes;
-        return c === "yes" || c === "both";
+        return c === "yes" || c === "both" || c === "relative";
       },
       fields: [
         {
           id: "uses_resucrage",
-          type: "select",
-          label: t.uses_resucrage.label,
+          type: "select" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.uses_resucrage_relative.label : t.uses_resucrage.label,
+          options: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.uses_resucrage_relative.options : t.uses_resucrage.options,
           showIf: (answers) => {
             const c = answers.concern_diabetes;
-            return c === "yes" || c === "both";
+            return c === "yes" || c === "both" || c === "relative";
           },
-          options: t.uses_resucrage.options,
           validation: [{ type: "required", message: t.required }],
         },
         {
           id: "resucrage_food_types",
-          type: "checkbox",
-          label: t.resucrage_food_types.label,
+          type: "checkbox" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_food_types_relative.label : t.resucrage_food_types.label,
           showIf: (answers) => {
             const use = answers.uses_resucrage;
             return use === "always" || use === "sometimes";
@@ -416,8 +594,8 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         },
         {
           id: "resucrage_specialized",
-          type: "checkbox",
-          label: t.resucrage_specialized.label,
+          type: "checkbox" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_specialized_relative.label : t.resucrage_specialized.label,
           showIf: (answers) => {
             const use = answers.uses_resucrage;
             return use === "always" || use === "sometimes";
@@ -426,9 +604,9 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         },
         {
           id: "resucrage_specialized_other",
-          type: "text",
-          label: t.resucrage_specialized_other.label,
-          placeholder: t.resucrage_specialized_other.placeholder,
+          type: "text" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_specialized_other_relative.label : t.resucrage_specialized_other.label,
+          placeholder: t.resucrage_specialized_other_relative.placeholder,
           showIf: (answers) => {
             const val = answers.resucrage_specialized;
             return Array.isArray(val) && val.includes("other");
@@ -436,18 +614,18 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         },
         {
           id: "has_resucrage_problems",
-          type: "select",
-          label: t.has_resucrage_problems.label,
+          type: "select" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.has_resucrage_problems_relative.label : t.has_resucrage_problems.label,
+          options: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.has_resucrage_problems_relative.options : t.has_resucrage_problems.options,
           showIf: (answers) => {
             const use = answers.uses_resucrage;
             return use === "always" || use === "sometimes";
           },
-          options: t.has_resucrage_problems.options,
         },
         {
           id: "resucrage_problems",
-          type: "checkbox",
-          label: t.resucrage_problems.label,
+          type: "checkbox" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_problems_relative.label : t.resucrage_problems.label,
           showIf: (answers) => {
             const p = answers.has_resucrage_problems;
             return p === "yes" || p === "sometimes";
@@ -456,9 +634,9 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         },
         {
           id: "resucrage_problems_other",
-          type: "text",
-          label: t.resucrage_problems_other.label,
-          placeholder: t.resucrage_problems_other.placeholder,
+          type: "text" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_problems_other_relative.label : t.resucrage_problems_other.label,
+          placeholder: t.resucrage_problems_other_relative.placeholder,
           showIf: (answers) => {
             const val = answers.resucrage_problems;
             return Array.isArray(val) && val.includes("other");
@@ -466,11 +644,11 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         },
         {
           id: "resucrage_form_preference",
-          type: "select",
-          label: t.resucrage_form_preference.label,
+          type: "select" as const,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_form_preference_relative.label : t.resucrage_form_preference.label,
           showIf: (answers) => {
             const c = answers.concern_diabetes;
-            return c === "yes" || c === "both";
+            return c === "yes" || c === "both" || c === "relative";
           },
           options: t.resucrage_form_preference.options,
         },
@@ -498,12 +676,12 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "would_try_neutral_taste",
           type: "select",
-          label: t.would_try_neutral_taste.label,
+          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.would_try_neutral_taste_relative.label : t.would_try_neutral_taste.label,
+          options: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.would_try_neutral_taste_relative.options : t.would_try_neutral_taste.options,
           showIf: (answers) => {
             const c = answers.concern_diabetes;
-            return c === "yes" || c === "both";
+            return c === "yes" || c === "both" || c === "relative";
           },
-          options: t.would_try_neutral_taste.options,
         },
       ],
     },

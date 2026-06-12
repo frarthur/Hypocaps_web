@@ -14,7 +14,7 @@ export interface SelectOption {
 
 export interface BaseField {
   id: string;
-  label: string;
+  label: string | ((answers: Record<string, string | string[]>) => string);
   showIf?: ShowIfFn;
   validation?: ValidationRule[];
   inputMode?: "text" | "numeric" | "email" | "tel";
@@ -28,7 +28,7 @@ export interface TextField extends BaseField {
 
 export interface SelectField extends BaseField {
   type: "select";
-  options: SelectOption[];
+  options: SelectOption[] | ((answers: Record<string, string | string[]>) => SelectOption[]);
   placeholder?: string;
 }
 
@@ -46,8 +46,8 @@ export type Field = TextField | SelectField | CheckboxField | TextareaField;
 
 export interface Step {
   id: string;
-  title: string;
-  description?: string;
+  title: string | ((answers: Record<string, string | string[]>) => string);
+  description?: string | ((answers: Record<string, string | string[]>) => string);
   showIf?: ShowIfFn;
   fields: Field[];
 }

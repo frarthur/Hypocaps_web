@@ -7,9 +7,11 @@ interface FieldRendererProps {
   value: string | string[];
   error: ValidationError | null;
   onChange: (id: string, value: string | string[]) => void;
+  answers: Record<string, string | string[]>;
 }
 
-export function FieldRenderer({ field, value, error, onChange }: FieldRendererProps) {
+export function FieldRenderer({ field, value, error, onChange, answers }: FieldRendererProps) {
+  const label = typeof field.label === "function" ? field.label(answers) : field.label;
   const baseClass =
     "w-full rounded-lg border bg-white px-4 py-3 text-dark placeholder-dark/50 transition focus:outline-none focus:ring-2 focus:ring-primary/50";
   const errorClass = error ? "border-red-500 ring-1 ring-red-500" : "border-neutralAlt";
@@ -20,7 +22,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
       return (
         <div>
           <label htmlFor={field.id} className="mb-1.5 block font-medium text-dark">
-            {field.label}
+            {label}
           </label>
           <input
             id={field.id}
@@ -46,7 +48,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
       return (
         <div>
           <label htmlFor={field.id} className="mb-1.5 block font-medium text-dark">
-            {field.label}
+            {label}
           </label>
           <select
             id={field.id}
@@ -57,7 +59,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
             <option value="">
               {field.placeholder || "Sélectionnez..."}
             </option>
-            {field.options.map((opt) => (
+            {(typeof field.options === "function" ? field.options(answers) : field.options).map((opt) => (
               <option key={opt.value} value={opt.value}>
                 {opt.label}
               </option>
@@ -72,7 +74,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
       return (
         <fieldset>
           <legend className="mb-1.5 block font-medium text-dark">
-            {field.label}
+            {label}
           </legend>
           <div className="space-y-2">
             {field.options.map((opt) => {
@@ -107,7 +109,7 @@ export function FieldRenderer({ field, value, error, onChange }: FieldRendererPr
       return (
         <div>
           <label htmlFor={field.id} className="mb-1.5 block font-medium text-dark">
-            {field.label}
+            {label}
           </label>
           <textarea
             id={field.id}

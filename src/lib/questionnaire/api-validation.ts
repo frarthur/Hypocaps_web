@@ -8,9 +8,9 @@ export const ALLOWED_DIABETES = new Set([
   "type1", "type1_5", "type2", "type3c", "gestationnel",
   "MODY", "CFRD", "prediabete", "MIDD", "steroid_induced", "other", "dont_know",
 ]);
-export const ALLOWED_RESUCRAGE = new Set(["always", "sometimes", "never"]);
-export const ALLOWED_PROBLEM_SEVERITY = new Set(["yes", "no", "sometimes"]);
-export const ALLOWED_TASTE = new Set(["yes", "no", "maybe"]);
+export const ALLOWED_RESUCRAGE = new Set(["always", "sometimes", "never", "dont_know"]);
+export const ALLOWED_PROBLEM_SEVERITY = new Set(["yes", "no", "sometimes", "dont_know"]);
+export const ALLOWED_TASTE = new Set(["yes", "no", "maybe", "dont_know"]);
 export const ALLOWED_FORM = new Set(["liquid", "solid", "gel", "gummies"]);
 
 export function isString(v: unknown): v is string {
