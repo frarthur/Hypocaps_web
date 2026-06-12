@@ -155,6 +155,45 @@ describe("validateQuestionnaire", () => {
       expect.arrayContaining([{ field: "would_try_neutral_taste", message: "Valeur invalide" }])
     );
   });
+  it("accepts dont_know for uses_resucrage", () => {
+    const errors = validateQuestionnaire({
+      concern_diabetes: "relative",
+      source: "search",
+      should_be_reimbursed: "yes",
+      uses_resucrage: "dont_know",
+    });
+    expect(errors).toHaveLength(0);
+  });
+
+  it("accepts dont_know for has_resucrage_problems", () => {
+    const errors = validateQuestionnaire({
+      concern_diabetes: "relative",
+      source: "search",
+      should_be_reimbursed: "yes",
+      uses_resucrage: "always",
+      has_resucrage_problems: "dont_know",
+    });
+    expect(errors).toHaveLength(0);
+  });
+
+  it("accepts dont_know for would_try_neutral_taste", () => {
+    const errors = validateQuestionnaire({
+      concern_diabetes: "relative",
+      source: "search",
+      should_be_reimbursed: "yes",
+      would_try_neutral_taste: "dont_know",
+    });
+    expect(errors).toHaveLength(0);
+  });
+
+  it("accepts relative concern_diabetes as valid", () => {
+    const errors = validateQuestionnaire({
+      concern_diabetes: "relative",
+      source: "search",
+      should_be_reimbursed: "yes",
+    });
+    expect(errors).toHaveLength(0);
+  });
 });
 
 describe("buildPayload", () => {
@@ -179,5 +218,20 @@ describe("buildPayload", () => {
     });
     expect(payload.first_name).toBe("John");
     expect(payload.concern_diabetes).toBe("yes");
+  });
+
+  it("handles dont_know values", () => {
+    const payload = buildPayload({
+      concern_diabetes: "relative",
+      source: "search",
+      should_be_reimbursed: "dont_know",
+      uses_resucrage: "dont_know",
+      has_resucrage_problems: "dont_know",
+      would_try_neutral_taste: "dont_know",
+    });
+    expect(payload.should_be_reimbursed).toBe("dont_know");
+    expect(payload.uses_resucrage).toBe("dont_know");
+    expect(payload.has_resucrage_problems).toBe("dont_know");
+    expect(payload.would_try_neutral_taste).toBe("dont_know");
   });
 });
