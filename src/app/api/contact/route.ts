@@ -1,10 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "../../../lib/supabase/client";
 import { validateContact, buildPayload } from "../../../lib/contact/api-validation";
+import { rateLimit } from "../../../lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  const { allowed, retryAfter } = rateLimit(`contact:${ip}`, 5, 60_000);
+
+  if (!allowed) {
+    return NextResponse.json(
+      { success: false, message: `Trop de requêtes. Réessayez dans ${retryAfter}s.` },
+      { status: 429, headers: { "Retry-After": String(retryAfter) } }
+    );
+  }
+
   try {
     const body: Record<string, unknown> = await request.json();
 
