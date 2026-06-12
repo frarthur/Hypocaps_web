@@ -1,5 +1,6 @@
 import "../css/main.css";
 import SiteLayout from "../components/questionnaire/SiteLayout";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Questionnaire Hypocaps",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className="bg-light text-dark antialiased">
         <SiteLayout>{children}</SiteLayout>
+        <Analytics />
       </body>
     </html>
   );
