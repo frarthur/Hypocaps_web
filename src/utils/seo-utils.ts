@@ -1,6 +1,35 @@
-// @ts-nocheck
-export function seoGenerateMetaTags(page, site) {
-    let pageMetaTags = {};
+export interface SeoMetaTag {
+    property: string;
+    content: string;
+    format: 'property' | 'name';
+}
+
+interface SiteConfig {
+    defaultMetaTags?: { property: string; content: string }[];
+    titleSuffix?: string;
+    defaultSocialImage?: string;
+    env?: { URL?: string };
+    [key: string]: unknown;
+}
+
+interface PageSeo {
+    metaTitle?: string;
+    metaDescription?: string;
+    socialImage?: string;
+    addTitleSuffix?: boolean;
+    metaTags?: { property: string; content: string }[];
+}
+
+interface Page {
+    __metadata?: { modelName?: string };
+    title?: string;
+    excerpt?: string;
+    featuredImage?: { url?: string };
+    seo?: PageSeo;
+}
+
+export function seoGenerateMetaTags(page: Page, site: SiteConfig): SeoMetaTag[] {
+    let pageMetaTags: Record<string, string> = {};
 
     if (site.defaultMetaTags?.length) {
         site.defaultMetaTags.forEach((metaTag) => {
@@ -14,7 +43,7 @@ export function seoGenerateMetaTags(page, site) {
     pageMetaTags = {
         ...pageMetaTags,
         ...(seoTitle && { 'og:title': seoTitle }),
-        ...(ogImage && { 'og:image': ogImage })
+        ...(ogImage && { 'og:image': ogImage }),
     };
 
     if (page.seo?.metaTags?.length) {
@@ -23,13 +52,13 @@ export function seoGenerateMetaTags(page, site) {
         });
     }
 
-    let metaTags = [];
+    const metaTags: SeoMetaTag[] = [];
     Object.keys(pageMetaTags).forEach((key) => {
         if (pageMetaTags[key] !== null) {
             metaTags.push({
                 property: key,
                 content: pageMetaTags[key],
-                format: key.startsWith('og') ? 'property' : 'name'
+                format: key.startsWith('og') ? 'property' : 'name',
             });
         }
     });
@@ -37,53 +66,46 @@ export function seoGenerateMetaTags(page, site) {
     return metaTags;
 }
 
-export function seoGenerateTitle(page, site) {
+export function seoGenerateTitle(page: Page, site: SiteConfig): string {
     let title = page.seo?.metaTitle ? page.seo?.metaTitle : page.title;
     if (site.titleSuffix && page.seo?.addTitleSuffix !== false) {
         title = `${title} - ${site.titleSuffix}`;
     }
-    return title;
+    return title ?? '';
 }
 
-export function seoGenerateMetaDescription(page, site) {
-    let metaDescription = null;
-    // Blog posts use the exceprt as the default meta description
-    if (page.__metadata.modelName === 'PostLayout') {
-        metaDescription = page.excerpt;
+export function seoGenerateMetaDescription(page: Page, _site: SiteConfig): string | null {
+    let metaDescription: string | null = null;
+    if (page.__metadata?.modelName === 'PostLayout') {
+        metaDescription = page.excerpt ?? null;
     }
-    // page metaDescription field overrides all others
     if (page.seo?.metaDescription) {
         metaDescription = page.seo?.metaDescription;
     }
     return metaDescription;
 }
 
-export function seoGenerateOgImage(page, site) {
-    let ogImage = null;
-    // Use the sites default og:image field
+export function seoGenerateOgImage(page: Page, site: SiteConfig): string | null {
+    let ogImage: string | null = null;
     if (site.defaultSocialImage) {
         ogImage = site.defaultSocialImage;
     }
-    // Blog posts use the featuredImage as the default og:image
-    if (page.__metadata.modelName === 'PostLayout') {
+    if (page.__metadata?.modelName === 'PostLayout') {
         if (page.featuredImage?.url) {
             ogImage = page.featuredImage.url;
         }
     }
-    // page socialImage field overrides all others
     if (page.seo?.socialImage) {
         ogImage = page.seo?.socialImage;
     }
 
-    // ogImage should use an absolute URL. Get the Netlify domain URL from the Netlify environment variable process.env.URL
     const domainUrl = site.env?.URL ? site.env.URL : null;
 
     if (ogImage) {
         if (domainUrl) {
             return domainUrl + ogImage;
-        } else {
-            return ogImage;
         }
+        return ogImage;
     }
     return null;
 }
