@@ -547,6 +547,7 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
           showIf: (answers) =>
             answers.concern_diabetes !== undefined && answers.concern_diabetes !== "no",
           options: t.diabetes_type.options,
+          validation: [{ type: "required", message: t.required }],
         },
       ],
     },
@@ -556,10 +557,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         answers.concern_diabetes === "relative" ? t.resucrageTitleRelative : t.resucrageTitle,
       description: (answers: Record<string, string | string[]>) =>
         answers.concern_diabetes === "relative" ? t.resucrageDescRelative : t.resucrageDesc,
-      showIf: (answers) => {
-        const c = answers.concern_diabetes;
-        return c === "yes" || c === "both" || c === "relative";
-      },
+        showIf: (answers) => {
+          const c = answers.concern_diabetes;
+          return c === "yes" || c === "both" || c === "relative";
+        },
       fields: [
         {
           id: "uses_resucrage",
@@ -671,6 +672,7 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
             return c === "yes" || c === "both" || c === "relative";
           },
           options: t.resucrage_form_preference.options,
+          validation: [{ type: "required", message: t.required }],
         },
       ],
     },
@@ -708,6 +710,7 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
             const c = answers.concern_diabetes;
             return c === "yes" || c === "both" || c === "relative";
           },
+          validation: [{ type: "required", message: t.required }],
         },
       ],
     },
