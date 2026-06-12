@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-# Netlify Visual Editor (formerly Stackbit)
+# Stackbit
 .stackbit/cache
 .cache
 
@@ -44,7 +44,7 @@ yarn-error.log*
 .idea
 .vscode
 
-# Netlify Visual Editor (Stackbit) auto-generated models
+# Stackbit auto-generated models
 sources/
 
 # Dev container
@@ -60,12 +60,10 @@ renovate.json
 ROADMAP.md
 .gitmessage
 
-# Stackbit / Netlify Visual Editor config (same as sources/)
+# Stackbit config (same as sources/)
 stackbit.config.ts
 
 tmp*
-# Local Netlify folder
-.netlify
-
+# Vercel
 .vercel
 test-results/

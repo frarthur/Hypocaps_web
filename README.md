@@ -18,8 +18,8 @@ Hypocaps est un projet visant à rendre la vie des personnes atteintes d'hypogly
 
 ## Infrastructure
 
-- **Hébergement** — Netlify (déploiement continu depuis GitHub, variables d'env via Netlify UI)
-- **Domaine** — OVH (hypocaps.fr, DNS pointant vers Netlify)
+- **Hébergement** — Vercel (déploiement continu depuis GitHub, variables d'env via Vercel UI)
+- **Domaine** — OVH (hypocaps.fr, DNS pointant vers Vercel)
 - **Base de données** — Supabase Cloud (deux tables : `questionnaire_responses`, `contact_messages`)
 - **Email** — SMTP via OVH / ProtonMail avec mot de passe d'application
 

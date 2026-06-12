@@ -51,7 +51,7 @@ Checklist de requis pour un projet Next.js valorisant sur GitHub / CV.
 **Pourquoi ?** Ça garantit que ton code est toujours valide avant d'arriver sur GitHub. Un recruteur voit le petit badge vert "passing" sur ton repo, et ça prouve que tu maîtrises les bonnes pratiques d'ingénierie logicielle. Sans ça, tu peux merger du code cassé sans t'en rendre compte.
 
 - [x] **GitHub Actions** — lint + test à chaque push — `.github/workflows/ci.yml` ✅
-- [ ] **Déploiement automatique Netlify** — le déploiement est déjà configuré côté Netlify, mais on pourrait ajouter un "gate" CI qui bloque le déploiement si les tests échouent
+- [ ] **Déploiement automatique Vercel** — le déploiement est déjà configuré côté Vercel, mais on pourrait ajouter un "gate" CI qui bloque le déploiement si les tests échouent
 
 ---
 
@@ -154,4 +154,4 @@ Checklist de requis pour un projet Next.js valorisant sur GitHub / CV.
 | Prettier 3 | Formatage |
 | Nodemailer | Emails transactionnels |
 | Algolia | Recherche plein texte |
-| Netlify | Hébergement / déploiement |
+| Vercel | Hébergement / déploiement |
