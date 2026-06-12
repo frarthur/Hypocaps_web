@@ -28,20 +28,25 @@ describe("getQuestionnaire — relative path", () => {
 
   it("uses relative title when concern_diabetes is relative", () => {
     const step = q.find((s) => s.id === "resucrage_habits")!;
-    const title = typeof step.title === "function" ? step.title({ concern_diabetes: "relative" }) : step.title;
+    const title =
+      typeof step.title === "function" ? step.title({ concern_diabetes: "relative" }) : step.title;
     expect(title).toBe("Votre proche et le resucrage");
   });
 
   it("uses personal title when concern_diabetes is yes", () => {
     const step = q.find((s) => s.id === "resucrage_habits")!;
-    const title = typeof step.title === "function" ? step.title({ concern_diabetes: "yes" }) : step.title;
+    const title =
+      typeof step.title === "function" ? step.title({ concern_diabetes: "yes" }) : step.title;
     expect(title).toBe("Habitudes de resucrage");
   });
 
   it("uses_resucrage label changes for relative", () => {
     const step = q.find((s) => s.id === "resucrage_habits")!;
     const field = step.fields.find((f) => f.id === "uses_resucrage")!;
-    const label = typeof field.label === "function" ? field.label({ concern_diabetes: "relative" }) : field.label;
+    const label =
+      typeof field.label === "function"
+        ? field.label({ concern_diabetes: "relative" })
+        : field.label;
     expect(label).toContain("personne que vous connaissez");
   });
 
@@ -50,7 +55,10 @@ describe("getQuestionnaire — relative path", () => {
     const field = step.fields.find((f) => f.id === "uses_resucrage")!;
     expect(field.type).toBe("select");
     if (field.type === "select") {
-      const options = typeof field.options === "function" ? field.options({ concern_diabetes: "relative" }) : field.options;
+      const options =
+        typeof field.options === "function"
+          ? field.options({ concern_diabetes: "relative" })
+          : field.options;
       expect(options.map((o) => o.value)).toContain("dont_know");
     }
   });
@@ -65,7 +73,10 @@ describe("getQuestionnaire — relative path", () => {
   it("would_try_neutral_taste label changes for relative", () => {
     const step = q.find((s) => s.id === "general_opinion")!;
     const field = step.fields.find((f) => f.id === "would_try_neutral_taste")!;
-    const label = typeof field.label === "function" ? field.label({ concern_diabetes: "relative" }) : field.label;
+    const label =
+      typeof field.label === "function"
+        ? field.label({ concern_diabetes: "relative" })
+        : field.label;
     expect(label).toContain("cette personne");
   });
 });

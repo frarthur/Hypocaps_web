@@ -1,10 +1,10 @@
 export interface SvgProps {
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
 }
 
 export interface StackbitSelfStyles {
-  flexDirection?: 'row' | 'row-reverse' | 'col' | 'col-reverse';
+  flexDirection?: "row" | "row-reverse" | "col" | "col-reverse";
   alignItems?: string;
   justifyContent?: string;
   margin?: Record<string, number | string> | string[];
@@ -35,14 +35,14 @@ export interface BackgroundImageProps {
 export interface ActionProps {
   elementId?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   label?: string;
   altText?: string;
   url?: string;
   showIcon?: boolean;
   icon?: string;
-  iconPosition?: 'left' | 'right';
-  style?: 'primary' | 'secondary';
+  iconPosition?: "left" | "right";
+  style?: "primary" | "secondary";
   __metadata?: {
     modelName?: string;
   };
@@ -53,7 +53,7 @@ export interface BadgeProps {
   color?: string;
   styles?: StackbitStyles;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
 }
 
 export interface TitleBlockProps {
@@ -61,7 +61,7 @@ export interface TitleBlockProps {
   color?: string;
   styles?: StackbitStyles;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
 }
 
 export interface ImageBlockProps {
@@ -71,7 +71,7 @@ export interface ImageBlockProps {
   url?: string;
   altText?: string;
   styles?: StackbitStyles;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
 }
 
 export interface LinkProps {
@@ -83,7 +83,7 @@ export interface LinkProps {
 export interface SocialProps {
   elementId?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   altText?: string;
   url?: string;
   icon?: string;
@@ -102,9 +102,9 @@ export interface SectionProps {
 export interface VideoBlockProps {
   elementId?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   url?: string;
-  aspectRatio?: '16:9' | '4:3';
+  aspectRatio?: "16:9" | "4:3";
   styles?: StackbitStyles;
   autoplay?: boolean;
   loop?: boolean;
@@ -186,7 +186,7 @@ export interface FormBlockProps {
   submitButton?: any;
   className?: string;
   styles?: StackbitStyles;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
 }
 
 export interface FormControlProps {
@@ -195,11 +195,11 @@ export interface FormControlProps {
   hideLabel?: boolean;
   isRequired?: boolean;
   placeholder?: string;
-  width?: 'full' | '1/2';
+  width?: "full" | "1/2";
   options?: string[];
   defaultValue?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   styles?: StackbitStyles;
   __metadata?: {
     modelName?: string;
@@ -209,12 +209,12 @@ export interface FormControlProps {
 export interface SubmitButtonProps {
   elementId?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   label?: string;
   showIcon?: boolean;
   icon?: string;
-  iconPosition?: 'left' | 'right';
-  style?: 'primary' | 'secondary';
+  iconPosition?: "left" | "right";
+  style?: "primary" | "secondary";
   disabled?: boolean;
 }
 
@@ -241,7 +241,7 @@ export interface FeaturedItemsSectionProps {
 export interface FeaturedItemProps {
   elementId?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   title?: string;
   subtitle?: string;
   tagline?: string;
@@ -329,7 +329,7 @@ export interface FeaturedPeopleSectionProps {
 export interface FeaturedItemToggleProps {
   elementId?: string;
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   title?: string;
   subtitle?: string;
   text?: string;
@@ -349,7 +349,7 @@ export interface LayoutProps {
 
 export interface PostFeedItemProps {
   className?: string;
-  'data-sb-field-path'?: string;
+  "data-sb-field-path"?: string;
   post: any;
   showThumbnail?: boolean;
   showExcerpt?: boolean;

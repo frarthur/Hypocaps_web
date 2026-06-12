@@ -56,10 +56,11 @@ test.describe("Contact form", () => {
     if (await submitBtn.isVisible()) {
       await submitBtn.click();
       // After submission, form shows success (green) or error (red)
-      await expect(page.locator(".text-green-600, .text-red-500").first()).toBeVisible({ timeout: 15000 });
+      await expect(page.locator(".text-green-600, .text-red-500").first()).toBeVisible({
+        timeout: 15000,
+      });
     }
   });
-
 });
 
 test.describe("Homepage", () => {

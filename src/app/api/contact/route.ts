@@ -10,19 +10,14 @@ export async function POST(request: NextRequest) {
 
     const validationError = validateContact(body);
     if (validationError) {
-      return NextResponse.json(
-        { success: false, message: validationError },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, message: validationError }, { status: 400 });
     }
 
     const supabase = getSupabase();
 
     const payload = buildPayload(body);
 
-    const { error } = await supabase
-      .from("contact_messages")
-      .insert(payload);
+    const { error } = await supabase.from("contact_messages").insert(payload);
 
     if (error) {
       console.error("Supabase insert error:", error);
@@ -32,11 +27,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (
-      process.env.SMTP_HOST &&
-      process.env.SMTP_USER &&
-      process.env.SMTP_PASS
-    ) {
+    if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
       try {
         const nodemailer = await import("nodemailer");
         const transporter = nodemailer.default.createTransport({

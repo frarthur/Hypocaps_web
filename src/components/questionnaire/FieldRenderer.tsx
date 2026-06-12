@@ -56,14 +56,14 @@ export function FieldRenderer({ field, value, error, onChange, answers }: FieldR
             onChange={(e) => onChange(field.id, e.target.value)}
             className={`${baseClass} ${errorClass}`}
           >
-            <option value="">
-              {field.placeholder || "Sélectionnez..."}
-            </option>
-            {(typeof field.options === "function" ? field.options(answers) : field.options).map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
+            <option value="">{field.placeholder || "Sélectionnez..."}</option>
+            {(typeof field.options === "function" ? field.options(answers) : field.options).map(
+              (opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              )
+            )}
           </select>
           {error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
         </div>
@@ -73,9 +73,7 @@ export function FieldRenderer({ field, value, error, onChange, answers }: FieldR
       const selected = Array.isArray(value) ? value : [];
       return (
         <fieldset>
-          <legend className="mb-1.5 block font-medium text-dark">
-            {label}
-          </legend>
+          <legend className="mb-1.5 block font-medium text-dark">{label}</legend>
           <div className="space-y-2">
             {field.options.map((opt) => {
               const checked = selected.includes(opt.value);

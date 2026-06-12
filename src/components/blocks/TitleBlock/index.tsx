@@ -1,29 +1,29 @@
-import * as React from 'react';
-import classNames from 'classnames';
+import * as React from "react";
+import classNames from "classnames";
 
-import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import type { TitleBlockProps } from '../../../types/stackbit';
+import { mapStylesToClassNames as mapStyles } from "../../../utils/map-styles-to-class-names";
+import type { TitleBlockProps } from "../../../types/stackbit";
 
 export default function TitleBlock(props: TitleBlockProps) {
-    const { className, text = [], color = 'text-dark', styles = {} } = props;
-    const fieldPath = props['data-sb-field-path'];
-    if (!text) {
-        return null;
-    }
+  const { className, text = [], color = "text-dark", styles = {} } = props;
+  const fieldPath = props["data-sb-field-path"];
+  if (!text) {
+    return null;
+  }
 
-    return (
-        <h2
-            className={classNames(
-                'sb-component',
-                'sb-component-block',
-                'sb-component-title',
-                color,
-                className,
-                styles?.self ? mapStyles(styles?.self) : undefined
-            )}
-            data-sb-field-path={fieldPath}
-        >
-            <span {...(fieldPath && { 'data-sb-field-path': '.text' })}>{text}</span>
-        </h2>
-    );
+  return (
+    <h2
+      className={classNames(
+        "sb-component",
+        "sb-component-block",
+        "sb-component-title",
+        color,
+        className,
+        styles?.self ? mapStyles(styles?.self) : undefined
+      )}
+      data-sb-field-path={fieldPath}
+    >
+      <span {...(fieldPath && { "data-sb-field-path": ".text" })}>{text}</span>
+    </h2>
+  );
 }

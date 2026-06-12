@@ -91,11 +91,9 @@ const fr: Texts = {
     ],
   },
   resucrageTitle: "Habitudes de resucrage",
-  resucrageDesc:
-    "Ces questions concernent votre expérience personnelle avec le resucrage.",
+  resucrageDesc: "Ces questions concernent votre expérience personnelle avec le resucrage.",
   resucrageTitleRelative: "Votre proche et le resucrage",
-  resucrageDescRelative:
-    "Ces questions concernent la personne diabétique que vous connaissez.",
+  resucrageDescRelative: "Ces questions concernent la personne diabétique que vous connaissez.",
   uses_resucrage: {
     label: "Utilisez-vous des produits de resucrage ?",
     options: [
@@ -166,8 +164,7 @@ const fr: Texts = {
     placeholder: "Écrivez le nom du produit...",
   },
   has_resucrage_problems: {
-    label:
-      "Rencontrez-vous des problèmes liés à vos solutions de resucrage ?",
+    label: "Rencontrez-vous des problèmes liés à vos solutions de resucrage ?",
     options: [
       { value: "yes", label: "Oui" },
       { value: "no", label: "Non" },
@@ -175,8 +172,7 @@ const fr: Texts = {
     ],
   },
   has_resucrage_problems_relative: {
-    label:
-      "Cette personne rencontre-t-elle des problèmes liés à ses solutions de resucrage ?",
+    label: "Cette personne rencontre-t-elle des problèmes liés à ses solutions de resucrage ?",
     options: [
       { value: "yes", label: "Oui" },
       { value: "no", label: "Non" },
@@ -237,8 +233,7 @@ const fr: Texts = {
     ],
   },
   opinionTitle: "Votre avis",
-  opinionDesc:
-    "Quelques questions pour tous, que vous soyez diabétique ou non.",
+  opinionDesc: "Quelques questions pour tous, que vous soyez diabétique ou non.",
   should_be_reimbursed: {
     label:
       "Pensez-vous que les solutions de resucrage spécialisées pour les diabétiques devraient être remboursées ?",
@@ -321,11 +316,9 @@ const en: Texts = {
     ],
   },
   resucrageTitle: "Rescue habits",
-  resucrageDesc:
-    "These questions are about your personal experience with glucose rescue products.",
+  resucrageDesc: "These questions are about your personal experience with glucose rescue products.",
   resucrageTitleRelative: "Your relative and glucose rescue",
-  resucrageDescRelative:
-    "These questions are about the diabetic person you know.",
+  resucrageDescRelative: "These questions are about the diabetic person you know.",
   uses_resucrage: {
     label: "Do you use glucose rescue products?",
     options: [
@@ -465,11 +458,9 @@ const en: Texts = {
     ],
   },
   opinionTitle: "Your opinion",
-  opinionDesc:
-    "A few questions for everyone, whether you are diabetic or not.",
+  opinionDesc: "A few questions for everyone, whether you are diabetic or not.",
   should_be_reimbursed: {
-    label:
-      "Do you think specialized glucose rescue products for diabetics should be reimbursed?",
+    label: "Do you think specialized glucose rescue products for diabetics should be reimbursed?",
     options: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },
@@ -477,8 +468,7 @@ const en: Texts = {
     ],
   },
   would_try_neutral_taste: {
-    label:
-      "As a diabetic, would you be willing to adopt a neutral-tasting rescue product?",
+    label: "As a diabetic, would you be willing to adopt a neutral-tasting rescue product?",
     options: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },
@@ -486,8 +476,7 @@ const en: Texts = {
     ],
   },
   would_try_neutral_taste_relative: {
-    label:
-      "Do you think this person would be willing to adopt a neutral-tasting rescue product?",
+    label: "Do you think this person would be willing to adopt a neutral-tasting rescue product?",
     options: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },
@@ -556,16 +545,17 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
           type: "select",
           label: t.diabetes_type.label,
           showIf: (answers) =>
-            answers.concern_diabetes !== undefined &&
-            answers.concern_diabetes !== "no",
+            answers.concern_diabetes !== undefined && answers.concern_diabetes !== "no",
           options: t.diabetes_type.options,
         },
       ],
     },
     {
       id: "resucrage_habits",
-      title: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrageTitleRelative : t.resucrageTitle,
-      description: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrageDescRelative : t.resucrageDesc,
+      title: (answers: Record<string, string | string[]>) =>
+        answers.concern_diabetes === "relative" ? t.resucrageTitleRelative : t.resucrageTitle,
+      description: (answers: Record<string, string | string[]>) =>
+        answers.concern_diabetes === "relative" ? t.resucrageDescRelative : t.resucrageDesc,
       showIf: (answers) => {
         const c = answers.concern_diabetes;
         return c === "yes" || c === "both" || c === "relative";
@@ -574,8 +564,14 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "uses_resucrage",
           type: "select" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.uses_resucrage_relative.label : t.uses_resucrage.label,
-          options: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.uses_resucrage_relative.options : t.uses_resucrage.options,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.uses_resucrage_relative.label
+              : t.uses_resucrage.label,
+          options: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.uses_resucrage_relative.options
+              : t.uses_resucrage.options,
           showIf: (answers) => {
             const c = answers.concern_diabetes;
             return c === "yes" || c === "both" || c === "relative";
@@ -585,7 +581,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "resucrage_food_types",
           type: "checkbox" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_food_types_relative.label : t.resucrage_food_types.label,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.resucrage_food_types_relative.label
+              : t.resucrage_food_types.label,
           showIf: (answers) => {
             const use = answers.uses_resucrage;
             return use === "always" || use === "sometimes";
@@ -595,7 +594,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "resucrage_specialized",
           type: "checkbox" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_specialized_relative.label : t.resucrage_specialized.label,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.resucrage_specialized_relative.label
+              : t.resucrage_specialized.label,
           showIf: (answers) => {
             const use = answers.uses_resucrage;
             return use === "always" || use === "sometimes";
@@ -605,7 +607,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "resucrage_specialized_other",
           type: "text" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_specialized_other_relative.label : t.resucrage_specialized_other.label,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.resucrage_specialized_other_relative.label
+              : t.resucrage_specialized_other.label,
           placeholder: t.resucrage_specialized_other_relative.placeholder,
           showIf: (answers) => {
             const val = answers.resucrage_specialized;
@@ -615,8 +620,14 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "has_resucrage_problems",
           type: "select" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.has_resucrage_problems_relative.label : t.has_resucrage_problems.label,
-          options: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.has_resucrage_problems_relative.options : t.has_resucrage_problems.options,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.has_resucrage_problems_relative.label
+              : t.has_resucrage_problems.label,
+          options: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.has_resucrage_problems_relative.options
+              : t.has_resucrage_problems.options,
           showIf: (answers) => {
             const use = answers.uses_resucrage;
             return use === "always" || use === "sometimes";
@@ -625,7 +636,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "resucrage_problems",
           type: "checkbox" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_problems_relative.label : t.resucrage_problems.label,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.resucrage_problems_relative.label
+              : t.resucrage_problems.label,
           showIf: (answers) => {
             const p = answers.has_resucrage_problems;
             return p === "yes" || p === "sometimes";
@@ -635,7 +649,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "resucrage_problems_other",
           type: "text" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_problems_other_relative.label : t.resucrage_problems_other.label,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.resucrage_problems_other_relative.label
+              : t.resucrage_problems_other.label,
           placeholder: t.resucrage_problems_other_relative.placeholder,
           showIf: (answers) => {
             const val = answers.resucrage_problems;
@@ -645,7 +662,10 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "resucrage_form_preference",
           type: "select" as const,
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.resucrage_form_preference_relative.label : t.resucrage_form_preference.label,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.resucrage_form_preference_relative.label
+              : t.resucrage_form_preference.label,
           showIf: (answers) => {
             const c = answers.concern_diabetes;
             return c === "yes" || c === "both" || c === "relative";
@@ -676,8 +696,14 @@ export function getQuestionnaire(lang: "fr" | "en"): Questionnaire {
         {
           id: "would_try_neutral_taste",
           type: "select",
-          label: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.would_try_neutral_taste_relative.label : t.would_try_neutral_taste.label,
-          options: (answers: Record<string, string | string[]>) => answers.concern_diabetes === "relative" ? t.would_try_neutral_taste_relative.options : t.would_try_neutral_taste.options,
+          label: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.would_try_neutral_taste_relative.label
+              : t.would_try_neutral_taste.label,
+          options: (answers: Record<string, string | string[]>) =>
+            answers.concern_diabetes === "relative"
+              ? t.would_try_neutral_taste_relative.options
+              : t.would_try_neutral_taste.options,
           showIf: (answers) => {
             const c = answers.concern_diabetes;
             return c === "yes" || c === "both" || c === "relative";

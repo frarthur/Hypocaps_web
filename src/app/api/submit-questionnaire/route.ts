@@ -10,19 +10,14 @@ export async function POST(request: NextRequest) {
 
     const validationErrors = validateQuestionnaire(body);
     if (validationErrors.length > 0) {
-      return NextResponse.json(
-        { success: false, errors: validationErrors },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, errors: validationErrors }, { status: 400 });
     }
 
     const supabase = getSupabase();
 
     const payload = buildPayload(body);
 
-    const { error } = await supabase
-      .from("questionnaire_responses")
-      .insert(payload);
+    const { error } = await supabase.from("questionnaire_responses").insert(payload);
 
     if (error) {
       console.error("Supabase insert error:", error);

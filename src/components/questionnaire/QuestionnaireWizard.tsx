@@ -33,13 +33,10 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
     [currentStep, answers]
   );
 
-  const handleChange = useCallback(
-    (id: string, value: string | string[]) => {
-      setAnswers((prev) => ({ ...prev, [id]: value }));
-      setErrors((prev) => prev.filter((e) => e.fieldId !== id));
-    },
-    []
-  );
+  const handleChange = useCallback((id: string, value: string | string[]) => {
+    setAnswers((prev) => ({ ...prev, [id]: value }));
+    setErrors((prev) => prev.filter((e) => e.fieldId !== id));
+  }, []);
 
   const goNext = useCallback(() => {
     const stepErrors = validateStep(currentStep.fields, answers);
@@ -70,7 +67,12 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
           for (const rule of field.validation) {
             if (rule.type === "required") {
               const val = answers[field.id];
-              if (val === undefined || val === null || val === "" || (Array.isArray(val) && val.length === 0)) {
+              if (
+                val === undefined ||
+                val === null ||
+                val === "" ||
+                (Array.isArray(val) && val.length === 0)
+              ) {
                 if (!allErrors.some((e) => e.fieldId === field.id)) {
                   allErrors.push({ fieldId: field.id, message: rule.message });
                 }
@@ -119,16 +121,13 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
   const submitLabel = lang === "fr" ? "Soumettre" : "Submit";
   const submittingLabel = lang === "fr" ? "Envoi en cours..." : "Submitting...";
   const successTitle =
-    lang === "fr"
-      ? "Questionnaire soumis avec succès !"
-      : "Questionnaire submitted successfully!";
+    lang === "fr" ? "Questionnaire soumis avec succès !" : "Questionnaire submitted successfully!";
   const successDesc =
-    lang === "fr"
-      ? "Merci pour votre participation."
-      : "Thank you for your participation.";
+    lang === "fr" ? "Merci pour votre participation." : "Thank you for your participation.";
   const progressLabel = lang === "fr" ? "/" : "of";
 
-  const stepTitle = typeof currentStep.title === "function" ? currentStep.title(answers) : currentStep.title;
+  const stepTitle =
+    typeof currentStep.title === "function" ? currentStep.title(answers) : currentStep.title;
   const stepDesc = currentStep.description
     ? typeof currentStep.description === "function"
       ? currentStep.description(answers)
@@ -169,12 +168,8 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
 
       {/* Step content */}
       <div key={currentStep.id} className="animate-fadeIn">
-        <h2 className="mb-1 text-2xl font-bold text-dark">
-          {stepTitle}
-        </h2>
-        {stepDesc && (
-          <p className="mb-6 text-dark/60">{stepDesc}</p>
-        )}
+        <h2 className="mb-1 text-2xl font-bold text-dark">{stepTitle}</h2>
+        {stepDesc && <p className="mb-6 text-dark/60">{stepDesc}</p>}
 
         <div className="space-y-6">
           {visibleFields.map((field) => (
@@ -225,8 +220,19 @@ export function QuestionnaireWizard({ lang }: QuestionnaireWizardProps) {
           >
             {submitting && (
               <svg className="mr-2 inline h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                />
               </svg>
             )}
             {submitting ? submittingLabel : submitLabel}

@@ -1,12 +1,28 @@
 export const ALLOWED_CONCERN = new Set(["yes", "relative", "both", "no"]);
 export const ALLOWED_SOURCE = new Set([
-  "reddit", "pharmacie", "proche", "instagram",
-  "linkedin", "facebook", "search", "other",
+  "reddit",
+  "pharmacie",
+  "proche",
+  "instagram",
+  "linkedin",
+  "facebook",
+  "search",
+  "other",
 ]);
 export const ALLOWED_REIMBURSED = new Set(["yes", "no", "dont_know"]);
 export const ALLOWED_DIABETES = new Set([
-  "type1", "type1_5", "type2", "type3c", "gestationnel",
-  "MODY", "CFRD", "prediabete", "MIDD", "steroid_induced", "other", "dont_know",
+  "type1",
+  "type1_5",
+  "type2",
+  "type3c",
+  "gestationnel",
+  "MODY",
+  "CFRD",
+  "prediabete",
+  "MIDD",
+  "steroid_induced",
+  "other",
+  "dont_know",
 ]);
 export const ALLOWED_RESUCRAGE = new Set(["always", "sometimes", "never", "dont_know"]);
 export const ALLOWED_PROBLEM_SEVERITY = new Set(["yes", "no", "sometimes", "dont_know"]);
@@ -48,56 +64,71 @@ export function validateQuestionnaire(body: Record<string, unknown>): FieldError
   }
 
   if (
-    body.diabetes_type !== undefined && body.diabetes_type !== null && body.diabetes_type !== "" &&
+    body.diabetes_type !== undefined &&
+    body.diabetes_type !== null &&
+    body.diabetes_type !== "" &&
     (!isString(body.diabetes_type) || !ALLOWED_DIABETES.has(body.diabetes_type))
   ) {
     errors.push({ field: "diabetes_type", message: "Valeur invalide" });
   }
 
   if (
-    body.uses_resucrage !== undefined && body.uses_resucrage !== null && body.uses_resucrage !== "" &&
+    body.uses_resucrage !== undefined &&
+    body.uses_resucrage !== null &&
+    body.uses_resucrage !== "" &&
     (!isString(body.uses_resucrage) || !ALLOWED_RESUCRAGE.has(body.uses_resucrage))
   ) {
     errors.push({ field: "uses_resucrage", message: "Valeur invalide" });
   }
 
   if (
-    body.resucrage_food_types !== undefined && body.resucrage_food_types !== null &&
+    body.resucrage_food_types !== undefined &&
+    body.resucrage_food_types !== null &&
     (!isStringArray(body.resucrage_food_types) || body.resucrage_food_types.length === 0)
   ) {
     errors.push({ field: "resucrage_food_types", message: "Valeur invalide" });
   }
 
   if (
-    body.resucrage_specialized !== undefined && body.resucrage_specialized !== null &&
+    body.resucrage_specialized !== undefined &&
+    body.resucrage_specialized !== null &&
     (!isStringArray(body.resucrage_specialized) || body.resucrage_specialized.length === 0)
   ) {
     errors.push({ field: "resucrage_specialized", message: "Valeur invalide" });
   }
 
   if (
-    body.has_resucrage_problems !== undefined && body.has_resucrage_problems !== null && body.has_resucrage_problems !== "" &&
-    (!isString(body.has_resucrage_problems) || !ALLOWED_PROBLEM_SEVERITY.has(body.has_resucrage_problems))
+    body.has_resucrage_problems !== undefined &&
+    body.has_resucrage_problems !== null &&
+    body.has_resucrage_problems !== "" &&
+    (!isString(body.has_resucrage_problems) ||
+      !ALLOWED_PROBLEM_SEVERITY.has(body.has_resucrage_problems))
   ) {
     errors.push({ field: "has_resucrage_problems", message: "Valeur invalide" });
   }
 
   if (
-    body.resucrage_problems_other !== undefined && body.resucrage_problems_other !== null &&
-    (typeof body.resucrage_problems_other !== "string" || body.resucrage_problems_other.length > 500)
+    body.resucrage_problems_other !== undefined &&
+    body.resucrage_problems_other !== null &&
+    (typeof body.resucrage_problems_other !== "string" ||
+      body.resucrage_problems_other.length > 500)
   ) {
     errors.push({ field: "resucrage_problems_other", message: "Texte trop long" });
   }
 
   if (
-    body.resucrage_form_preference !== undefined && body.resucrage_form_preference !== null && body.resucrage_form_preference !== "" &&
+    body.resucrage_form_preference !== undefined &&
+    body.resucrage_form_preference !== null &&
+    body.resucrage_form_preference !== "" &&
     (!isString(body.resucrage_form_preference) || !ALLOWED_FORM.has(body.resucrage_form_preference))
   ) {
     errors.push({ field: "resucrage_form_preference", message: "Valeur invalide" });
   }
 
   if (
-    body.would_try_neutral_taste !== undefined && body.would_try_neutral_taste !== null && body.would_try_neutral_taste !== "" &&
+    body.would_try_neutral_taste !== undefined &&
+    body.would_try_neutral_taste !== null &&
+    body.would_try_neutral_taste !== "" &&
     (!isString(body.would_try_neutral_taste) || !ALLOWED_TASTE.has(body.would_try_neutral_taste))
   ) {
     errors.push({ field: "would_try_neutral_taste", message: "Valeur invalide" });
@@ -114,15 +145,32 @@ export function buildPayload(body: Record<string, unknown>) {
     concern_diabetes: body.concern_diabetes as string,
     diabetes_type: typeof body.diabetes_type === "string" ? body.diabetes_type || null : null,
     uses_resucrage: typeof body.uses_resucrage === "string" ? body.uses_resucrage || null : null,
-    resucrage_food_types: isStringArray(body.resucrage_food_types) ? body.resucrage_food_types : null,
-    resucrage_specialized: isStringArray(body.resucrage_specialized) ? body.resucrage_specialized : null,
-    resucrage_specialized_other: typeof body.resucrage_specialized_other === "string" ? body.resucrage_specialized_other || null : null,
-    has_resucrage_problems: typeof body.has_resucrage_problems === "string" ? body.has_resucrage_problems || null : null,
+    resucrage_food_types: isStringArray(body.resucrage_food_types)
+      ? body.resucrage_food_types
+      : null,
+    resucrage_specialized: isStringArray(body.resucrage_specialized)
+      ? body.resucrage_specialized
+      : null,
+    resucrage_specialized_other:
+      typeof body.resucrage_specialized_other === "string"
+        ? body.resucrage_specialized_other || null
+        : null,
+    has_resucrage_problems:
+      typeof body.has_resucrage_problems === "string" ? body.has_resucrage_problems || null : null,
     resucrage_problems: isStringArray(body.resucrage_problems) ? body.resucrage_problems : null,
-    resucrage_problems_other: typeof body.resucrage_problems_other === "string" ? body.resucrage_problems_other || null : null,
-    resucrage_form_preference: typeof body.resucrage_form_preference === "string" ? body.resucrage_form_preference || null : null,
+    resucrage_problems_other:
+      typeof body.resucrage_problems_other === "string"
+        ? body.resucrage_problems_other || null
+        : null,
+    resucrage_form_preference:
+      typeof body.resucrage_form_preference === "string"
+        ? body.resucrage_form_preference || null
+        : null,
     source: body.source as string,
     should_be_reimbursed: body.should_be_reimbursed as string,
-    would_try_neutral_taste: typeof body.would_try_neutral_taste === "string" ? body.would_try_neutral_taste || null : null,
+    would_try_neutral_taste:
+      typeof body.would_try_neutral_taste === "string"
+        ? body.would_try_neutral_taste || null
+        : null,
   };
 }

@@ -19,13 +19,8 @@ export const Default: Story = {
       {
         title: "Découverte",
         price: "Gratuit",
-        description:
-          "Accès aux fonctionnalités de base pour découvrir Hypocaps.",
-        features: [
-          "Suivi de glycémie",
-          "Rappels personnalisés",
-          "Communauté de soutien",
-        ],
+        description: "Accès aux fonctionnalités de base pour découvrir Hypocaps.",
+        features: ["Suivi de glycémie", "Rappels personnalisés", "Communauté de soutien"],
         actions: [
           {
             label: "S'inscrire",
@@ -38,8 +33,7 @@ export const Default: Story = {
         title: "Premium",
         price: "9,99€",
         details: "/mois",
-        description:
-          "Pour les utilisateurs réguliers qui veulent aller plus loin.",
+        description: "Pour les utilisateurs réguliers qui veulent aller plus loin.",
         features: [
           "Tout le plan Découverte",
           "Rapports détaillés",
@@ -58,8 +52,7 @@ export const Default: Story = {
         title: "Famille",
         price: "19,99€",
         details: "/mois",
-        description:
-          "Pour toute la famille, avec des fonctionnalités partagées.",
+        description: "Pour toute la famille, avec des fonctionnalités partagées.",
         features: [
           "Tout le plan Premium",
           "Jusqu'à 5 profils",

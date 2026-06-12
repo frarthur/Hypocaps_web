@@ -61,7 +61,9 @@ describe("validateQuestionnaire", () => {
       age: "abc",
     });
     expect(errors).toEqual(
-      expect.arrayContaining([{ field: "age", message: "L'âge doit contenir uniquement des chiffres" }])
+      expect.arrayContaining([
+        { field: "age", message: "L'âge doit contenir uniquement des chiffres" },
+      ])
     );
   });
 

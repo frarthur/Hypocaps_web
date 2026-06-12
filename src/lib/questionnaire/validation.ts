@@ -2,10 +2,7 @@ import { Field, ValidationError } from "./types";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function validateField(
-  field: Field,
-  value: string | string[]
-): ValidationError | null {
+export function validateField(field: Field, value: string | string[]): ValidationError | null {
   if (!field.validation) return null;
 
   for (const rule of field.validation) {

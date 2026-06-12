@@ -1,108 +1,108 @@
-import * as fs from 'fs';
-import path from 'path';
-import { globSync } from 'glob';
-import frontmatter from 'front-matter';
-import { getPageUrl } from './page-utils';
+import * as fs from "fs";
+import path from "path";
+import { globSync } from "glob";
+import frontmatter from "front-matter";
+import { getPageUrl } from "./page-utils";
 
-const pagesDir = 'content/pages';
-const dataDir = 'content/data';
+const pagesDir = "content/pages";
+const dataDir = "content/data";
 
 // Reference fields resolved at build time (replaces dynamic model imports)
 const allReferenceFields: Record<string, boolean> = {
-    'Config:header': true,
-    'Config:footer': true,
-    'PostLayout:author': true,
-    'FeaturedPeopleSection:people': true,
-    'FeaturedPostsSection:posts': true,
-    'CarouselSection:items': true,
+  "Config:header": true,
+  "Config:footer": true,
+  "PostLayout:author": true,
+  "FeaturedPeopleSection:people": true,
+  "FeaturedPostsSection:posts": true,
+  "CarouselSection:items": true,
 };
 
 function isRefField(modelName: string, fieldName: string) {
-    return !!allReferenceFields[modelName + ':' + fieldName];
+  return !!allReferenceFields[modelName + ":" + fieldName];
 }
 
-const supportedFileTypes = ['md', 'json'];
+const supportedFileTypes = ["md", "json"];
 function contentFilesInPath(dir: string) {
-    const globPattern = `${dir}/**/*.{${supportedFileTypes.join(',')}}`;
-    return globSync(globPattern);
+  const globPattern = `${dir}/**/*.{${supportedFileTypes.join(",")}}`;
+  return globSync(globPattern);
 }
 
 function readContent(file: string) {
-    const rawContent = fs.readFileSync(file, 'utf8');
-    let content = null;
-    switch (path.extname(file).substring(1)) {
-        case 'md':
-            const parsedMd = frontmatter<Record<string, any>>(rawContent);
-            content = {
-                ...parsedMd.attributes,
-                markdown_content: parsedMd.body
-            };
-            break;
-        case 'json':
-            content = JSON.parse(rawContent);
-            break;
-        default:
-            throw Error(`Unhandled file type: ${file}`);
-    }
+  const rawContent = fs.readFileSync(file, "utf8");
+  let content = null;
+  switch (path.extname(file).substring(1)) {
+    case "md":
+      const parsedMd = frontmatter<Record<string, any>>(rawContent);
+      content = {
+        ...parsedMd.attributes,
+        markdown_content: parsedMd.body,
+      };
+      break;
+    case "json":
+      content = JSON.parse(rawContent);
+      break;
+    default:
+      throw Error(`Unhandled file type: ${file}`);
+  }
 
-    // Make Sourcebit-compatible
-    content.__metadata = {
-        id: file.replace(/\\/g, '/'), // Replace backslashes with forward slashes
-        modelName: content.type
-    };
+  // Make Sourcebit-compatible
+  content.__metadata = {
+    id: file.replace(/\\/g, "/"), // Replace backslashes with forward slashes
+    modelName: content.type,
+  };
 
-    return content;
+  return content;
 }
 
 function resolveReferences(content: any, fileToContent: Record<string, any>) {
-    if (!content || !content.type) return;
+  if (!content || !content.type) return;
 
-    const modelName = content.type;
-    if (!content.__metadata) content.__metadata = { modelName: content.type };
+  const modelName = content.type;
+  if (!content.__metadata) content.__metadata = { modelName: content.type };
 
-    for (const fieldName in content) {
-        let fieldValue = content[fieldName];
-        if (!fieldValue) continue;
+  for (const fieldName in content) {
+    let fieldValue = content[fieldName];
+    if (!fieldValue) continue;
 
-        const isRef = isRefField(modelName, fieldName);
-        if (Array.isArray(fieldValue)) {
-            if (fieldValue.length === 0) continue;
-            if (isRef && typeof fieldValue[0] === 'string') {
-                fieldValue = fieldValue.map((filename: string) => fileToContent[filename]);
-                content[fieldName] = fieldValue;
-            }
-            if (typeof fieldValue[0] === 'object') {
-                fieldValue.forEach((o: any) => resolveReferences(o, fileToContent));
-            }
-        } else {
-            if (isRef && typeof fieldValue === 'string') {
-                const resolved = fileToContent[fieldValue];
-                content[fieldName] = resolved;
-                if (resolved && typeof resolved === 'object') {
-                    resolveReferences(resolved, fileToContent);
-                }
-            } else if (typeof fieldValue === 'object') {
-                resolveReferences(fieldValue, fileToContent);
-            }
+    const isRef = isRefField(modelName, fieldName);
+    if (Array.isArray(fieldValue)) {
+      if (fieldValue.length === 0) continue;
+      if (isRef && typeof fieldValue[0] === "string") {
+        fieldValue = fieldValue.map((filename: string) => fileToContent[filename]);
+        content[fieldName] = fieldValue;
+      }
+      if (typeof fieldValue[0] === "object") {
+        fieldValue.forEach((o: any) => resolveReferences(o, fileToContent));
+      }
+    } else {
+      if (isRef && typeof fieldValue === "string") {
+        const resolved = fileToContent[fieldValue];
+        content[fieldName] = resolved;
+        if (resolved && typeof resolved === "object") {
+          resolveReferences(resolved, fileToContent);
         }
+      } else if (typeof fieldValue === "object") {
+        resolveReferences(fieldValue, fileToContent);
+      }
     }
+  }
 }
 
 export function allContent() {
-    const [data, pages] = [dataDir, pagesDir].map((dir) => {
-        return contentFilesInPath(dir).map((file) => readContent(file));
-    });
-    const objects = [...pages, ...data];
-    const fileToContent = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
-    objects.forEach((e) => resolveReferences(e, fileToContent));
+  const [data, pages] = [dataDir, pagesDir].map((dir) => {
+    return contentFilesInPath(dir).map((file) => readContent(file));
+  });
+  const objects = [...pages, ...data];
+  const fileToContent = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
+  objects.forEach((e) => resolveReferences(e, fileToContent));
 
-    pages.forEach((page) => {
-        page.__metadata.urlPath = getPageUrl(page);
-    });
+  pages.forEach((page) => {
+    page.__metadata.urlPath = getPageUrl(page);
+  });
 
-    const siteConfig = data.find((e) => e.__metadata.modelName === 'Config');
+  const siteConfig = data.find((e) => e.__metadata.modelName === "Config");
 
-    resolveReferences(siteConfig, fileToContent);
+  resolveReferences(siteConfig, fileToContent);
 
-    return { objects, pages, props: { site: siteConfig } };
+  return { objects, pages, props: { site: siteConfig } };
 }

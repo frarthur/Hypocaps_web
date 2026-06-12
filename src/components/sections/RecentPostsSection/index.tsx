@@ -1,2 +1,2 @@
-import PostFeedSection from '../PostFeedSection';
+import PostFeedSection from "../PostFeedSection";
 export default PostFeedSection;

@@ -41,16 +41,11 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
 
               {header.primaryLinks?.length > 0 && (
                 <ul className="hidden lg:flex lg:items-center absolute w-auto left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-x-10">
-                  {header.primaryLinks.map(
-                    (link: any, index: number) => (
-                      <li key={index} className="py-2">
-                        <Action
-                          {...link}
-                          className="whitespace-nowrap text-sm"
-                        />
-                      </li>
-                    )
-                  )}
+                  {header.primaryLinks.map((link: any, index: number) => (
+                    <li key={index} className="py-2">
+                      <Action {...link} className="whitespace-nowrap text-sm" />
+                    </li>
+                  ))}
                 </ul>
               )}
 
@@ -67,9 +62,7 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
             {/* Mobile menu */}
             {menuOpen && (
               <div
-                className={classNames(
-                  "bg-light-fg-dark fixed inset-0 p-4 overflow-y-auto z-10"
-                )}
+                className={classNames("bg-light-fg-dark fixed inset-0 p-4 overflow-y-auto z-10")}
               >
                 <div className="flex flex-col min-h-full">
                   <div className="flex items-center justify-between mb-10">
@@ -90,28 +83,24 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
 
                   {header.primaryLinks?.length > 0 && (
                     <ul>
-                      {header.primaryLinks.map(
-                        (link: any, index: number) => (
-                          <li
-                            key={index}
+                      {header.primaryLinks.map((link: any, index: number) => (
+                        <li
+                          key={index}
+                          className={classNames(
+                            "border-t",
+                            link.__metadata?.modelName === "Button" ? "py-4" : "py-3"
+                          )}
+                        >
+                          <Action
+                            {...link}
                             className={classNames(
-                              "border-t",
-                              link.__metadata?.modelName === "Button"
-                                ? "py-4"
-                                : "py-3"
+                              "w-full justify-start",
+                              link.__metadata?.modelName === "Link" && "py-3",
+                              "whitespace-nowrap"
                             )}
-                          >
-                            <Action
-                              {...link}
-                              className={classNames(
-                                "w-full justify-start",
-                                link.__metadata?.modelName === "Link" && "py-3",
-                                "whitespace-nowrap"
-                              )}
-                            />
-                          </li>
-                        )
-                      )}
+                          />
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </div>
