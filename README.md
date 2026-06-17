@@ -1,5 +1,7 @@
 # Hypocaps
 
+_[English below ↓](#english)_
+
 Site web du projet Hypocaps — une solution de resucrage au goût neutre pour les personnes atteintes d'hypoglycémie.
 
 ## À propos
@@ -72,5 +74,84 @@ supabase/
 ```
 
 ## Licence
+
+MIT
+
+---
+
+## English {#english}
+
+Hypocaps website — a neutral-tasting sugar rescue solution for people with hypoglycemia.
+
+## About
+
+Hypocaps aims to simplify life for people with hypoglycemia by offering a transport solution and a neutral-tasting sugar rescue product. This website was built to gather user feedback through a dynamic questionnaire and to present the project to the public.
+
+## Tech Stack
+
+- **Next.js 15** (dual App Router / Pages Router) — static pages and serverless APIs
+- **React 19** + **TypeScript** — UI with strict typing
+- **TailwindCSS 3** — utility-first CSS
+- **Supabase** (PostgreSQL) — database with Row-Level Security
+- **Nodemailer** — transactional email sending
+- **Algolia** — full-text search
+- **Content** — JSON / Markdown files (headless CMS model)
+
+## Infrastructure
+
+- **Hosting** — Vercel (continuous deployment from GitHub, env vars via Vercel UI)
+- **Domain** — OVH (hypocaps.fr, DNS pointing to Vercel)
+- **Database** — Supabase Cloud (two tables: `questionnaire_responses`, `contact_messages`)
+- **Email** — SMTP via OVH / ProtonMail with app password
+
+## Questionnaire
+
+- Multi-step wizard with visual progress and validation
+- Data-driven conditional logic (show/hide based on answers)
+- FR/EN translations with canonical values for statistical analysis
+
+> **Architecture note:** The project uses two Next.js routers simultaneously. The **App Router** (`src/app/`) handles the interactive questionnaire and serverless APIs. The **Pages Router** (`src/pages/`) is kept for existing Stackbit CMS pages. This dual setup enables progressive migration without rewriting everything at once.
+
+## Project Architecture
+
+```
+src/
+  app/                          # App Router (Next.js 15)
+    api/
+      contact/route.ts          # Contact form API
+      submit-questionnaire/     # Questionnaire submission API
+    questionnaire/page.tsx      # Questionnaire page (FR/EN)
+    layout.tsx                  # Root layout
+  components/
+    questionnaire/              # Questionnaire components
+      FieldRenderer.tsx         # Generic field renderer
+      QuestionnaireWizard.tsx   # Multi-step wizard
+      SiteLayout.tsx            # Layout with header/footer (App Router)
+    blocks/
+      FormBlock/index.tsx       # Generic form block (contact)
+    sections/
+      Header/index.tsx          # Site header (Pages Router)
+      Footer/index.tsx          # Footer (App Router compatible)
+    layouts/
+      DefaultBaseLayout/        # Default layout with header + footer
+  lib/
+    questionnaire/
+      types.ts                  # TypeScript field types
+      translations.ts           # FR/EN translations + questionnaire builder
+      validation.ts             # Field validation
+    supabase/
+      client.ts                 # Supabase client (lazy, server-side)
+content/
+  data/                         # Config files (JSON)
+    header.json                 # Main navigation
+    footer.json                 # Footer links
+    site.json                   # Global config
+  pages/
+    index.md                    # Homepage (YAML sections)
+supabase/
+  schema.sql                    # Database schema
+```
+
+## License
 
 MIT
