@@ -6,7 +6,7 @@ interface FieldRendererProps {
   field: Field;
   value: string | string[];
   error: ValidationError | null;
-  onChange: (id: string, value: string | string[]) => void;
+  onChange: (_id: string, _value: string | string[]) => void;
   answers: Record<string, string | string[]>;
 }
 

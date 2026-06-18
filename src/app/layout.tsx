@@ -1,5 +1,7 @@
 import "../css/main.css";
 import SiteLayout from "../components/questionnaire/SiteLayout";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Questionnaire Hypocaps",
@@ -11,6 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body className="bg-light text-dark antialiased">
         <SiteLayout>{children}</SiteLayout>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

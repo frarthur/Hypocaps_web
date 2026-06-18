@@ -1,4 +1,4 @@
-const TAILWIND_MAP: Record<string, Record<string, string> | ((value: unknown) => string)> = {
+const TAILWIND_MAP: Record<string, Record<string, string> | ((_value: unknown) => string)> = {
   alignItems: {
     "flex-start": "items-start",
     "flex-end": "items-end",

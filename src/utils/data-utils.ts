@@ -25,9 +25,9 @@ interface MapDeepOptions {
 }
 
 type MapDeepIterator = (
-  value: unknown,
-  keyPath: (string | number)[],
-  stack: unknown[]
+  _value: unknown,
+  _keyPath: (string | number)[],
+  _stack: unknown[]
 ) => Promise<unknown>;
 
 export function getAllPostsSorted(objects: ContentObject[]): ContentObject[] {

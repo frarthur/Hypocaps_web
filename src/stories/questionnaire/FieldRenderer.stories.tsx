@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { FieldRenderer } from "../../components/questionnaire/FieldRenderer";
-import type { Field, ValidationError } from "../../lib/questionnaire/types";
+import type { Field } from "../../lib/questionnaire/types";
 
 const meta: Meta<typeof FieldRenderer> = {
   title: "Questionnaire/FieldRenderer",

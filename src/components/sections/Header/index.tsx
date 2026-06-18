@@ -385,24 +385,23 @@ function ListOfLinks(props: {
               {...(enableAnnotations && { "data-sb-field-path": `.${index}` })}
             />
           );
-        } else {
-          return (
-            <li
-              key={index}
-              className={classNames(inMobileMenu ? "border-t" : "py-2", {
-                "py-4": inMobileMenu && link.__metadata.modelName === "Button",
-              })}
-            >
-              <Action
-                {...link}
-                className={classNames("whitespace-nowrap", inMobileMenu ? "w-full" : "text-sm", {
-                  "justify-start py-3": inMobileMenu && link.__metadata.modelName === "Link",
-                })}
-                {...(enableAnnotations && { "data-sb-field-path": `.${index}` })}
-              />
-            </li>
-          );
         }
+        return (
+          <li
+            key={index}
+            className={classNames(inMobileMenu ? "border-t" : "py-2", {
+              "py-4": inMobileMenu && link.__metadata.modelName === "Button",
+            })}
+          >
+            <Action
+              {...link}
+              className={classNames("whitespace-nowrap", inMobileMenu ? "w-full" : "text-sm", {
+                "justify-start py-3": inMobileMenu && link.__metadata.modelName === "Link",
+              })}
+              {...(enableAnnotations && { "data-sb-field-path": `.${index}` })}
+            />
+          </li>
+        );
       })}
     </>
   );

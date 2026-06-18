@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSupabase } from "../../../lib/supabase/client";
 import { validateQuestionnaire, buildPayload } from "../../../lib/questionnaire/api-validation";
+import { checkRateLimit, insertPayload } from "../../../lib/api-helpers";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  const rateLimitResponse = checkRateLimit(ip, "questionnaire");
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const body: Record<string, unknown> = await request.json();
 
@@ -13,14 +17,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, errors: validationErrors }, { status: 400 });
     }
 
-    const supabase = getSupabase();
-
     const payload = buildPayload(body);
+    const dbError = await insertPayload("questionnaire_responses", payload);
 
-    const { error } = await supabase.from("questionnaire_responses").insert(payload);
-
-    if (error) {
-      console.error("Supabase insert error:", error);
+    if (dbError) {
       return NextResponse.json(
         { success: false, message: "Erreur lors de l'enregistrement" },
         { status: 500 }
