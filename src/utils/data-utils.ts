@@ -75,8 +75,9 @@ export function resolveReferences(
   object: ContentObject | ContentObject[],
   fieldPaths: string[],
   objects: ContentObject[],
-  debugContext: DebugContext = { keyPath: [], stack: [] }
+  debugContext?: DebugContext
 ): ContentObject | ContentObject[] {
+  const context = debugContext ?? { keyPath: [], stack: [] };
   const _resolveDeep = (
     value: unknown,
     fieldNames: string[],
@@ -118,14 +119,14 @@ export function resolveReferences(
     return object.map((item) =>
       fieldPaths.reduce((obj, fieldPath) => {
         const fieldNames = fieldPath.split(".");
-        return _resolveDeep(obj, fieldNames, debugContext) as ContentObject;
+        return _resolveDeep(obj, fieldNames, context) as ContentObject;
       }, item)
     );
   }
 
   return fieldPaths.reduce((obj, fieldPath) => {
     const fieldNames = fieldPath.split(".");
-    return _resolveDeep(obj, fieldNames, debugContext) as ContentObject;
+    return _resolveDeep(obj, fieldNames, context) as ContentObject;
   }, object);
 }
 
@@ -133,14 +134,15 @@ export function resolveReferenceField(
   object: ContentObject,
   fieldName: string,
   objects: ContentObject[],
-  debugContext: DebugContext = { keyPath: [], stack: [] }
+  debugContext?: DebugContext
 ): ContentObject {
+  const context = debugContext ?? { keyPath: [], stack: [] };
   if (!(fieldName in object)) {
     return object;
   }
   const result = findObjectById(object[fieldName] as string, objects, {
-    keyPath: debugContext.keyPath.concat(fieldName),
-    stack: debugContext.stack.concat(object),
+    keyPath: context.keyPath.concat(fieldName),
+    stack: context.stack.concat(object),
   });
   return {
     ...object,
@@ -260,7 +262,7 @@ export function getPagedItemsForPage(
     };
   }
   const pageIndexMatch = pageUrlPath!.match(/\/page\/(\d+)$/);
-  const pageIndex = pageIndexMatch ? parseInt(pageIndexMatch[1]) - 1 : 0;
+  const pageIndex = pageIndexMatch ? Number.parseInt(pageIndexMatch[1]) - 1 : 0;
   const numOfPages = Math.ceil(items.length / numOfItemsPerPage) || 1;
   const startIndex = pageIndex * numOfItemsPerPage;
   const endIndex = startIndex + numOfItemsPerPage;

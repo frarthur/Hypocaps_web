@@ -42,12 +42,12 @@ function readContent(file: string) {
       content = JSON.parse(rawContent);
       break;
     default:
-      throw Error(`Unhandled file type: ${file}`);
+      throw new Error(`Unhandled file type: ${file}`);
   }
 
   // Make Sourcebit-compatible
   content.__metadata = {
-    id: file.replace(/\\/g, "/"), // Replace backslashes with forward slashes
+    id: file.replaceAll("\\", "/"),
     modelName: content.type,
   };
 

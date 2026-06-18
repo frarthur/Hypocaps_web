@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
           to: process.env.CONTACT_EMAIL || "arthur.fresse@hypocaps.fr",
           subject: `Nouveau message de ${body.name}`,
           text: `Nom: ${body.name}\nEmail: ${body.email}\n\nMessage:\n${body.message}`,
-          html: `<p><strong>Nom:</strong> ${body.name}</p><p><strong>Email:</strong> ${body.email}</p><p><strong>Message:</strong></p><p>${String(body.message).replace(/\n/g, "<br>")}</p>`,
+          html: `<p><strong>Nom:</strong> ${body.name}</p><p><strong>Email:</strong> ${body.email}</p><p><strong>Message:</strong></p><p>${String(body.message).replaceAll("\n", "<br>")}</p>`,
         });
       } catch (emailErr) {
         console.error("Email sending failed:", emailErr);
