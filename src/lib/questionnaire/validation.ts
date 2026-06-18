@@ -1,6 +1,5 @@
 import { Field, ValidationError } from "./types";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { isValidEmail } from "../validation-utils";
 
 export function validateField(field: Field, value: string | string[]): ValidationError | null {
   if (!field.validation) return null;
@@ -18,7 +17,7 @@ export function validateField(field: Field, value: string | string[]): Validatio
         }
         break;
       case "email":
-        if (typeof value === "string" && value && !EMAIL_RE.test(value)) {
+        if (typeof value === "string" && value && !isValidEmail(value)) {
           return { fieldId: field.id, message: rule.message };
         }
         break;

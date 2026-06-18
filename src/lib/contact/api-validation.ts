@@ -1,4 +1,4 @@
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { isValidEmail } from "../validation-utils";
 
 export interface ContactPayload {
   name: string;
@@ -13,7 +13,7 @@ export function validateContact(body: Record<string, unknown>): string | null {
   if (body.name.length > 200) {
     return "Le nom est trop long";
   }
-  if (typeof body.email !== "string" || !EMAIL_RE.test(body.email)) {
+  if (typeof body.email !== "string" || !isValidEmail(body.email)) {
     return "Email invalide";
   }
   if (body.email.length > 320) {
