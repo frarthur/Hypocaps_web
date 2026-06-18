@@ -9,7 +9,7 @@ const nextConfig = {
   },
   trailingSlash: true,
   reactStrictMode: true,
-  allowedDevOrigins: ["192.168.1.84"],
+  allowedDevOrigins: ["192.168.1.84"], // NOSONAR: local dev origin
 };
 
 module.exports = nextConfig;
