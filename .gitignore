@@ -58,7 +58,7 @@ renovate.json
 
 # Private roadmap / checklist
 .gitmessage
-.local.md
+*.local.md
 
 # Stackbit config (same as sources/)
 stackbit.config.ts
