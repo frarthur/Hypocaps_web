@@ -1,12 +1,7 @@
-FROM node:20-alpine AS deps
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci --only=production
-
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts
 COPY . .
 ENV BUILD_TARGET=docker
 RUN npm run build
