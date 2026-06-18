@@ -1,20 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSupabase } from "../../../lib/supabase/client";
 import { validateContact, buildPayload } from "../../../lib/contact/api-validation";
-import { rateLimit } from "../../../lib/rate-limit";
+import { checkRateLimit, insertPayload } from "../../../lib/api-helpers";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for") || "unknown";
-  const { allowed, retryAfter } = rateLimit(`contact:${ip}`, 5, 60_000);
-
-  if (!allowed) {
-    return NextResponse.json(
-      { success: false, message: `Trop de requêtes. Réessayez dans ${retryAfter}s.` },
-      { status: 429, headers: { "Retry-After": String(retryAfter) } }
-    );
-  }
+  const rateLimitResponse = checkRateLimit(ip, "contact");
+  if (rateLimitResponse) return rateLimitResponse;
 
   try {
     const body: Record<string, unknown> = await request.json();
@@ -24,14 +17,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: validationError }, { status: 400 });
     }
 
-    const supabase = getSupabase();
-
     const payload = buildPayload(body);
+    const dbError = await insertPayload("contact_messages", payload);
 
-    const { error } = await supabase.from("contact_messages").insert(payload);
-
-    if (error) {
-      console.error("Supabase insert error:", error);
+    if (dbError) {
       return NextResponse.json(
         { success: false, message: "Erreur lors de l'envoi" },
         { status: 500 }
