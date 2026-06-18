@@ -1,6 +1,6 @@
 export type FieldType = "text" | "email" | "select" | "checkbox" | "textarea";
 
-export type ShowIfFn = (answers: Record<string, string | string[]>) => boolean;
+export type ShowIfFn = (_answers: Record<string, string | string[]>) => boolean;
 
 export type ValidationRule =
   | { type: "required"; message: string }
@@ -14,7 +14,7 @@ export interface SelectOption {
 
 export interface BaseField {
   id: string;
-  label: string | ((answers: Record<string, string | string[]>) => string);
+  label: string | ((_answers: Record<string, string | string[]>) => string);
   showIf?: ShowIfFn;
   validation?: ValidationRule[];
   inputMode?: "text" | "numeric" | "email" | "tel";
@@ -28,7 +28,7 @@ export interface TextField extends BaseField {
 
 export interface SelectField extends BaseField {
   type: "select";
-  options: SelectOption[] | ((answers: Record<string, string | string[]>) => SelectOption[]);
+  options: SelectOption[] | ((_answers: Record<string, string | string[]>) => SelectOption[]);
   placeholder?: string;
 }
 
@@ -46,8 +46,8 @@ export type Field = TextField | SelectField | CheckboxField | TextareaField;
 
 export interface Step {
   id: string;
-  title: string | ((answers: Record<string, string | string[]>) => string);
-  description?: string | ((answers: Record<string, string | string[]>) => string);
+  title: string | ((_answers: Record<string, string | string[]>) => string);
+  description?: string | ((_answers: Record<string, string | string[]>) => string);
   showIf?: ShowIfFn;
   fields: Field[];
 }

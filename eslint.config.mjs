@@ -7,6 +7,10 @@ import prettier from "eslint-config-prettier";
 const eslintConfig = [...next, prettier, {
   rules: {
     "@next/next/no-img-element": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-duplicate-imports": "error",
+    "prefer-const": "error",
+    "no-else-return": "warn",
   },
 }, ...storybook.configs["flat/recommended"]];
 
